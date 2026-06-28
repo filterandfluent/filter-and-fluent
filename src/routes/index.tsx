@@ -108,7 +108,7 @@ function Index() {
         </nav>
 
         {/* Hero content */}
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 pb-40 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-16 pb-12 grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
           <div className="animate-fade-up">
             <div className="flex items-center gap-3 text-gold mb-8">
@@ -166,7 +166,7 @@ function Index() {
         </div>
 
         {/* Stats bar — overlaps next section */}
-        <div className="relative z-20 mx-auto max-w-[1200px] px-6 lg:px-10 -mb-12">
+        <div className="relative z-20 mx-auto max-w-[1200px] px-6 lg:px-10">
           <div className="rounded-2xl bg-navy border border-gold/15 shadow-[var(--shadow-luxury)] py-7 px-6 grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gold/15">
             {stats.map(({ icon: Icon, value, label }) => (
               <div key={label} className="flex items-center justify-center gap-4 py-4 md:py-0">
@@ -184,7 +184,7 @@ function Index() {
       </section>
 
       {/* ===== LEARNING CARDS ===== */}
-      <section className="relative bg-cream pt-32 pb-24">
+      <section className="relative bg-cream pt-20 pb-24">
         <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute left-0 top-24 w-56 opacity-40" />
         <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute right-10 bottom-10 w-72 opacity-[0.07]" />
         <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute right-2 top-40 w-24 opacity-50 rotate-12" />
