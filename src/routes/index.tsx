@@ -258,6 +258,65 @@ function Index() {
         </div>
       </section>
 
+      {/* ===== FEATURE CARDS ===== */}
+      <section className="relative bg-cream pb-20">
+        <div className="mx-auto max-w-[1300px] px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { img: cardArticles, tag: "Latest Articles", title: ["Practical English", "for Real Life"], cta: "Read Blog" },
+            { img: cardResources, tag: "Free Resources", title: ["Worksheets, PDFs", "& Study Guides"], cta: "Download Now" },
+            { img: cardWorkshops, tag: "Workshops & Training", title: ["For Teachers.", "By a Teacher."], cta: "Explore Workshops" },
+            { img: cardBooks, tag: "Books", title: ["Books that", "Inspire & Teach"], cta: "Explore Books" },
+          ].map((c) => (
+            <article key={c.tag} className="group relative rounded-2xl overflow-hidden shadow-[var(--shadow-card)] border border-border/40 h-[260px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_-20px_rgba(91,58,41,0.45)]">
+              <img src={c.img} alt={c.title.join(" ")} width={800} height={600} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/40 to-transparent" />
+              <div className="relative z-10 h-full flex flex-col justify-end p-6 text-cream">
+                <p className="text-[10px] tracking-[0.25em] font-semibold uppercase text-gold/90 mb-2">{c.tag}</p>
+                <h3 className="font-serif text-2xl leading-tight mb-3">
+                  {c.title[0]}<br />{c.title[1]}
+                </h3>
+                <a href="#" className="inline-flex items-center gap-1 text-xs font-semibold tracking-wider uppercase text-gold hover:text-cream transition-colors">
+                  {c.cta} <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== NEWSLETTER STRIP ===== */}
+      <section className="relative bg-coffee text-cream overflow-hidden">
+        <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 w-40 opacity-30" />
+        <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute right-0 bottom-0 w-44 opacity-25 rotate-180" />
+        <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute right-1/4 -top-10 w-56 opacity-[0.06]" />
+        <div className="relative mx-auto max-w-[1300px] px-6 lg:px-10 py-14 grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-5">
+            <h3 className="font-serif text-3xl lg:text-4xl leading-tight flex items-start gap-3">
+              <Coffee className="h-7 w-7 text-gold mt-1 shrink-0" />
+              <span>
+                <span className="text-gold-gradient">Brew Knowledge.</span><br />
+                Stay Inspired.
+              </span>
+            </h3>
+          </div>
+          <p className="lg:col-span-3 text-cream/75 text-sm leading-relaxed">
+            Get weekly English tips, resources and updates straight to your inbox.
+          </p>
+          <form className="lg:col-span-4 flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-1 rounded-full bg-cream text-navy-deep px-5 py-3 text-sm placeholder:text-navy-deep/40 focus:outline-none focus:ring-2 focus:ring-gold"
+            />
+            <button type="submit" className="btn-gold rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+
+
+
       {/* ===== FOOTER ===== */}
       <footer className="relative bg-navy-deep text-cream overflow-hidden">
         <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 w-96 opacity-[0.05]" />
