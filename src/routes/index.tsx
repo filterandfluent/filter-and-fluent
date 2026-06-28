@@ -165,7 +165,7 @@ function Index() {
           </div>
         </div>
 
-        {/* Stats bar — overlaps next section */}
+        {/* Stats bar — sits directly beneath the hero */}
         <div className="relative z-20 mx-auto max-w-[1200px] px-6 lg:px-10">
           <div className="rounded-2xl bg-navy border border-gold/15 shadow-[var(--shadow-luxury)] py-7 px-6 grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gold/15">
             {stats.map(({ icon: Icon, value, label }) => (
