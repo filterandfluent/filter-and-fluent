@@ -216,6 +216,7 @@ function Index() {
       {/* ===== ABOUT ===== */}
       <section className="relative bg-beige/60 grid lg:grid-cols-2 overflow-hidden">
         <img src={gopuramArt} alt="" aria-hidden className="pointer-events-none absolute right-0 bottom-0 w-[460px] opacity-[0.12]" />
+        <img src={velArt} alt="" aria-hidden className="pointer-events-none absolute right-[22%] bottom-10 w-[90px] opacity-[0.18] hidden lg:block" />
         <div className="relative h-[420px] lg:h-auto">
           <img
             src={aboutImg}
