@@ -5,6 +5,7 @@ import {
   Coffee,
   GraduationCap,
   Languages,
+  Mail,
   MessageCircle,
   PenLine,
   PlayCircle,
