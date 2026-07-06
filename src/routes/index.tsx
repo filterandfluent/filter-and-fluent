@@ -21,6 +21,7 @@ import gopuramArt from "@/assets/gopuram-lineart.png";
 import coffeeBranch from "@/assets/coffee-branch.png";
 import kolam from "@/assets/kolam-mandala.png";
 import velArt from "@/assets/vel-lineart.png";
+import { Heart, Lightbulb, Mic, Target, Eye } from "lucide-react";
 import cardArticles from "@/assets/card-articles.jpg";
 import cardResources from "@/assets/card-resources.jpg";
 import cardWorkshops from "@/assets/card-workshops.jpg";
