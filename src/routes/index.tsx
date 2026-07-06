@@ -232,32 +232,157 @@ function Index() {
         <div className="relative px-8 lg:px-20 py-20 lg:py-28 max-w-2xl">
           <div className="flex items-center gap-3 text-coffee mb-6">
             <span className="h-px w-8 bg-coffee/50" />
-            <span className="text-[11px] tracking-[0.3em] font-semibold uppercase">About Filter &amp; Fluent</span>
+            <span className="text-[11px] tracking-[0.3em] font-semibold uppercase">Our Story</span>
             <span className="h-px w-8 bg-coffee/50" />
           </div>
 
           <h2 className="font-serif text-5xl lg:text-6xl leading-[1.05] text-navy-deep">
-            Rooted in Tradition.<br />
-            <span className="text-gold-gradient italic">Designed for Fluency.</span>
+            Where Confidence<br />
+            <span className="text-gold-gradient italic">is Brewed.</span>
           </h2>
 
           <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-muted-foreground max-w-xl">
             <p>
-              Filter &amp; Fluent is an English learning platform inspired by the warmth,
-              simplicity and depth of South Indian filter coffee. We believe learning
-              English should be practical, meaningful and enjoyable.
+              Filter &amp; Fluent wasn't created to be another English learning platform. It was created to be the place we always wished existed.
             </p>
             <p>
-              Whether you are a student, teacher or lifelong learner, you'll find
-              everything you need to learn, teach and grow with confidence.
+              Imagine walking into your favourite coffee shop. The aroma of freshly brewed coffee fills the air. You settle into a comfortable chair, your favourite drink in hand, and for a while, the noise of the world fades away.
+            </p>
+            <p>
+              Learning should feel like that. Not stressful. Not overwhelming. Not like another classroom.
+            </p>
+            <p>
+              At Filter &amp; Fluent, we believe English isn't just a subject to study—it's a language to experience. That's why every lesson, resource, vocabulary word, grammar tip, and conversation is designed to feel simple, practical, and enjoyable.
+            </p>
+            <p>
+              Here, you won't be rushed. You won't be judged for making mistakes. Instead, you'll learn naturally, one meaningful step at a time, in a space that feels welcoming and inspiring.
+            </p>
+            <p>
+              Our dream is to create a place where learning feels as comforting as your favourite cup of coffee—where curiosity replaces fear, confidence grows with every visit, and communication becomes second nature.
+            </p>
+            <p>
+              We don't want you to visit Filter &amp; Fluent just to learn English. We want you to feel at home in the language.
+            </p>
+            <p className="font-serif italic text-navy-deep text-lg">
+              So, grab your favourite cup, stay as long as you like, and enjoy the journey.
+            </p>
+            <p className="font-serif italic text-coffee">
+              Welcome to Filter &amp; Fluent.<br />
+              Where confidence is brewed, and every voice finds its place.
             </p>
           </div>
 
           <button className="mt-10 inline-flex items-center gap-2 rounded-full bg-navy-deep text-cream px-8 py-4 text-sm font-semibold hover:bg-navy transition-colors shadow-[var(--shadow-card)]">
             Learn More About Us <ArrowRight className="h-4 w-4" />
           </button>
+
+          {/* Founder Identity */}
+          <div className="mt-14 pt-10 border-t border-coffee/20 flex items-center gap-5">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/50 bg-navy-deep text-gold shrink-0">
+              <Coffee className="h-7 w-7" />
+            </span>
+            <div>
+              <p className="font-serif text-2xl text-navy-deep leading-tight">Gnana Soundari Devaraj</p>
+              <p className="text-[11px] tracking-[0.28em] font-semibold uppercase text-gold mt-2">Chief Brewer of Confidence</p>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* ===== MISSION & VISION ===== */}
+      <section className="relative bg-navy-deep text-cream overflow-hidden py-24">
+        <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute -right-24 -top-24 w-[480px] opacity-[0.06]" />
+        <img src={gopuramArt} alt="" aria-hidden className="pointer-events-none absolute -left-16 bottom-0 w-[360px] opacity-[0.07]" />
+        <div className="relative mx-auto max-w-[1300px] px-6 lg:px-10 grid md:grid-cols-2 gap-10">
+          {[
+            {
+              icon: Target,
+              tag: "Our Mission",
+              title: "Brewing Confidence, One Voice at a Time.",
+              body: "At Filter & Fluent, we see learning as the art of brewing confidence. Just as every perfect cup begins with carefully chosen beans, we believe every confident voice begins with meaningful learning. Our mission is to inspire learners to discover their voice, communicate with purpose, and create a lasting impact wherever life takes them.",
+            },
+            {
+              icon: Eye,
+              tag: "Our Vision",
+              title: "A Home for Every Voice.",
+              body: "To be more than an English learning platform—to become a place where confidence is brewed, dreams are nurtured, and every voice finds its strength.",
+            },
+          ].map(({ icon: Icon, tag, title, body }) => (
+            <article key={tag} className="relative rounded-3xl border border-gold/20 bg-navy/50 backdrop-blur p-10 lg:p-12 shadow-[var(--shadow-luxury)]">
+              <span className="flex h-14 w-14 items-center justify-center rounded-xl border border-gold/40 text-gold mb-6">
+                <Icon className="h-7 w-7" strokeWidth={1.5} />
+              </span>
+              <p className="text-[11px] tracking-[0.3em] font-semibold uppercase text-gold/90 mb-4">{tag}</p>
+              <h3 className="font-serif text-3xl lg:text-4xl leading-tight text-cream mb-6">
+                <span className="text-gold-gradient italic">{title}</span>
+              </h3>
+              <p className="text-[15px] leading-relaxed text-cream/75">{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== CORE VALUES — WHAT WE BREW EVERY DAY ===== */}
+      <section className="relative bg-beige/60 py-24 overflow-hidden">
+        <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute left-0 top-16 w-56 opacity-40" />
+        <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute right-0 bottom-10 w-56 opacity-40 rotate-180" />
+        <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/3 w-[500px] opacity-[0.05]" />
+
+        <div className="relative mx-auto max-w-[1300px] px-6 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="flex items-center justify-center gap-3 text-coffee mb-6">
+              <span className="h-px w-8 bg-coffee/50" />
+              <span className="text-[11px] tracking-[0.3em] font-semibold uppercase">Our Core Values</span>
+              <span className="h-px w-8 bg-coffee/50" />
+            </div>
+            <h2 className="font-serif text-5xl lg:text-6xl leading-[1.05] text-navy-deep">
+              What We Brew<br />
+              <span className="text-gold-gradient italic">Every Day.</span>
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Coffee, title: "Brew Confidence", body: "Confidence is the first language we teach. Before grammar, vocabulary, and fluency—we help learners believe in their own voice." },
+              { icon: Sparkles, title: "Sip. Learn. Grow.", body: "Great coffee isn't rushed, and neither is meaningful learning. We believe every learner should enjoy the journey—one lesson, one conversation, one cup at a time." },
+              { icon: Mic, title: "Every Voice Matters", body: "Every learner has a story worth sharing. Communication is not about perfection—it is about connection, understanding, and authenticity." },
+              { icon: Lightbulb, title: "Simplicity Creates Clarity", body: "We remove confusion and make English simple, practical, and usable in real life." },
+              { icon: Heart, title: "Learn with Heart", body: "Learning happens best in comfort and encouragement. Mistakes are part of growth, curiosity is celebrated, and every learner is valued." },
+            ].map(({ icon: Icon, title, body }) => (
+              <article key={title} className="group bg-card rounded-2xl p-8 border border-border/40 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_60px_-20px_rgba(91,58,41,0.4)]">
+                <span className="flex h-14 w-14 items-center justify-center rounded-xl border border-coffee/25 text-coffee group-hover:border-gold group-hover:text-gold transition-colors mb-6">
+                  <Icon className="h-7 w-7" strokeWidth={1.4} />
+                </span>
+                <h3 className="font-serif text-2xl text-navy-deep mb-3">{title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PHILOSOPHY ===== */}
+      <section className="relative bg-cream py-24 overflow-hidden">
+        <img src={muruganArt} alt="" aria-hidden className="pointer-events-none absolute left-6 top-10 w-[220px] opacity-[0.06]" />
+        <img src={gopuramArt} alt="" aria-hidden className="pointer-events-none absolute right-6 bottom-6 w-[240px] opacity-[0.07]" />
+        <div className="relative mx-auto max-w-3xl px-6 lg:px-10 text-center">
+          <Quote className="h-10 w-10 text-gold mx-auto mb-8" strokeWidth={1.2} />
+          <div className="flex items-center justify-center gap-3 text-coffee mb-8">
+            <span className="h-px w-8 bg-coffee/50" />
+            <span className="text-[11px] tracking-[0.3em] font-semibold uppercase">Our Philosophy</span>
+            <span className="h-px w-8 bg-coffee/50" />
+          </div>
+          <p className="font-serif text-3xl md:text-4xl leading-[1.25] text-navy-deep">
+            At Filter &amp; Fluent, learning English should feel less like a classroom and more like your favourite coffee shop—<span className="text-gold-gradient italic">comfortable, inspiring, and filled with meaningful conversations.</span> Everything we create is brewed with purpose so every learner leaves more confident than they arrived.
+          </p>
+          <div className="mt-12 flex items-center justify-center gap-4 text-coffee">
+            <span className="h-px w-12 bg-coffee/40" />
+            <Coffee className="h-4 w-4 text-gold" />
+            <span className="h-px w-12 bg-coffee/40" />
+          </div>
+        </div>
+      </section>
+
 
       {/* ===== FEATURE CARDS ===== */}
       <section className="relative bg-cream pb-20">
