@@ -444,6 +444,99 @@ function Index() {
 
 
 
+      {/* ===== CONTACT ===== */}
+      <section id="contact" className="relative bg-beige/60 overflow-hidden">
+        <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute left-0 top-16 w-56 opacity-40" />
+        <img src={coffeeBranch} alt="" aria-hidden className="pointer-events-none absolute right-0 bottom-0 w-48 opacity-40 rotate-180" />
+        <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute right-1/4 -top-10 w-72 opacity-[0.05]" />
+
+        <div className="relative mx-auto max-w-[1300px] px-6 lg:px-10 py-24">
+          <div className="grid lg:grid-cols-2 gap-14 items-start">
+            <div>
+              <div className="flex items-center gap-3 text-coffee mb-6">
+                <span className="h-px w-8 bg-coffee/50" />
+                <span className="text-[11px] tracking-[0.3em] font-semibold uppercase">Get in Touch</span>
+                <span className="h-px w-8 bg-coffee/50" />
+              </div>
+
+              <h2 className="font-serif text-5xl lg:text-6xl leading-[1.05] text-navy-deep mb-6">
+                Let's Start a<br />
+                <span className="text-gold-gradient italic">Conversation.</span>
+              </h2>
+
+              <p className="text-[15px] leading-relaxed text-muted-foreground max-w-md mb-10">
+                Got a question, a course inquiry, or just want to say hi? Pour yourself a cup and drop us a message — we reply faster than your coffee gets cold.
+              </p>
+
+              <div className="space-y-5">
+                <a href="mailto:hello@filterandfluent.com" className="flex items-center gap-4 group">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy-deep text-gold group-hover:bg-navy transition-colors">
+                    <Mail className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee">Email</span>
+                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">hello@filterandfluent.com</span>
+                  </span>
+                </a>
+                <a href="https://instagram.com/filterandfluent" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy-deep text-gold group-hover:bg-navy transition-colors">
+                    <Coffee className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee">Instagram</span>
+                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">@filterandfluent</span>
+                  </span>
+                </a>
+                <a href="https://youtube.com/filterandfluent" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy-deep text-gold group-hover:bg-navy transition-colors">
+                    <PlayCircle className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee">YouTube</span>
+                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">Filter & Fluent</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <form className="bg-card rounded-3xl p-8 lg:p-10 border border-border/40 shadow-[var(--shadow-card)]" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-5">
+                <div>
+                  <label htmlFor="contact-name" className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee mb-2">Name</label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    placeholder="Your name"
+                    className="w-full rounded-full bg-cream border border-border px-5 py-3 text-sm text-navy-deep placeholder:text-navy-deep/40 focus:outline-none focus:ring-2 focus:ring-gold"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee mb-2">Email</label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    placeholder="your@email.com"
+                    className="w-full rounded-full bg-cream border border-border px-5 py-3 text-sm text-navy-deep placeholder:text-navy-deep/40 focus:outline-none focus:ring-2 focus:ring-gold"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-message" className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee mb-2">Message</label>
+                  <textarea
+                    id="contact-message"
+                    rows={5}
+                    placeholder="How can we help you?"
+                    className="w-full rounded-2xl bg-cream border border-border px-5 py-4 text-sm text-navy-deep placeholder:text-navy-deep/40 focus:outline-none focus:ring-2 focus:ring-gold resize-none"
+                  />
+                </div>
+                <button type="submit" className="btn-gold w-full rounded-full px-8 py-4 text-sm font-semibold inline-flex items-center justify-center gap-2">
+                  Send Message <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {/* ===== FOOTER ===== */}
       <footer className="relative bg-navy-deep text-cream overflow-hidden">
         <img src={kolam} alt="" aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 w-96 opacity-[0.05]" />
