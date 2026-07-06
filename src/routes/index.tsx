@@ -99,7 +99,7 @@ function Index() {
             {navLinks.map((l, i) => (
               <li key={l}>
                 <a
-                  href="#"
+                  href={l === "Contact" ? "#contact" : "#"}
                   className={`relative transition-colors hover:text-gold ${i === 0 ? "text-gold" : "text-cream/85"}`}
                 >
                   {l}
