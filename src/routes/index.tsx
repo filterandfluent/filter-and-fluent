@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   BookOpen,
@@ -40,7 +40,20 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const navLinks = ["Home", "About", "Grammar", "Vocabulary", "Speaking", "Writing", "Courses", "Resources", "Blog", "Books", "Workshops", "Contact"];
+const navLinks: { label: string; to: string; hash?: string }[] = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Grammar", to: "/grammar" },
+  { label: "Vocabulary", to: "/vocabulary" },
+  { label: "Speaking", to: "/speaking" },
+  { label: "Writing", to: "/writing" },
+  { label: "Courses", to: "/courses" },
+  { label: "Resources", to: "/resources" },
+  { label: "Blog", to: "/blog" },
+  { label: "Books", to: "/books" },
+  { label: "Workshops", to: "/workshops" },
+  { label: "Contact", to: "/", hash: "contact" },
+];
 
 const learningCards = [
   { icon: BookOpen, title: "Grammar", desc: "Clear explanations and practice exercises." },
@@ -97,14 +110,15 @@ function Index() {
 
           <ul className="hidden xl:flex items-center gap-7 text-[13px] font-medium">
             {navLinks.map((l, i) => (
-              <li key={l}>
-                <a
-                  href={l === "Contact" ? "#contact" : "#"}
+              <li key={l.label}>
+                <Link
+                  to={l.to}
+                  hash={l.hash}
                   className={`relative transition-colors hover:text-gold ${i === 0 ? "text-gold" : "text-cream/85"}`}
                 >
-                  {l}
+                  {l.label}
                   {i === 0 && <span className="absolute -bottom-2 left-0 right-0 mx-auto h-[2px] w-6 bg-gold rounded-full" />}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
