@@ -483,33 +483,34 @@ function Index() {
               </p>
 
               <div className="space-y-5">
-                <a href="mailto:hello@filterandfluent.com" className="flex items-center gap-4 group">
+                <a href="mailto:ajisoundari@gmail.com" className="flex items-center gap-4 group">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy-deep text-gold group-hover:bg-navy transition-colors">
                     <Mail className="h-5 w-5" />
                   </span>
                   <span>
                     <span className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee">Email</span>
-                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">hello@filterandfluent.com</span>
+                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">ajisoundari@gmail.com</span>
                   </span>
                 </a>
-                <a href="https://instagram.com/filterandfluent" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <a href="https://instagram.com/mrs.englsih_lab" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy-deep text-gold group-hover:bg-navy transition-colors">
                     <Coffee className="h-5 w-5" />
                   </span>
                   <span>
                     <span className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee">Instagram</span>
-                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">@filterandfluent</span>
+                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">@mrs.englsih_lab</span>
                   </span>
                 </a>
-                <a href="https://youtube.com/filterandfluent" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <a href="https://youtube.com/@MrsEnglish" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy-deep text-gold group-hover:bg-navy transition-colors">
                     <PlayCircle className="h-5 w-5" />
                   </span>
                   <span>
                     <span className="block text-[11px] tracking-[0.2em] font-semibold uppercase text-coffee">YouTube</span>
-                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">Filter & Fluent</span>
+                    <span className="block text-sm font-medium text-navy-deep group-hover:text-gold transition-colors">Mrs.English</span>
                   </span>
                 </a>
+
               </div>
             </div>
 
