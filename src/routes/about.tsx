@@ -139,7 +139,7 @@ function AboutPage() {
               <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
                 <GraduationCap className="h-4 w-4 text-gold" />
               </span>
-              <span className="text-cream/85 text-lg leading-relaxed">{item}</span>
+              <span className="text-cream/75 text-[15px] leading-relaxed">{item}</span>
             </li>
           ))}
         </ul>
