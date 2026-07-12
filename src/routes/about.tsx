@@ -98,7 +98,7 @@ function AboutPage() {
                 <Sparkles className="h-5 w-5 text-gold" />
               </span>
               <h3 className="font-serif text-2xl lg:text-3xl text-cream">The 4E Method</h3>
-              <ul className="mt-6 space-y-4 text-cream/80">
+              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-cream/75">
                 <li><span className="text-gold font-semibold">Engage</span> — spark interest through stories and real conversation</li>
                 <li><span className="text-gold font-semibold">Explore</span> — discover the rule through examples, not memorization</li>
                 <li><span className="text-gold font-semibold">Explain</span> — break it down in plain, simple language</li>
