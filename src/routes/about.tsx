@@ -77,10 +77,10 @@ function AboutPage() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold/80">Chapter One</span>
           <h2 className="mt-3 font-serif text-4xl lg:text-5xl text-cream">My Story</h2>
         </div>
-        <div className="space-y-6 text-cream/80 text-lg leading-relaxed font-serif">
+        <div className="space-y-5 text-[15px] leading-relaxed text-cream/75">
           <p>For 9 years, I've taught English across CBSE and ICSE schools — and noticed the same pattern everywhere.</p>
           <p>Students didn't dislike English. They disliked how it was taught: rushed, rule-heavy, and intimidating to speak out loud.</p>
-          <p>So I built <span className="text-gold italic">Filter &amp; Fluent</span> — a place where English feels approachable, not overwhelming.</p>
+          <p>So I built <span className="text-gold">Filter &amp; Fluent</span> — a place where English feels approachable, not overwhelming.</p>
         </div>
       </section>
 
