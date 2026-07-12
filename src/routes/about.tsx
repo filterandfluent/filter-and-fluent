@@ -77,10 +77,10 @@ function AboutPage() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold/80">Chapter One</span>
           <h2 className="mt-3 font-serif text-4xl lg:text-5xl text-cream">My Story</h2>
         </div>
-        <div className="space-y-6 text-cream/80 text-lg leading-relaxed font-serif">
+        <div className="space-y-5 text-[15px] leading-relaxed text-cream/75">
           <p>For 9 years, I've taught English across CBSE and ICSE schools — and noticed the same pattern everywhere.</p>
           <p>Students didn't dislike English. They disliked how it was taught: rushed, rule-heavy, and intimidating to speak out loud.</p>
-          <p>So I built <span className="text-gold italic">Filter &amp; Fluent</span> — a place where English feels approachable, not overwhelming.</p>
+          <p>So I built <span className="text-gold">Filter &amp; Fluent</span> — a place where English feels approachable, not overwhelming.</p>
         </div>
       </section>
 
@@ -98,7 +98,7 @@ function AboutPage() {
                 <Sparkles className="h-5 w-5 text-gold" />
               </span>
               <h3 className="font-serif text-2xl lg:text-3xl text-cream">The 4E Method</h3>
-              <ul className="mt-6 space-y-4 text-cream/80">
+              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-cream/75">
                 <li><span className="text-gold font-semibold">Engage</span> — spark interest through stories and real conversation</li>
                 <li><span className="text-gold font-semibold">Explore</span> — discover the rule through examples, not memorization</li>
                 <li><span className="text-gold font-semibold">Explain</span> — break it down in plain, simple language</li>
@@ -111,7 +111,7 @@ function AboutPage() {
                 <BookOpen className="h-5 w-5 text-gold" />
               </span>
               <h3 className="font-serif text-2xl lg:text-3xl text-cream">The S.T.E.P Reading Framework</h3>
-              <ul className="mt-6 space-y-4 text-cream/80">
+              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-cream/75">
                 <li><span className="text-gold font-semibold">Scan</span> — get the overview first</li>
                 <li><span className="text-gold font-semibold">Track</span> — follow the details</li>
                 <li><span className="text-gold font-semibold">Extract</span> — pull out what matters</li>
@@ -139,7 +139,7 @@ function AboutPage() {
               <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
                 <GraduationCap className="h-4 w-4 text-gold" />
               </span>
-              <span className="text-cream/85 text-lg leading-relaxed">{item}</span>
+              <span className="text-cream/75 text-[15px] leading-relaxed">{item}</span>
             </li>
           ))}
         </ul>
@@ -151,7 +151,7 @@ function AboutPage() {
         <div className="relative mx-auto max-w-[820px] px-6 lg:px-10 text-center">
           <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold/80">The Heart of It</span>
           <h2 className="mt-3 font-serif text-4xl lg:text-5xl text-cream">Why It Matters</h2>
-          <div className="mt-8 space-y-6 font-serif italic text-xl lg:text-2xl leading-relaxed text-cream/85">
+          <div className="mt-8 space-y-6 font-serif italic text-xl lg:text-2xl leading-relaxed text-cream">
             <p>I don't believe fluency should feel like a test you're always failing.</p>
             <p>It should feel like a skill you're steadily building — <span className="text-gold not-italic font-medium">one lesson at a time.</span></p>
           </div>
