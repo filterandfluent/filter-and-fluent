@@ -97,8 +97,8 @@ function AboutPage() {
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy/60 mb-6">
                 <Sparkles className="h-5 w-5 text-gold" />
               </span>
-              <h3 className="font-serif text-2xl lg:text-3xl text-cream">The 4E Method</h3>
-              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-cream/75">
+              <h3 className="font-serif text-2xl lg:text-3xl text-navy-deep">The 4E Method</h3>
+              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-navy-deep">
                 <li><span className="text-gold font-semibold">Engage</span> — spark interest through stories and real conversation</li>
                 <li><span className="text-gold font-semibold">Explore</span> — discover the rule through examples, not memorization</li>
                 <li><span className="text-gold font-semibold">Explain</span> — break it down in plain, simple language</li>
@@ -110,14 +110,15 @@ function AboutPage() {
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy/60 mb-6">
                 <BookOpen className="h-5 w-5 text-gold" />
               </span>
-              <h3 className="font-serif text-2xl lg:text-3xl text-cream">The S.T.E.P Reading Framework</h3>
-              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-cream/75">
+              <h3 className="font-serif text-2xl lg:text-3xl text-navy-deep">The S.T.E.P Reading Framework</h3>
+              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-navy-deep">
                 <li><span className="text-gold font-semibold">Scan</span> — get the overview first</li>
                 <li><span className="text-gold font-semibold">Track</span> — follow the details</li>
                 <li><span className="text-gold font-semibold">Extract</span> — pull out what matters</li>
                 <li><span className="text-gold font-semibold">Present</span> — use it in exams, in speech, in life</li>
               </ul>
             </div>
+
           </div>
         </div>
       </section>
