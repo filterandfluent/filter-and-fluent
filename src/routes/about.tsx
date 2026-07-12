@@ -151,7 +151,7 @@ function AboutPage() {
         <div className="relative mx-auto max-w-[820px] px-6 lg:px-10 text-center">
           <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold/80">The Heart of It</span>
           <h2 className="mt-3 font-serif text-4xl lg:text-5xl text-cream">Why It Matters</h2>
-          <div className="mt-8 space-y-6 font-serif italic text-xl lg:text-2xl leading-relaxed text-cream/85">
+          <div className="mt-8 space-y-6 font-serif italic text-xl lg:text-2xl leading-relaxed text-cream">
             <p>I don't believe fluency should feel like a test you're always failing.</p>
             <p>It should feel like a skill you're steadily building — <span className="text-gold not-italic font-medium">one lesson at a time.</span></p>
           </div>
