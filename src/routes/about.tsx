@@ -111,7 +111,7 @@ function AboutPage() {
                 <BookOpen className="h-5 w-5 text-gold" />
               </span>
               <h3 className="font-serif text-2xl lg:text-3xl text-cream">The S.T.E.P Reading Framework</h3>
-              <ul className="mt-6 space-y-4 text-cream/80">
+              <ul className="mt-6 space-y-4 text-[15px] leading-relaxed text-cream/75">
                 <li><span className="text-gold font-semibold">Scan</span> — get the overview first</li>
                 <li><span className="text-gold font-semibold">Track</span> — follow the details</li>
                 <li><span className="text-gold font-semibold">Extract</span> — pull out what matters</li>
