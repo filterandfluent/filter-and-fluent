@@ -420,6 +420,8 @@ function ArticleCard({ a }: { a: (typeof related)[number] }) {
 /* ---------- Page ---------- */
 function ArticlePage() {
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
+  const active = useActiveSection();
+  useSectionReveal();
 
   return (
     <div className="min-h-screen bg-[oklch(0.98_0.015_80)] text-navy-deep">
