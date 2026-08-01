@@ -306,12 +306,13 @@ function ArticleCard({ a }: { a: Article }) {
             <Clock className="h-3.5 w-3.5" /> {a.readingTime} min read
           </span>
         </div>
-        <button
-          type="button"
+        <Link
+          to="/blog/$slug"
+          params={{ slug: a.slug }}
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-coffee hover:text-gold transition-colors self-start"
         >
           Continue Reading <ArrowRight className="h-3.5 w-3.5" />
-        </button>
+        </Link>
       </div>
     </article>
   );
@@ -536,9 +537,13 @@ function BlogPage() {
                   </time>
                 </div>
               </div>
-              <button className="btn-gold mt-8 self-start rounded-full px-7 py-3 text-sm font-semibold inline-flex items-center gap-2">
+              <Link
+                to="/blog/$slug"
+                params={{ slug: featured.slug }}
+                className="btn-gold mt-8 self-start rounded-full px-7 py-3 text-sm font-semibold inline-flex items-center gap-2"
+              >
                 Continue Reading <ArrowRight className="h-4 w-4" />
-              </button>
+              </Link>
             </div>
           </article>
         </section>
