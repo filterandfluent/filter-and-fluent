@@ -170,6 +170,84 @@ function formatDate(iso: string) {
 }
 
 /* ---------- Small pieces ---------- */
+const CARD =
+  "rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)]";
+const FOCUS =
+  "outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--beige)]";
+
+/** Fades sections in as they enter the viewport, using the site's fade-up motion. */
+function useSectionReveal() {
+  useEffect(() => {
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+    if (!nodes.length) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    nodes.forEach((n) => {
+      n.style.opacity = "0";
+      n.style.willChange = "opacity, transform";
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          el.style.opacity = "";
+          el.classList.add("animate-fade-up");
+          el.addEventListener(
+            "animationend",
+            () => {
+              el.style.willChange = "";
+            },
+            { once: true },
+          );
+          io.unobserve(el);
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+}
+
+/** Tracks which article section is currently in view. */
+function useActiveSection() {
+  const [active, setActive] = useState(SECTIONS[0]!.id);
+  useEffect(() => {
+    const targets = SECTIONS.map((s) => document.getElementById(s.id)).filter(
+      (el): el is HTMLElement => !!el,
+    );
+    if (!targets.length) return;
+
+    let frame = 0;
+    const compute = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.3;
+      let current = targets[0]!.id;
+      for (const el of targets) {
+        if (el.getBoundingClientRect().top <= line) current = el.id;
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(compute);
+    };
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  return active;
+}
+
 function SectionHeading({
   id,
   name,
@@ -183,26 +261,44 @@ function SectionHeading({
     <div className="mb-6">
       <h2
         id={id}
-        className="font-serif text-3xl md:text-4xl leading-tight text-navy-deep scroll-mt-28"
+        className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-navy-deep scroll-mt-28"
       >
         {name}
       </h2>
-      <p className="mt-2 text-sm text-navy-deep/60 italic">{intro}</p>
+      <p className="mt-2 text-sm leading-relaxed text-navy-deep/60 italic">
+        {intro}
+      </p>
     </div>
   );
 }
 
 function ReadingProgress() {
+  const barRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+
   useEffect(() => {
-    const onScroll = () => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
-      setProgress(max > 0 ? (h.scrollTop / max) * 100 : 0);
+      const value = max > 0 ? Math.min(1, Math.max(0, h.scrollTop / max)) : 0;
+      if (barRef.current) {
+        barRef.current.style.transform = `scaleX(${value})`;
+      }
+      setProgress(Math.round(value * 100));
     };
-    onScroll();
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -210,57 +306,75 @@ function ReadingProgress() {
       className="fixed inset-x-0 top-0 z-50 h-[3px] bg-transparent"
       role="progressbar"
       aria-label="First Pour — reading progress"
-      aria-valuenow={Math.round(progress)}
+      aria-valuenow={progress}
       aria-valuemin={0}
       aria-valuemax={100}
+      aria-valuetext={`${progress}% of the article read`}
     >
       <div
-        className="h-full bg-gold transition-[width] duration-150"
-        style={{ width: `${progress}%` }}
+        ref={barRef}
+        className="h-full w-full origin-left bg-gold"
+        style={{ transform: "scaleX(0)" }}
       />
     </div>
   );
 }
 
-function MenuBoard() {
+function MenuBoard({ active }: { active: string }) {
   const [open, setOpen] = useState(false);
   return (
     <nav
       aria-label="Menu Board — table of contents"
       className="lg:sticky lg:top-24"
     >
-      <div className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] overflow-hidden">
+      <div className={`${CARD} overflow-hidden`}>
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left lg:cursor-default"
+          aria-controls="menu-board-list"
+          className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left lg:cursor-default ${FOCUS} focus-visible:ring-offset-white`}
         >
           <span>
-            <span className="block font-serif text-lg text-navy-deep">
+            <span className="block font-serif text-lg leading-snug text-navy-deep">
               Menu Board
             </span>
-            <span className="block text-[11px] text-navy-deep/60 italic">
+            <span className="block text-[11px] leading-relaxed text-navy-deep/60 italic">
               Everything on today's board, at a glance.
             </span>
           </span>
           <ArrowRight
-            className={`h-4 w-4 text-coffee lg:hidden transition-transform ${open ? "rotate-90" : ""}`}
+            className={`h-4 w-4 text-coffee lg:hidden transition-transform duration-200 ${open ? "rotate-90" : ""}`}
+            aria-hidden
           />
         </button>
         <ul
-          className={`${open ? "block" : "hidden"} lg:block border-t border-border/60 px-5 py-4 space-y-2 text-sm`}
+          id="menu-board-list"
+          className={`${open ? "block" : "hidden"} lg:block border-t border-border/60 px-5 py-4 space-y-1 text-sm`}
         >
-          {SECTIONS.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#${s.id}`}
-                className="text-navy-deep/75 hover:text-coffee transition-colors"
-              >
-                {s.label}
-              </a>
-            </li>
-          ))}
+          {SECTIONS.map((s) => {
+            const isActive = active === s.id;
+            return (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  aria-current={isActive ? "true" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={`flex items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white ${
+                    isActive
+                      ? "bg-gold/15 text-coffee font-semibold"
+                      : "text-navy-deep/75 hover:bg-beige/60 hover:text-coffee"
+                  }`}
+                >
+                  <span
+                    className={`h-1.5 w-1.5 shrink-0 rounded-full transition-colors duration-200 ${isActive ? "bg-gold" : "bg-border"}`}
+                    aria-hidden
+                  />
+                  <span>{s.label}</span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
@@ -269,28 +383,33 @@ function MenuBoard() {
 
 function ArticleCard({ a }: { a: (typeof related)[number] }) {
   return (
-    <article className="group flex flex-col rounded-2xl bg-white border border-border/60 overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]">
+    <article
+      className={`group flex flex-col ${CARD} overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
+    >
       <div
         className="relative aspect-[16/10] bg-gradient-to-br from-coffee/80 via-navy/70 to-navy-deep overflow-hidden"
         aria-hidden
       >
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,rgba(212,175,55,0.6),transparent_60%)]" />
-        <Coffee className="absolute right-4 bottom-4 h-16 w-16 text-gold/40" strokeWidth={1} />
+        <Coffee
+          className="absolute right-4 bottom-4 h-16 w-16 text-gold/40 transition-transform duration-300 group-hover:scale-105"
+          strokeWidth={1}
+        />
       </div>
       <div className="flex flex-col flex-1 p-6">
         <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider self-start">
           {a.category}
         </span>
-        <h3 className="mt-3 font-serif text-xl leading-snug text-navy-deep">
+        <h3 className="mt-3 font-serif text-xl leading-snug text-navy-deep transition-colors duration-200 group-hover:text-coffee">
           {a.title}
         </h3>
         <p className="mt-3 text-sm text-navy-deep/75 leading-relaxed">{a.excerpt}</p>
         <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-xs text-navy-deep/60">
           <span className="flex items-center gap-1.5">
-            <User className="h-3.5 w-3.5" /> {article.author.split(" ")[0]}
+            <User className="h-3.5 w-3.5" aria-hidden /> {article.author.split(" ")[0]}
           </span>
           <span className="flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" /> {a.readingTime} min read
+            <Clock className="h-3.5 w-3.5" aria-hidden /> {a.readingTime} min read
           </span>
         </div>
       </div>
