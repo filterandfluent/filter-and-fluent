@@ -544,7 +544,7 @@ function ArticlePage() {
         <div className="grid lg:grid-cols-[260px_1fr] gap-10">
           {/* Menu Board */}
           <aside className="order-first">
-            <MenuBoard />
+            <MenuBoard active={active} />
           </aside>
 
           <div className="min-w-0 max-w-[760px]">
