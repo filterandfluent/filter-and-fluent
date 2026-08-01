@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Clock, Coffee, Mail, Sparkles, User } from "lucide-react";
 
 export const Route = createFileRoute("/blog_/$slug")({
