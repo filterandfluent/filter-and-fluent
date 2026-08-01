@@ -446,22 +446,22 @@ function ArticlePage() {
           </Link>
           <ul className="hidden md:flex items-center gap-6 text-[13px] font-medium">
             <li>
-              <Link to="/" className="text-cream/85 hover:text-gold">
+              <Link to="/" className="text-cream/85 hover:text-gold transition-colors duration-200">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-cream/85 hover:text-gold">
+              <Link to="/about" className="text-cream/85 hover:text-gold transition-colors duration-200">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/grammar" className="text-cream/85 hover:text-gold">
+              <Link to="/grammar" className="text-cream/85 hover:text-gold transition-colors duration-200">
                 Grammar
               </Link>
             </li>
             <li>
-              <Link to="/vocabulary" className="text-cream/85 hover:text-gold">
+              <Link to="/vocabulary" className="text-cream/85 hover:text-gold transition-colors duration-200">
                 Vocabulary
               </Link>
             </li>
@@ -525,13 +525,13 @@ function ArticlePage() {
       >
         <ol className="flex flex-wrap items-center gap-2">
           <li>
-            <Link to="/" className="hover:text-coffee">
+            <Link to="/" className="hover:text-coffee transition-colors duration-200">
               Home
             </Link>
           </li>
           <li aria-hidden>/</li>
           <li>
-            <Link to="/blog" className="hover:text-coffee">
+            <Link to="/blog" className="hover:text-coffee transition-colors duration-200">
               Coffee Journal
             </Link>
           </li>
@@ -547,7 +547,7 @@ function ArticlePage() {
             <MenuBoard active={active} />
           </aside>
 
-          <div className="min-w-0 max-w-[760px]">
+          <div className="min-w-0 max-w-[72ch]">
             {/* The Brew */}
             <section data-reveal aria-labelledby="the-brew" className="mb-14">
               <SectionHeading
@@ -555,7 +555,7 @@ function ArticlePage() {
                 name="The Brew"
                 intro="Poured slowly — the main idea, one steady drip at a time."
               />
-              <div className="space-y-5 text-[17px] leading-[1.85] text-navy-deep/80">
+              <div className="space-y-6 text-[17px] leading-[1.85] text-navy-deep/80 [text-wrap:pretty]">
                 <p>
                   Nobody rushes filter coffee. You add the decoction, you wait,
                   and the flavour arrives on its own schedule. Grammar behaves
@@ -569,7 +569,7 @@ function ArticlePage() {
                   knowing more rules. It is the result of a few rules becoming
                   automatic.
                 </p>
-                <h3 className="font-serif text-2xl text-navy-deep pt-4">
+                <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-4">
                   Why speed fails
                 </h3>
                 <p>
@@ -578,7 +578,7 @@ function ArticlePage() {
                   a colleague asks about your weekend. Recognition is instant
                   coffee. Production is the real brew.
                 </p>
-                <h3 className="font-serif text-2xl text-navy-deep pt-4">
+                <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-4">
                   The one-tense week
                 </h3>
                 <p>
@@ -592,7 +592,7 @@ function ArticlePage() {
 
             {/* Coffee Sip */}
             <section data-reveal aria-label="Coffee Sip" className="mb-14">
-              <div className="rounded-2xl bg-white border-l-4 border-gold border border-border/60 shadow-[var(--shadow-card)] p-7">
+              <div className={`${CARD} border-l-4 border-l-gold p-7`}>
                 <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
                   Coffee Sip
                 </span>
@@ -613,7 +613,7 @@ function ArticlePage() {
                 name="What's Brewing"
                 intro="What's waiting in the cup by the end of this read."
               />
-              <ul className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-3 text-[15px] text-navy-deep/80">
+              <ul className={`${CARD} p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80`}>
                 {[
                   "Why slow, repeated use beats rule memorisation",
                   "How to run a focused one-tense week",
@@ -639,7 +639,7 @@ function ArticlePage() {
                 name="Premium Brew Notes"
                 intro="Small refinements the regulars at the counter already know."
               />
-              <aside className="rounded-2xl bg-[color:var(--beige)] border border-border/60 p-7 space-y-4 text-[15px] leading-relaxed text-navy-deep/80">
+              <aside className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-4 text-[15px] leading-relaxed text-navy-deep/80">
                 <p>
                   Record yourself once a week. Hearing your own sentences is the
                   fastest way to notice a tense slipping.
@@ -666,7 +666,7 @@ function ArticlePage() {
                 {grammarExamples.map((g) => (
                   <div
                     key={g.rule}
-                    className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-6"
+                    className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
                   >
                     <h3 className="font-serif text-lg text-navy-deep">
                       {g.rule}
@@ -693,7 +693,7 @@ function ArticlePage() {
                 {vocabulary.map((v) => (
                   <div
                     key={v.word}
-                    className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-6"
+                    className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
                   >
                     <div className="flex items-center gap-2">
                       <h3 className="font-serif text-xl text-navy-deep">
@@ -718,7 +718,7 @@ function ArticlePage() {
                 name="Bitter Notes"
                 intro="Over-extracted habits that leave a sharp aftertaste."
               />
-              <div className="rounded-2xl bg-white border-l-4 border-coffee border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-5">
+              <div className={`${CARD} border-l-4 border-l-coffee p-7 space-y-5`}>
                 {mistakes.map((m) => (
                   <div
                     key={m.wrong}
@@ -752,7 +752,7 @@ function ArticlePage() {
                 name="Grind & Practice"
                 intro="A little effort at the mill — this is where flavour comes from."
               />
-              <div className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-5">
+              <div className={`${CARD} p-7 space-y-5`}>
                 {exercises.map((ex, i) => (
                   <div
                     key={ex.q}
@@ -770,7 +770,7 @@ function ArticlePage() {
                       onClick={() =>
                         setRevealed((r) => ({ ...r, [i]: !r[i] }))
                       }
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-coffee hover:text-gold transition-colors"
+                      className={`mt-3 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-coffee hover:text-gold transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white`}
                     >
                       {revealed[i] ? "Hide answer" : "Reveal answer"}
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -792,7 +792,7 @@ function ArticlePage() {
                 name="Coffee Break Challenge"
                 intro="Five minutes, one cup, one small win."
               />
-              <div className="rounded-2xl bg-navy-deep text-cream border border-border/60 shadow-[var(--shadow-card)] p-8">
+              <div className="rounded-2xl bg-navy-deep text-cream border border-gold/25 shadow-[var(--shadow-card)] p-7">
                 <span className="rounded-full bg-gold text-navy-deep px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
                   Today's Challenge
                 </span>
@@ -814,7 +814,7 @@ function ArticlePage() {
                 name="Last Sip"
                 intro="The final mouthful — what stays with you after the cup."
               />
-              <ul className="rounded-2xl bg-[color:var(--beige)] border border-border/60 p-7 space-y-3 text-[15px] text-navy-deep/80">
+              <ul className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80">
                 {[
                   "Depth beats coverage: one tense a week is enough.",
                   "Produce sentences you actually mean — they stick.",
@@ -839,7 +839,7 @@ function ArticlePage() {
                 name="Meet the Roaster"
                 intro="The hands behind the blend."
               />
-              <div className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-7 flex flex-col sm:flex-row gap-6 items-start">
+              <div className={`${CARD} p-7 flex flex-col sm:flex-row gap-6 items-start`}>
                 <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-beige text-coffee">
                   <User className="h-8 w-8" strokeWidth={1.4} />
                 </span>
@@ -857,7 +857,7 @@ function ArticlePage() {
                   </p>
                   <Link
                     to="/about"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-coffee hover:text-gold transition-colors"
+                    className={`mt-4 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-coffee hover:text-gold transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white`}
                   >
                     More about the roaster <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
@@ -870,7 +870,7 @@ function ArticlePage() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <Link
                   to="/blog"
-                  className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-6 transition-all hover:-translate-y-1"
+                  className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] ${FOCUS}`}
                 >
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-coffee">
                     Previous Cup
@@ -881,7 +881,7 @@ function ArticlePage() {
                 </Link>
                 <Link
                   to="/blog"
-                  className="rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)] p-6 transition-all hover:-translate-y-1 sm:text-right"
+                  className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] sm:text-right ${FOCUS}`}
                 >
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-coffee">
                     Next Cup
@@ -894,13 +894,13 @@ function ArticlePage() {
             </section>
 
             {/* Table Talk */}
-            <section data-reveal aria-labelledby="table-talk" className="mb-4">
+            <section data-reveal aria-labelledby="table-talk" className="mb-14">
               <SectionHeading
                 id="table-talk"
                 name="Table Talk"
                 intro="Pull up a chair — conversation opens here soon."
               />
-              <div className="rounded-2xl border border-dashed border-border bg-white p-12 text-center">
+              <div className="rounded-2xl border border-dashed border-border bg-white p-12 text-center shadow-[var(--shadow-card)]">
                 <Coffee className="mx-auto h-10 w-10 text-coffee/60 mb-4" />
                 <p className="font-serif text-xl text-navy-deep">
                   Comments are brewing.
@@ -954,11 +954,11 @@ function ArticlePage() {
               type="email"
               required
               placeholder="you@example.com"
-              className="flex-1 rounded-full border border-border bg-white px-5 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/30"
+              className="flex-1 rounded-full border border-border bg-white px-5 py-3 text-sm text-navy-deep placeholder:text-navy-deep/50 outline-none focus:border-gold focus:ring-2 focus:ring-gold/30"
             />
             <button
               type="submit"
-              className="btn-gold rounded-full px-7 py-3 text-sm font-semibold whitespace-nowrap"
+              className={`btn-gold rounded-full px-7 py-3 text-sm font-semibold whitespace-nowrap transition-transform duration-200 hover:-translate-y-0.5 ${FOCUS}`}
             >
               Subscribe
             </button>
@@ -980,13 +980,13 @@ function ArticlePage() {
             </span>
           </div>
           <div className="flex gap-5 text-xs">
-            <Link to="/about" className="hover:text-gold">
+            <Link to="/about" className="hover:text-gold transition-colors duration-200">
               About
             </Link>
-            <Link to="/resources" className="hover:text-gold">
+            <Link to="/resources" className="hover:text-gold transition-colors duration-200">
               Resources
             </Link>
-            <Link to="/blog" className="hover:text-gold">
+            <Link to="/blog" className="hover:text-gold transition-colors duration-200">
               Journal
             </Link>
           </div>
