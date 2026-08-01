@@ -428,7 +428,7 @@ function ArticlePage() {
 
           <div className="min-w-0 max-w-[760px]">
             {/* The Brew */}
-            <section aria-labelledby="the-brew" className="mb-14">
+            <section data-reveal aria-labelledby="the-brew" className="mb-14">
               <SectionHeading
                 id="the-brew"
                 name="The Brew"
@@ -470,7 +470,7 @@ function ArticlePage() {
             </section>
 
             {/* Coffee Sip */}
-            <section aria-label="Coffee Sip" className="mb-14">
+            <section data-reveal aria-label="Coffee Sip" className="mb-14">
               <div className="rounded-2xl bg-white border-l-4 border-gold border border-border/60 shadow-[var(--shadow-card)] p-7">
                 <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
                   Coffee Sip
@@ -486,7 +486,7 @@ function ArticlePage() {
             </section>
 
             {/* What's Brewing */}
-            <section aria-labelledby="whats-brewing" className="mb-14">
+            <section data-reveal aria-labelledby="whats-brewing" className="mb-14">
               <SectionHeading
                 id="whats-brewing"
                 name="What's Brewing"
@@ -512,7 +512,7 @@ function ArticlePage() {
             </section>
 
             {/* Premium Brew Notes */}
-            <section aria-labelledby="premium-brew-notes" className="mb-14">
+            <section data-reveal aria-labelledby="premium-brew-notes" className="mb-14">
               <SectionHeading
                 id="premium-brew-notes"
                 name="Premium Brew Notes"
@@ -535,7 +535,7 @@ function ArticlePage() {
             </section>
 
             {/* Grammar, Filtered */}
-            <section aria-labelledby="grammar-filtered" className="mb-14">
+            <section data-reveal aria-labelledby="grammar-filtered" className="mb-14">
               <SectionHeading
                 id="grammar-filtered"
                 name="Grammar, Filtered"
@@ -562,7 +562,7 @@ function ArticlePage() {
             </section>
 
             {/* Tasting Notes */}
-            <section aria-labelledby="tasting-notes" className="mb-14">
+            <section data-reveal aria-labelledby="tasting-notes" className="mb-14">
               <SectionHeading
                 id="tasting-notes"
                 name="Tasting Notes"
@@ -591,7 +591,7 @@ function ArticlePage() {
             </section>
 
             {/* Bitter Notes */}
-            <section aria-labelledby="bitter-notes" className="mb-14">
+            <section data-reveal aria-labelledby="bitter-notes" className="mb-14">
               <SectionHeading
                 id="bitter-notes"
                 name="Bitter Notes"
@@ -625,7 +625,7 @@ function ArticlePage() {
             </section>
 
             {/* Grind & Practice */}
-            <section aria-labelledby="grind-practice" className="mb-14">
+            <section data-reveal aria-labelledby="grind-practice" className="mb-14">
               <SectionHeading
                 id="grind-practice"
                 name="Grind & Practice"
@@ -665,7 +665,7 @@ function ArticlePage() {
             </section>
 
             {/* Coffee Break Challenge */}
-            <section aria-labelledby="coffee-break" className="mb-14">
+            <section data-reveal aria-labelledby="coffee-break" className="mb-14">
               <SectionHeading
                 id="coffee-break"
                 name="Coffee Break Challenge"
@@ -687,7 +687,7 @@ function ArticlePage() {
             </section>
 
             {/* Last Sip */}
-            <section aria-labelledby="last-sip" className="mb-14">
+            <section data-reveal aria-labelledby="last-sip" className="mb-14">
               <SectionHeading
                 id="last-sip"
                 name="Last Sip"
@@ -712,7 +712,7 @@ function ArticlePage() {
             </section>
 
             {/* Meet the Roaster */}
-            <section aria-labelledby="meet-the-roaster" className="mb-14">
+            <section data-reveal aria-labelledby="meet-the-roaster" className="mb-14">
               <SectionHeading
                 id="meet-the-roaster"
                 name="Meet the Roaster"
@@ -745,7 +745,7 @@ function ArticlePage() {
             </section>
 
             {/* Next Cup / Previous Cup */}
-            <section aria-label="Article navigation" className="mb-14">
+            <section data-reveal aria-label="Article navigation" className="mb-14">
               <div className="grid gap-5 sm:grid-cols-2">
                 <Link
                   to="/blog"
@@ -773,7 +773,7 @@ function ArticlePage() {
             </section>
 
             {/* Table Talk */}
-            <section aria-labelledby="table-talk" className="mb-4">
+            <section data-reveal aria-labelledby="table-talk" className="mb-4">
               <SectionHeading
                 id="table-talk"
                 name="Table Talk"
@@ -793,7 +793,7 @@ function ArticlePage() {
         </div>
 
         {/* More From the Menu */}
-        <section aria-labelledby="more-from-the-menu" className="mt-16">
+        <section data-reveal aria-labelledby="more-from-the-menu" className="mt-16">
           <div className="flex items-center gap-3 mb-6">
             <Coffee className="h-5 w-5 text-coffee" />
             <h2
@@ -813,7 +813,7 @@ function ArticlePage() {
       </main>
 
       {/* Stay Brewed — Newsletter */}
-      <section className="mt-16 bg-[color:var(--beige)]">
+      <section data-reveal className="mt-16 bg-[color:var(--beige)]">
         <div className="mx-auto max-w-[900px] px-6 lg:px-10 py-20 text-center">
           <Mail className="mx-auto h-10 w-10 text-coffee mb-5" strokeWidth={1.4} />
           <h2 className="font-serif text-4xl text-navy-deep">Stay Brewed</h2>
