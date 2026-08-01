@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Bookmark, Clock, Coffee, Mail, Sparkles, User } from "lucide-react";
+import { ArrowRight, Clock, Coffee, Mail, Sparkles, User } from "lucide-react";
 
 export const Route = createFileRoute("/blog_/$slug")({
   head: () => ({
@@ -871,9 +871,6 @@ function ArticlePage() {
           </div>
         </div>
       </footer>
-      <span className="hidden">
-        <Bookmark className="h-0 w-0" />
-      </span>
     </div>
   );
 }
