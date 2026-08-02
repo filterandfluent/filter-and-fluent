@@ -266,7 +266,7 @@ function CategoryPill({
 
 function ArticleCard({ a }: { a: Article }) {
   return (
-    <article className="group flex flex-col rounded-2xl bg-white border border-border/60 overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]">
+    <article className="group flex h-full flex-col rounded-2xl bg-white border border-border/60 overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]">
       <div
         className="relative aspect-[16/10] bg-gradient-to-br from-coffee/80 via-navy/70 to-navy-deep overflow-hidden"
         aria-hidden
@@ -548,7 +548,36 @@ function BlogPage() {
           </article>
         </section>
 
+        {/* Editorial intro */}
+        <section aria-labelledby="daily-brew-heading" className="mb-10 text-center">
+          <div className="inline-flex items-center gap-2 text-coffee mb-4" aria-hidden>
+            <span className="h-px w-8 bg-gold/60" />
+            <Coffee className="h-4 w-4" strokeWidth={1.4} />
+            <span className="h-px w-8 bg-gold/60" />
+          </div>
+          <h2
+            id="daily-brew-heading"
+            className="font-serif text-3xl md:text-4xl text-navy-deep"
+          >
+            The Daily Brew
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-navy-deep/75 leading-relaxed">
+            Freshly brewed English insights, practical grammar, richer
+            vocabulary, confident communication, classroom inspiration, and
+            lifelong learning—served one thoughtful cup at a time.
+          </p>
+          <p className="mt-3 max-w-2xl mx-auto text-sm text-navy-deep/60 leading-relaxed">
+            Welcome to the heart of Filter &amp; Fluent, where every article is
+            carefully brewed to help learners, teachers, and English enthusiasts
+            grow with confidence. Whether you&apos;re refining your grammar,
+            expanding your vocabulary, improving communication, or discovering
+            better teaching ideas, there&apos;s always a fresh cup waiting for
+            you.
+          </p>
+        </section>
+
         {/* Search + filters */}
+
         <section
           aria-label="Search and filters"
           className="sticky top-0 z-20 -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 bg-[oklch(0.98_0.015_80)]/90 backdrop-blur border-b border-border/60"
@@ -560,7 +589,7 @@ function BlogPage() {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search articles, topics, or skills..."
+                placeholder="Search freshly brewed articles, topics, or skills..."
                 className="flex-1 bg-transparent text-sm outline-none placeholder:text-navy-deep/50"
                 aria-label="Search articles"
               />
@@ -622,6 +651,9 @@ function BlogPage() {
 
         {/* Category strip */}
         <section aria-label="Browse categories" className="mt-8">
+          <p className="mb-3 text-[11px] tracking-[0.3em] font-semibold uppercase text-coffee">
+            Browse by Brew
+          </p>
           <div className="flex gap-2 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-thin">
             <CategoryPill
               label="All"
@@ -647,11 +679,10 @@ function BlogPage() {
                 id="latest-heading"
                 className="font-serif text-3xl text-navy-deep"
               >
-                Latest Articles
+                Fresh Brews
               </h2>
               <p className="text-sm text-navy-deep/60 mt-1">
-                {filtered.length}{" "}
-                {filtered.length === 1 ? "article" : "articles"} freshly brewed
+                Freshly brewed articles waiting to be explored.
               </p>
             </div>
           </div>
@@ -660,10 +691,10 @@ function BlogPage() {
             <div className="rounded-2xl border border-dashed border-border bg-white p-12 text-center">
               <Coffee className="mx-auto h-10 w-10 text-coffee/60 mb-4" />
               <p className="font-serif text-xl text-navy-deep">
-                No articles match your filters.
+                This cup hasn&apos;t been brewed yet.
               </p>
               <p className="text-sm text-navy-deep/60 mt-2">
-                Try clearing filters or searching a different term.
+                Try another topic, keyword, or category.
               </p>
               <button
                 onClick={clearAll}
@@ -702,11 +733,12 @@ function BlogPage() {
         <div className="mx-auto max-w-[900px] px-6 lg:px-10 py-20 text-center">
           <Mail className="mx-auto h-10 w-10 text-coffee mb-5" strokeWidth={1.4} />
           <h2 className="font-serif text-4xl text-navy-deep">
-            A Weekly Cup of English Wisdom
+            Fresh Brew in Your Inbox
           </h2>
           <p className="mt-4 text-navy-deep/75 max-w-xl mx-auto">
-            Grammar tips, vocabulary, and IELTS strategies — delivered every
-            week.
+            Receive one carefully brewed email each week filled with English
+            tips, vocabulary, grammar insights, teaching ideas, and learning
+            inspiration.
           </p>
           <form
             className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
