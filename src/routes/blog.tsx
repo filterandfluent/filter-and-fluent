@@ -589,7 +589,7 @@ function BlogPage() {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search articles, topics, or skills..."
+                placeholder="Search freshly brewed articles, topics, or skills..."
                 className="flex-1 bg-transparent text-sm outline-none placeholder:text-navy-deep/50"
                 aria-label="Search articles"
               />
@@ -651,6 +651,9 @@ function BlogPage() {
 
         {/* Category strip */}
         <section aria-label="Browse categories" className="mt-8">
+          <p className="mb-3 text-[11px] tracking-[0.3em] font-semibold uppercase text-coffee">
+            Browse by Brew
+          </p>
           <div className="flex gap-2 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-thin">
             <CategoryPill
               label="All"
@@ -676,11 +679,10 @@ function BlogPage() {
                 id="latest-heading"
                 className="font-serif text-3xl text-navy-deep"
               >
-                Latest Articles
+                Fresh Brews
               </h2>
               <p className="text-sm text-navy-deep/60 mt-1">
-                {filtered.length}{" "}
-                {filtered.length === 1 ? "article" : "articles"} freshly brewed
+                Freshly brewed articles waiting to be explored.
               </p>
             </div>
           </div>
@@ -689,10 +691,10 @@ function BlogPage() {
             <div className="rounded-2xl border border-dashed border-border bg-white p-12 text-center">
               <Coffee className="mx-auto h-10 w-10 text-coffee/60 mb-4" />
               <p className="font-serif text-xl text-navy-deep">
-                No articles match your filters.
+                This cup hasn&apos;t been brewed yet.
               </p>
               <p className="text-sm text-navy-deep/60 mt-2">
-                Try clearing filters or searching a different term.
+                Try another topic, keyword, or category.
               </p>
               <button
                 onClick={clearAll}
@@ -731,11 +733,12 @@ function BlogPage() {
         <div className="mx-auto max-w-[900px] px-6 lg:px-10 py-20 text-center">
           <Mail className="mx-auto h-10 w-10 text-coffee mb-5" strokeWidth={1.4} />
           <h2 className="font-serif text-4xl text-navy-deep">
-            A Weekly Cup of English Wisdom
+            Fresh Brew in Your Inbox
           </h2>
           <p className="mt-4 text-navy-deep/75 max-w-xl mx-auto">
-            Grammar tips, vocabulary, and IELTS strategies — delivered every
-            week.
+            Receive one carefully brewed email each week filled with English
+            tips, vocabulary, grammar insights, teaching ideas, and learning
+            inspiration.
           </p>
           <form
             className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
