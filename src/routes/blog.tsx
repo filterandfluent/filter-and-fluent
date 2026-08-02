@@ -548,7 +548,36 @@ function BlogPage() {
           </article>
         </section>
 
+        {/* Editorial intro */}
+        <section aria-labelledby="daily-brew-heading" className="mb-10 text-center">
+          <div className="inline-flex items-center gap-2 text-coffee mb-4" aria-hidden>
+            <span className="h-px w-8 bg-gold/60" />
+            <Coffee className="h-4 w-4" strokeWidth={1.4} />
+            <span className="h-px w-8 bg-gold/60" />
+          </div>
+          <h2
+            id="daily-brew-heading"
+            className="font-serif text-3xl md:text-4xl text-navy-deep"
+          >
+            The Daily Brew
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-navy-deep/75 leading-relaxed">
+            Freshly brewed English insights, practical grammar, richer
+            vocabulary, confident communication, classroom inspiration, and
+            lifelong learning—served one thoughtful cup at a time.
+          </p>
+          <p className="mt-3 max-w-2xl mx-auto text-sm text-navy-deep/60 leading-relaxed">
+            Welcome to the heart of Filter &amp; Fluent, where every article is
+            carefully brewed to help learners, teachers, and English enthusiasts
+            grow with confidence. Whether you&apos;re refining your grammar,
+            expanding your vocabulary, improving communication, or discovering
+            better teaching ideas, there&apos;s always a fresh cup waiting for
+            you.
+          </p>
+        </section>
+
         {/* Search + filters */}
+
         <section
           aria-label="Search and filters"
           className="sticky top-0 z-20 -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 bg-[oklch(0.98_0.015_80)]/90 backdrop-blur border-b border-border/60"
