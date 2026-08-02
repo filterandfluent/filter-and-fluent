@@ -1,27 +1,42 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Clock, Coffee, Mail, Sparkles, User } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Bookmark,
+  Clock,
+  Coffee,
+  Facebook,
+  Link2,
+  Linkedin,
+  Share2,
+  Sparkles,
+  Twitter,
+  User,
+} from "lucide-react";
+
+import featuredImage from "../assets/card-articles.jpg";
+import secondaryImage from "../assets/about-coffee.jpg";
 
 export const Route = createFileRoute("/blog_/$slug")({
   head: () => ({
     meta: [
       {
-        title:
-          "Why 'Filter Coffee Grammar' Works — Coffee Journal | Filter & Fluent",
+        title: "Article — Coffee Journal | Filter & Fluent",
       },
       {
         name: "description",
         content:
-          "A slow, filter-coffee approach to tenses: why brewing grammar gradually builds fluency that finally sticks.",
+          "A premium long-form reading experience from the Filter & Fluent Coffee Journal — English learning with South Indian soul.",
       },
       {
         property: "og:title",
-        content: "Why 'Filter Coffee Grammar' Works — Filter & Fluent",
+        content: "Article — Coffee Journal | Filter & Fluent",
       },
       {
         property: "og:description",
         content:
-          "A slow, filter-coffee approach to tenses that builds lasting fluency.",
+          "A premium long-form reading experience from the Filter & Fluent Coffee Journal.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -30,10 +45,11 @@ export const Route = createFileRoute("/blog_/$slug")({
   component: ArticlePage,
 });
 
-/* ---------- Data ---------- */
+/* ---------- Article meta (layout placeholder) ---------- */
 const article = {
-  title:
-    "Why 'Filter Coffee Grammar' Works: Brewing Tenses Slowly for Lasting Fluency",
+  title: "Article Title Goes Here — An Elegant, Long-Form Headline",
+  description:
+    "A short article description sits here: one or two calm sentences that set the mood and tell the reader what this cup contains.",
   category: "Grammar Tips",
   difficulty: "Intermediate",
   readingTime: 8,
@@ -41,124 +57,19 @@ const article = {
   author: "Gnana Soundari Devaraj",
 };
 
+/** Section outline — drives both the page and the Table of Contents. */
 const SECTIONS = [
-  { id: "the-brew", label: "The Brew" },
-  { id: "whats-brewing", label: "What's Brewing" },
-  { id: "premium-brew-notes", label: "Premium Brew Notes" },
-  { id: "grammar-filtered", label: "Grammar, Filtered" },
-  { id: "tasting-notes", label: "Tasting Notes" },
-  { id: "bitter-notes", label: "Bitter Notes" },
-  { id: "grind-practice", label: "Grind & Practice" },
-  { id: "coffee-break", label: "Coffee Break Challenge" },
-  { id: "last-sip", label: "Last Sip" },
+  { id: "introduction", label: "Introduction" },
+  { id: "main-content", label: "Main Content" },
+  { id: "in-practice", label: "In Practice" },
+  { id: "key-points", label: "Key Points" },
+  { id: "closing-notes", label: "Closing Notes" },
 ];
 
-const grammarExamples = [
-  {
-    rule: "Present Perfect for experience",
-    example: "I have taught in three schools.",
-    note: "The time is unfinished or unstated — the result matters, not the date.",
-  },
-  {
-    rule: "Past Simple for finished time",
-    example: "I taught in Cuddalore in 2019.",
-    note: "A closed cup: the time reference is complete.",
-  },
-  {
-    rule: "Present Continuous for now",
-    example: "She is preparing for her IELTS speaking test.",
-    note: "Action in progress around the moment of speaking.",
-  },
-  {
-    rule: "Present Perfect Continuous for duration",
-    example: "He has been revising since morning.",
-    note: "Emphasises how long, not how many.",
-  },
-];
-
-const vocabulary = [
-  {
-    word: "Steep",
-    meaning: "To soak something so its flavour is drawn out.",
-    example: "Let the new tense steep for a week before testing yourself.",
-  },
-  {
-    word: "Decant",
-    meaning: "To pour carefully from one container to another.",
-    example: "Decant your notes into your own sentences — don't copy them.",
-  },
-  {
-    word: "Nuance",
-    meaning: "A very small difference in meaning or tone.",
-    example: "The nuance between 'I did' and 'I have done' changes the answer.",
-  },
-  {
-    word: "Deliberate",
-    meaning: "Done on purpose, with careful attention.",
-    example: "Ten minutes of deliberate practice beats an hour of scrolling.",
-  },
-];
-
-const mistakes = [
-  {
-    wrong: "I am living here since 2020.",
-    right: "I have been living here since 2020.",
-  },
-  {
-    wrong: "She didn't went to the workshop.",
-    right: "She didn't go to the workshop.",
-  },
-  {
-    wrong: "I have seen him yesterday.",
-    right: "I saw him yesterday.",
-  },
-  {
-    wrong: "He is having two brothers.",
-    right: "He has two brothers.",
-  },
-];
-
-const exercises = [
-  {
-    q: "____ (you / finish) the reading task yet?",
-    a: "Have you finished the reading task yet?",
-  },
-  {
-    q: "We ____ (start) the workshop at 9 a.m. yesterday.",
-    a: "We started the workshop at 9 a.m. yesterday.",
-  },
-  {
-    q: "They ____ (wait) for the results since Monday.",
-    a: "They have been waiting for the results since Monday.",
-  },
-];
-
-const related = [
-  {
-    id: "a1",
-    title: "5 Vocabulary Swaps That Instantly Sound More IELTS-Band-9",
-    category: "Vocabulary",
-    excerpt:
-      "Trade tired words for precise ones — small swaps that examiners notice and reward.",
-    readingTime: 5,
-  },
-  {
-    id: "a2",
-    title:
-      "The 40-Minute Class Problem: Fitting Grammar and Speaking Into One Period",
-    category: "Classroom Ideas",
-    excerpt:
-      "A realistic lesson blueprint for teachers juggling syllabus pressure and real communication.",
-    readingTime: 7,
-  },
-  {
-    id: "a3",
-    title: "Reading Slowly on Purpose: A Strategy Most Students Skip",
-    category: "Reading Strategies",
-    excerpt:
-      "Why slower reading builds faster comprehension — and how to practise it daily.",
-    readingTime: 6,
-  },
+const relatedPlaceholders = [
+  { id: "r1", category: "Category" },
+  { id: "r2", category: "Category" },
+  { id: "r3", category: "Category" },
 ];
 
 function formatDate(iso: string) {
@@ -169,21 +80,22 @@ function formatDate(iso: string) {
   });
 }
 
-/* ---------- Small pieces ---------- */
+/* ---------- Shared tokens ---------- */
 const CARD =
   "rounded-2xl bg-white border border-border/60 shadow-[var(--shadow-card)]";
 const FOCUS =
   "outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--beige)]";
+const PROSE =
+  "space-y-6 text-[17px] leading-[1.85] text-navy-deep/80 [text-wrap:pretty]";
 
-/** Fades sections in as they enter the viewport, using the site's fade-up motion. */
+/* ---------- Behaviour hooks ---------- */
 function useSectionReveal() {
   useEffect(() => {
     const nodes = Array.from(
       document.querySelectorAll<HTMLElement>("[data-reveal]"),
     );
     if (!nodes.length) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     nodes.forEach((n) => {
       n.style.opacity = "0";
@@ -214,7 +126,6 @@ function useSectionReveal() {
   }, []);
 }
 
-/** Tracks which article section is currently in view. */
 function useActiveSection() {
   const [active, setActive] = useState(SECTIONS[0]!.id);
   useEffect(() => {
@@ -248,34 +159,9 @@ function useActiveSection() {
   return active;
 }
 
-function SectionHeading({
-  id,
-  name,
-  intro,
-}: {
-  id: string;
-  name: string;
-  intro: string;
-}) {
-  return (
-    <div className="mb-6">
-      <h2
-        id={id}
-        className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-navy-deep scroll-mt-28"
-      >
-        {name}
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-navy-deep/60 italic">
-        {intro}
-      </p>
-    </div>
-  );
-}
-
-function ReadingProgress() {
-  const barRef = useRef<HTMLDivElement>(null);
+/** Scroll progress, 0–100. */
+function useReadingProgress() {
   const [progress, setProgress] = useState(0);
-
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -283,9 +169,6 @@ function ReadingProgress() {
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
       const value = max > 0 ? Math.min(1, Math.max(0, h.scrollTop / max)) : 0;
-      if (barRef.current) {
-        barRef.current.style.transform = `scaleX(${value})`;
-      }
       setProgress(Math.round(value * 100));
     };
     const onScroll = () => {
@@ -300,12 +183,156 @@ function ReadingProgress() {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
+  return progress;
+}
+
+/* ---------- Reusable content blocks ---------- */
+function SectionHeading({
+  id,
+  name,
+  intro,
+}: {
+  id: string;
+  name: string;
+  intro?: string;
+}) {
+  return (
+    <div className="mb-6">
+      <h2
+        id={id}
+        className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-navy-deep scroll-mt-28"
+      >
+        {name}
+      </h2>
+      {intro ? (
+        <p className="mt-2 text-sm leading-relaxed text-navy-deep/60 italic">
+          {intro}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function Subheading({ children }: { children: ReactNode }) {
+  return (
+    <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-2">
+      {children}
+    </h3>
+  );
+}
+
+function Figure({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+}) {
+  return (
+    <figure className="my-2">
+      <div className={`${CARD} overflow-hidden`}>
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="aspect-[16/9] w-full object-cover"
+        />
+      </div>
+      <figcaption className="mt-3 text-xs text-navy-deep/60 italic">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+function QuoteBlock({
+  quote,
+  attribution,
+}: {
+  quote: string;
+  attribution?: string;
+}) {
+  return (
+    <blockquote className={`${CARD} border-l-4 border-l-gold p-7`}>
+      <p className="font-serif text-2xl leading-snug text-navy-deep italic">
+        “{quote}”
+      </p>
+      {attribution ? (
+        <footer className="mt-3 text-sm text-navy-deep/60">
+          {attribution}
+        </footer>
+      ) : null}
+    </blockquote>
+  );
+}
+
+function Callout({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <aside className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7">
+      <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
+        {label}
+      </span>
+      <div className="mt-4 space-y-3 text-[15px] leading-relaxed text-navy-deep/80">
+        {children}
+      </div>
+    </aside>
+  );
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className={`${CARD} p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80`}>
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <span
+            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
+            aria-hidden
+          />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function NumberedList({ items }: { items: string[] }) {
+  return (
+    <ol className={`${CARD} p-7 space-y-4 text-[15px] leading-relaxed text-navy-deep/80`}>
+      {items.map((item, i) => (
+        <li key={item} className="flex items-start gap-4">
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold/20 text-[13px] font-semibold text-coffee">
+            {i + 1}
+          </span>
+          <span className="pt-0.5">{item}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/* ---------- Chrome pieces ---------- */
+function ProgressBar({ progress }: { progress: number }) {
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (barRef.current) {
+      barRef.current.style.transform = `scaleX(${progress / 100})`;
+    }
+  }, [progress]);
 
   return (
     <div
       className="fixed inset-x-0 top-0 z-50 h-[3px] bg-transparent"
       role="progressbar"
-      aria-label="First Pour — reading progress"
+      aria-label="Reading progress"
       aria-valuenow={progress}
       aria-valuemin={0}
       aria-valuemax={100}
@@ -313,31 +340,60 @@ function ReadingProgress() {
     >
       <div
         ref={barRef}
-        className="h-full w-full origin-left bg-gold"
+        className="h-full w-full origin-left bg-gold transition-transform duration-100 ease-out"
         style={{ transform: "scaleX(0)" }}
       />
     </div>
   );
 }
 
-function MenuBoard({ active }: { active: string }) {
+function ShareButtons({
+  size = "md",
+  label = "Share this article",
+}: {
+  size?: "sm" | "md";
+  label?: string;
+}) {
+  const items = [
+    { Icon: Twitter, name: "Share on X" },
+    { Icon: Facebook, name: "Share on Facebook" },
+    { Icon: Linkedin, name: "Share on LinkedIn" },
+    { Icon: Link2, name: "Copy link" },
+  ];
+  const dim = size === "sm" ? "h-9 w-9" : "h-10 w-10";
+  const icon = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
+  return (
+    <div className="flex items-center gap-2" role="group" aria-label={label}>
+      {items.map(({ Icon, name }) => (
+        <button
+          key={name}
+          type="button"
+          aria-label={name}
+          title={name}
+          className={`${dim} inline-flex items-center justify-center rounded-full border border-border/70 bg-white text-coffee shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-gold ${FOCUS} focus-visible:ring-offset-white`}
+        >
+          <Icon className={icon} aria-hidden />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function TableOfContents({ active }: { active: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <nav
-      aria-label="Menu Board — table of contents"
-      className="lg:sticky lg:top-24"
-    >
+    <nav aria-label="Table of contents">
       <div className={`${CARD} overflow-hidden`}>
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          aria-controls="menu-board-list"
+          aria-controls="toc-list"
           className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left lg:cursor-default ${FOCUS} focus-visible:ring-offset-white`}
         >
           <span>
             <span className="block font-serif text-lg leading-snug text-navy-deep">
-              Menu Board
+              On This Page
             </span>
             <span className="block text-[11px] leading-relaxed text-navy-deep/60 italic">
               Everything on today's board, at a glance.
@@ -349,7 +405,7 @@ function MenuBoard({ active }: { active: string }) {
           />
         </button>
         <ul
-          id="menu-board-list"
+          id="toc-list"
           className={`${open ? "block" : "hidden"} lg:block border-t border-border/60 px-5 py-4 space-y-1 text-sm`}
         >
           {SECTIONS.map((s) => {
@@ -381,7 +437,41 @@ function MenuBoard({ active }: { active: string }) {
   );
 }
 
-function ArticleCard({ a }: { a: (typeof related)[number] }) {
+function Sidebar({ active, progress }: { active: string; progress: number }) {
+  return (
+    <div className="lg:sticky lg:top-24 space-y-5">
+      <div className={`${CARD} p-5`}>
+        <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-coffee">
+          <span>Reading progress</span>
+          <span className="text-navy-deep/60">{progress}%</span>
+        </div>
+        <div
+          className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-beige"
+          aria-hidden
+        >
+          <div
+            className="h-full rounded-full bg-gold transition-[width] duration-100 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <p className="mt-4 flex items-center gap-1.5 text-xs text-navy-deep/60">
+          <Clock className="h-3.5 w-3.5" aria-hidden />
+          {article.readingTime} min read
+        </p>
+        <div className="mt-5 border-t border-border/60 pt-4">
+          <p className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
+            <Share2 className="h-3.5 w-3.5" aria-hidden /> Share
+          </p>
+          <ShareButtons size="sm" label="Share this article from the sidebar" />
+        </div>
+      </div>
+
+      <TableOfContents active={active} />
+    </div>
+  );
+}
+
+function RelatedPlaceholderCard() {
   return (
     <article
       className={`group flex flex-col ${CARD} overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
@@ -396,20 +486,22 @@ function ArticleCard({ a }: { a: (typeof related)[number] }) {
           strokeWidth={1}
         />
       </div>
-      <div className="flex flex-col flex-1 p-6">
-        <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider self-start">
-          {a.category}
+      <div className="flex flex-1 flex-col p-6">
+        <span className="self-start rounded-full bg-gold/20 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
+          Category
         </span>
         <h3 className="mt-3 font-serif text-xl leading-snug text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-          {a.title}
+          Related article title placeholder
         </h3>
-        <p className="mt-3 text-sm text-navy-deep/75 leading-relaxed">{a.excerpt}</p>
-        <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-xs text-navy-deep/60">
+        <p className="mt-3 text-sm leading-relaxed text-navy-deep/70">
+          A short excerpt will appear here once this article slot is filled.
+        </p>
+        <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-4 text-xs text-navy-deep/60">
           <span className="flex items-center gap-1.5">
-            <User className="h-3.5 w-3.5" aria-hidden /> {article.author.split(" ")[0]}
+            <User className="h-3.5 w-3.5" aria-hidden /> Author
           </span>
           <span className="flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" aria-hidden /> {a.readingTime} min read
+            <Clock className="h-3.5 w-3.5" aria-hidden /> — min read
           </span>
         </div>
       </div>
@@ -419,49 +511,49 @@ function ArticleCard({ a }: { a: (typeof related)[number] }) {
 
 /* ---------- Page ---------- */
 function ArticlePage() {
-  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const active = useActiveSection();
+  const progress = useReadingProgress();
+  const [bookmarked, setBookmarked] = useState(false);
   useSectionReveal();
 
   return (
-    <div className="min-h-screen bg-[oklch(0.98_0.015_80)] text-navy-deep">
-      {/* First Pour — reading progress */}
-      <ReadingProgress />
+    <div className="min-h-screen scroll-smooth bg-[oklch(0.98_0.015_80)] text-navy-deep">
+      <ProgressBar progress={progress} />
 
-      {/* Header */}
+      {/* Header + Hero */}
       <header className="bg-navy-deep text-cream">
-        <nav className="mx-auto max-w-[1300px] px-6 lg:px-10 py-5 flex items-center justify-between gap-6">
+        <nav className="mx-auto flex max-w-[1300px] items-center justify-between gap-6 px-6 py-5 lg:px-10">
           <Link to="/" className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
               <Coffee className="h-5 w-5 text-gold" />
             </span>
             <span className="leading-tight">
-              <span className="block font-serif text-xl text-gold-gradient tracking-wide">
+              <span className="block font-serif text-xl tracking-wide text-gold-gradient">
                 Filter &amp; Fluent
               </span>
-              <span className="block text-[10px] tracking-[0.22em] text-cream/60 uppercase">
+              <span className="block text-[10px] uppercase tracking-[0.22em] text-cream/60">
                 Coffee Journal
               </span>
             </span>
           </Link>
-          <ul className="hidden md:flex items-center gap-6 text-[13px] font-medium">
+          <ul className="hidden items-center gap-6 text-[13px] font-medium md:flex">
             <li>
-              <Link to="/" className="text-cream/85 hover:text-gold transition-colors duration-200">
+              <Link to="/" className="text-cream/85 transition-colors duration-200 hover:text-gold">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-cream/85 hover:text-gold transition-colors duration-200">
+              <Link to="/about" className="text-cream/85 transition-colors duration-200 hover:text-gold">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/grammar" className="text-cream/85 hover:text-gold transition-colors duration-200">
+              <Link to="/grammar" className="text-cream/85 transition-colors duration-200 hover:text-gold">
                 Grammar
               </Link>
             </li>
             <li>
-              <Link to="/vocabulary" className="text-cream/85 hover:text-gold transition-colors duration-200">
+              <Link to="/vocabulary" className="text-cream/85 transition-colors duration-200 hover:text-gold">
                 Vocabulary
               </Link>
             </li>
@@ -473,520 +565,294 @@ function ArticlePage() {
           </ul>
         </nav>
 
-        {/* Hero */}
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_20%_30%,var(--gold),transparent_50%),radial-gradient(circle_at_80%_70%,var(--coffee),transparent_55%)]" />
-          <div className="relative mx-auto max-w-[900px] px-6 lg:px-10 py-16 lg:py-24 text-center">
-            <div className="inline-flex items-center gap-2 text-gold mb-6">
+          <div className="relative mx-auto max-w-[900px] px-6 py-16 text-center lg:px-10 lg:py-24">
+            <div className="mb-6 inline-flex items-center gap-2 text-gold">
               <span className="h-px w-8 bg-gold/60" />
-              <Sparkles className="h-3.5 w-3.5" />
-              <span className="text-[11px] tracking-[0.3em] font-semibold uppercase">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.3em]">
                 The Coffee Journal
               </span>
-              <Sparkles className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5" aria-hidden />
               <span className="h-px w-8 bg-gold/60" />
             </div>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight">
-              {article.title}
-            </h1>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <span className="rounded-full bg-gold text-navy-deep px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
+
+            <div className="mb-7 flex flex-wrap items-center justify-center gap-3">
+              <span className="rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-navy-deep">
                 {article.category}
               </span>
-              <span className="rounded-full px-2 py-0.5 text-[11px] font-medium bg-cream/15 text-cream/85">
+              <span className="rounded-full bg-cream/15 px-3 py-1 text-[11px] font-medium text-cream/85">
                 {article.difficulty}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-cream/70">
-                <Clock className="h-3.5 w-3.5" /> {article.readingTime} min read
+                <Clock className="h-3.5 w-3.5" aria-hidden /> {article.readingTime} min
+                read
               </span>
             </div>
-            <div className="mt-6 flex items-center justify-center gap-3 text-sm text-cream/75">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy/60 text-gold">
-                <User className="h-4 w-4" />
-              </span>
-              <div className="text-left">
-                <div className="font-medium text-cream">{article.author}</div>
-                <time
-                  dateTime={article.publishedDate}
-                  className="text-xs text-cream/60"
+
+            <h1 className="font-serif text-4xl leading-[1.08] tracking-tight md:text-5xl lg:text-6xl">
+              {article.title}
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-cream/75">
+              {article.description}
+            </p>
+
+            <div className="mt-9 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+              <div className="flex items-center gap-3 text-sm text-cream/75">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy/60 text-gold">
+                  <User className="h-4 w-4" aria-hidden />
+                </span>
+                <div className="text-left">
+                  <div className="font-medium text-cream">{article.author}</div>
+                  <time
+                    dateTime={article.publishedDate}
+                    className="text-xs text-cream/60"
+                  >
+                    {formatDate(article.publishedDate)}
+                  </time>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <ShareButtons label="Share this article" />
+                <button
+                  type="button"
+                  onClick={() => setBookmarked((b) => !b)}
+                  aria-pressed={bookmarked}
+                  aria-label={bookmarked ? "Remove bookmark" : "Bookmark this article"}
+                  title={bookmarked ? "Bookmarked" : "Bookmark"}
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 ${FOCUS} focus-visible:ring-offset-[color:var(--navy-deep)] ${
+                    bookmarked
+                      ? "border-gold bg-gold text-navy-deep"
+                      : "border-cream/25 bg-navy/50 text-cream/80 hover:border-gold/60 hover:text-gold"
+                  }`}
                 >
-                  {formatDate(article.publishedDate)}
-                </time>
+                  <Bookmark
+                    className="h-4 w-4"
+                    strokeWidth={1.8}
+                    fill={bookmarked ? "currentColor" : "none"}
+                    aria-hidden
+                  />
+                </button>
               </div>
             </div>
           </div>
         </div>
       </header>
 
+      {/* Featured image */}
+      <div className="mx-auto -mt-8 max-w-[1100px] px-6 lg:-mt-12 lg:px-10">
+        <figure className={`${CARD} overflow-hidden`}>
+          <img
+            src={featuredImage}
+            alt="Filter coffee brewing beside an open book — the Coffee Journal featured image"
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </figure>
+      </div>
+
       {/* Breadcrumb */}
       <nav
         aria-label="Breadcrumb"
-        className="mx-auto max-w-[1300px] px-6 lg:px-10 pt-8 text-xs text-navy-deep/60"
+        className="mx-auto max-w-[1300px] px-6 pt-10 text-xs text-navy-deep/60 lg:px-10"
       >
         <ol className="flex flex-wrap items-center gap-2">
           <li>
-            <Link to="/" className="hover:text-coffee transition-colors duration-200">
+            <Link to="/" className="transition-colors duration-200 hover:text-coffee">
               Home
             </Link>
           </li>
           <li aria-hidden>/</li>
           <li>
-            <Link to="/blog" className="hover:text-coffee transition-colors duration-200">
+            <Link to="/blog" className="transition-colors duration-200 hover:text-coffee">
               Coffee Journal
             </Link>
           </li>
           <li aria-hidden>/</li>
-          <li className="text-navy-deep font-medium">{article.category}</li>
+          <li className="font-medium text-navy-deep">{article.category}</li>
         </ol>
       </nav>
 
-      <main className="mx-auto max-w-[1300px] px-6 lg:px-10 py-10">
-        <div className="grid lg:grid-cols-[260px_1fr] gap-10">
-          {/* Menu Board */}
-          <aside className="order-first">
-            <MenuBoard active={active} />
+      <main className="mx-auto max-w-[1300px] px-6 py-10 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-[1fr_280px]">
+          {/* Article body */}
+          <article className="order-2 min-w-0 max-w-[72ch] lg:order-1">
+            {/* Introduction */}
+            <section data-reveal aria-labelledby="introduction" className="mb-14">
+              <SectionHeading id="introduction" name="Introduction" />
+              <div className={PROSE}>
+                <p className="text-[19px] leading-[1.8] text-navy-deep/85">
+                  The opening paragraph sits here — a warm, unhurried lead-in
+                  that invites the reader to sit down before the first sip.
+                </p>
+                <p>
+                  A second paragraph continues the thought at a comfortable
+                  reading width, with generous line height and a measured rhythm
+                  built for long-form reading.
+                </p>
+              </div>
+            </section>
+
+            {/* Main Content */}
+            <section data-reveal aria-labelledby="main-content" className="mb-14">
+              <SectionHeading id="main-content" name="Main Content" />
+              <div className={PROSE}>
+                <p>
+                  Body copy paragraph. This block demonstrates the default
+                  paragraph style used throughout every article on the Coffee
+                  Journal.
+                </p>
+                <Subheading>A section subheading</Subheading>
+                <p>
+                  Subheadings break the page into calm, scannable parts while
+                  keeping a clear hierarchy beneath the section title above.
+                </p>
+                <Figure
+                  src={secondaryImage}
+                  alt="A brass tumbler of filter coffee resting on a warm wooden table"
+                  caption="Image caption — a short, elegant line of context sits here."
+                />
+                <p>
+                  Copy continues after the image, holding the same measure so the
+                  reader's eye never has to reset.
+                </p>
+              </div>
+            </section>
+
+            {/* Quote block */}
+            <section data-reveal aria-label="Pull quote" className="mb-14">
+              <QuoteBlock
+                quote="A pull-quote goes here — one memorable line, poured slowly."
+                attribution="Attribution or source line"
+              />
+            </section>
+
+            {/* In Practice */}
+            <section data-reveal aria-labelledby="in-practice" className="mb-14">
+              <SectionHeading
+                id="in-practice"
+                name="In Practice"
+                intro="Numbered steps and callouts live in this part of the layout."
+              />
+              <div className="space-y-6">
+                <NumberedList
+                  items={[
+                    "First step placeholder — one clear action per line.",
+                    "Second step placeholder — kept short and readable.",
+                    "Third step placeholder — closing the sequence.",
+                  ]}
+                />
+                <Callout label="Callout">
+                  <p>
+                    A callout box highlights a note, tip, or aside without
+                    interrupting the flow of the article.
+                  </p>
+                </Callout>
+              </div>
+            </section>
+
+            {/* Key Points */}
+            <section data-reveal aria-labelledby="key-points" className="mb-14">
+              <SectionHeading id="key-points" name="Key Points" />
+              <BulletList
+                items={[
+                  "Bullet list item placeholder.",
+                  "A second point, in the same calm rhythm.",
+                  "A third point to close the list.",
+                ]}
+              />
+            </section>
+
+            {/* Closing Notes */}
+            <section data-reveal aria-labelledby="closing-notes" className="mb-14">
+              <SectionHeading id="closing-notes" name="Closing Notes" />
+              <div className={PROSE}>
+                <p>
+                  A closing paragraph rounds off the article and leaves the
+                  reader with the last sip.
+                </p>
+              </div>
+            </section>
+
+            {/* Previous / Next */}
+            <section data-reveal aria-label="Article navigation" className="mb-4">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Link
+                  to="/blog"
+                  className={`${CARD} group p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] ${FOCUS}`}
+                >
+                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
+                    <ArrowLeft className="h-3.5 w-3.5" aria-hidden /> Previous
+                    article
+                  </span>
+                  <p className="mt-2 font-serif text-lg text-navy-deep transition-colors duration-200 group-hover:text-coffee">
+                    Previous article title placeholder
+                  </p>
+                </Link>
+                <Link
+                  to="/blog"
+                  className={`${CARD} group p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] sm:text-right ${FOCUS}`}
+                >
+                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee sm:justify-end">
+                    Next article{" "}
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                  </span>
+                  <p className="mt-2 font-serif text-lg text-navy-deep transition-colors duration-200 group-hover:text-coffee">
+                    Next article title placeholder
+                  </p>
+                </Link>
+              </div>
+            </section>
+          </article>
+
+          {/* Sidebar */}
+          <aside
+            aria-label="Article tools"
+            className="order-1 lg:order-2"
+          >
+            <Sidebar active={active} progress={progress} />
           </aside>
-
-          <div className="min-w-0 max-w-[72ch]">
-            {/* The Brew */}
-            <section data-reveal aria-labelledby="the-brew" className="mb-14">
-              <SectionHeading
-                id="the-brew"
-                name="The Brew"
-                intro="Poured slowly — the main idea, one steady drip at a time."
-              />
-              <div className="space-y-6 text-[17px] leading-[1.85] text-navy-deep/80 [text-wrap:pretty]">
-                <p>
-                  Nobody rushes filter coffee. You add the decoction, you wait,
-                  and the flavour arrives on its own schedule. Grammar behaves
-                  the same way. Most learners try to memorise twelve tenses in a
-                  weekend, then wonder why nothing surfaces in conversation.
-                </p>
-                <p>
-                  The alternative is slower and far more effective: take one
-                  tense, use it in your own sentences for a week, and let it
-                  settle before adding the next. Fluency is not the result of
-                  knowing more rules. It is the result of a few rules becoming
-                  automatic.
-                </p>
-                <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-4">
-                  Why speed fails
-                </h3>
-                <p>
-                  When you cram, you build recognition, not production. You can
-                  spot the right answer in a multiple-choice test but freeze when
-                  a colleague asks about your weekend. Recognition is instant
-                  coffee. Production is the real brew.
-                </p>
-                <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-4">
-                  The one-tense week
-                </h3>
-                <p>
-                  Choose a tense on Monday. Write three true sentences about your
-                  own life each day. Say them aloud. By Sunday you will have
-                  twenty-one sentences you actually mean — and a structure that
-                  no longer needs translating in your head.
-                </p>
-              </div>
-            </section>
-
-            {/* Coffee Sip */}
-            <section data-reveal aria-label="Coffee Sip" className="mb-14">
-              <div className={`${CARD} border-l-4 border-l-gold p-7`}>
-                <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
-                  Coffee Sip
-                </span>
-                <p className="mt-4 font-serif text-2xl leading-snug text-navy-deep italic">
-                  “One tense, used honestly for seven days, beats twelve tenses
-                  memorised in one night.”
-                </p>
-                <p className="mt-3 text-sm text-navy-deep/60">
-                  A single sip you can carry with you.
-                </p>
-              </div>
-            </section>
-
-            {/* What's Brewing */}
-            <section data-reveal aria-labelledby="whats-brewing" className="mb-14">
-              <SectionHeading
-                id="whats-brewing"
-                name="What's Brewing"
-                intro="What's waiting in the cup by the end of this read."
-              />
-              <ul className={`${CARD} p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80`}>
-                {[
-                  "Why slow, repeated use beats rule memorisation",
-                  "How to run a focused one-tense week",
-                  "Four tense patterns with natural example sentences",
-                  "Four vocabulary items you can use the same day",
-                  "The four mistakes that quietly cost you marks",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
-                      aria-hidden
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Premium Brew Notes */}
-            <section data-reveal aria-labelledby="premium-brew-notes" className="mb-14">
-              <SectionHeading
-                id="premium-brew-notes"
-                name="Premium Brew Notes"
-                intro="Small refinements the regulars at the counter already know."
-              />
-              <aside className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-4 text-[15px] leading-relaxed text-navy-deep/80">
-                <p>
-                  Record yourself once a week. Hearing your own sentences is the
-                  fastest way to notice a tense slipping.
-                </p>
-                <p>
-                  Keep a single notebook page per tense. When it fills, that
-                  tense has genuinely settled.
-                </p>
-                <p>
-                  Practise with real content — your work, your family, your
-                  commute. Invented sentences fade; true ones stay.
-                </p>
-              </aside>
-            </section>
-
-            {/* Grammar, Filtered */}
-            <section data-reveal aria-labelledby="grammar-filtered" className="mb-14">
-              <SectionHeading
-                id="grammar-filtered"
-                name="Grammar, Filtered"
-                intro="The grounds removed — just the clear, usable structure."
-              />
-              <div className="grid gap-5 sm:grid-cols-2">
-                {grammarExamples.map((g) => (
-                  <div
-                    key={g.rule}
-                    className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
-                  >
-                    <h3 className="font-serif text-lg text-navy-deep">
-                      {g.rule}
-                    </h3>
-                    <p className="mt-3 text-[15px] text-navy-deep/85 italic">
-                      “{g.example}”
-                    </p>
-                    <p className="mt-3 text-sm text-navy-deep/65 leading-relaxed">
-                      {g.note}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Tasting Notes */}
-            <section data-reveal aria-labelledby="tasting-notes" className="mb-14">
-              <SectionHeading
-                id="tasting-notes"
-                name="Tasting Notes"
-                intro="Four words worth holding on the tongue a moment longer."
-              />
-              <div className="grid gap-5 sm:grid-cols-2">
-                {vocabulary.map((v) => (
-                  <div
-                    key={v.word}
-                    className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-serif text-xl text-navy-deep">
-                        {v.word}
-                      </h3>
-                    </div>
-                    <p className="mt-2 text-sm text-navy-deep/75 leading-relaxed">
-                      {v.meaning}
-                    </p>
-                    <p className="mt-3 pt-3 border-t border-border/60 text-[15px] text-navy-deep/85 italic">
-                      “{v.example}”
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Bitter Notes */}
-            <section data-reveal aria-labelledby="bitter-notes" className="mb-14">
-              <SectionHeading
-                id="bitter-notes"
-                name="Bitter Notes"
-                intro="Over-extracted habits that leave a sharp aftertaste."
-              />
-              <div className={`${CARD} border-l-4 border-l-coffee p-7 space-y-5`}>
-                {mistakes.map((m) => (
-                  <div
-                    key={m.wrong}
-                    className="grid gap-3 md:grid-cols-2 pb-5 border-b border-border/60 last:border-0 last:pb-0"
-                  >
-                    <div>
-                      <span className="rounded-full bg-coffee/15 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
-                        Incorrect
-                      </span>
-                      <p className="mt-2 text-[15px] text-navy-deep/70 line-through decoration-coffee/40">
-                        {m.wrong}
-                      </p>
-                    </div>
-                    <div>
-                      <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
-                        Correct
-                      </span>
-                      <p className="mt-2 text-[15px] text-navy-deep font-medium">
-                        {m.right}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Grind & Practice */}
-            <section data-reveal aria-labelledby="grind-practice" className="mb-14">
-              <SectionHeading
-                id="grind-practice"
-                name="Grind & Practice"
-                intro="A little effort at the mill — this is where flavour comes from."
-              />
-              <div className={`${CARD} p-7 space-y-5`}>
-                {exercises.map((ex, i) => (
-                  <div
-                    key={ex.q}
-                    className="pb-5 border-b border-border/60 last:border-0 last:pb-0"
-                  >
-                    <p className="text-[15px] text-navy-deep/85">
-                      <span className="font-semibold text-coffee mr-2">
-                        {i + 1}.
-                      </span>
-                      {ex.q}
-                    </p>
-                    <button
-                      type="button"
-                      aria-expanded={!!revealed[i]}
-                      onClick={() =>
-                        setRevealed((r) => ({ ...r, [i]: !r[i] }))
-                      }
-                      className={`mt-3 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-coffee hover:text-gold transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white`}
-                    >
-                      {revealed[i] ? "Hide answer" : "Reveal answer"}
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </button>
-                    {revealed[i] && (
-                      <p className="mt-3 rounded-xl bg-[color:var(--beige)] px-4 py-3 text-[15px] text-navy-deep">
-                        {ex.a}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Coffee Break Challenge */}
-            <section data-reveal aria-labelledby="coffee-break" className="mb-14">
-              <SectionHeading
-                id="coffee-break"
-                name="Coffee Break Challenge"
-                intro="Five minutes, one cup, one small win."
-              />
-              <div className="rounded-2xl bg-navy-deep text-cream border border-gold/25 shadow-[var(--shadow-card)] p-7">
-                <span className="rounded-full bg-gold text-navy-deep px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
-                  Today's Challenge
-                </span>
-                <h3 className="mt-4 font-serif text-2xl text-cream">
-                  Write three true sentences about yesterday, and three about
-                  this week.
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-cream/75">
-                  Use Past Simple for yesterday and Present Perfect for this
-                  week. Read all six aloud before your coffee goes cold.
-                </p>
-              </div>
-            </section>
-
-            {/* Last Sip */}
-            <section data-reveal aria-labelledby="last-sip" className="mb-14">
-              <SectionHeading
-                id="last-sip"
-                name="Last Sip"
-                intro="The final mouthful — what stays with you after the cup."
-              />
-              <ul className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80">
-                {[
-                  "Depth beats coverage: one tense a week is enough.",
-                  "Produce sentences you actually mean — they stick.",
-                  "Say it aloud; silent study hides your errors.",
-                  "Review your own writing before chasing new rules.",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
-                      aria-hidden
-                    />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Meet the Roaster */}
-            <section data-reveal aria-labelledby="meet-the-roaster" className="mb-14">
-              <SectionHeading
-                id="meet-the-roaster"
-                name="Meet the Roaster"
-                intro="The hands behind the blend."
-              />
-              <div className={`${CARD} p-7 flex flex-col sm:flex-row gap-6 items-start`}>
-                <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-beige text-coffee">
-                  <User className="h-8 w-8" strokeWidth={1.4} />
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl text-navy-deep">
-                    {article.author}
-                  </h3>
-                  <p className="text-xs uppercase tracking-[0.2em] text-coffee mt-1">
-                    Chief Brewer of Confidence
-                  </p>
-                  <p className="mt-3 text-[15px] leading-relaxed text-navy-deep/75">
-                    English educator and teacher trainer, writing about grammar,
-                    vocabulary and classroom practice for learners and teachers
-                    across South India.
-                  </p>
-                  <Link
-                    to="/about"
-                    className={`mt-4 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-coffee hover:text-gold transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white`}
-                  >
-                    More about the roaster <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </section>
-
-            {/* Next Cup / Previous Cup */}
-            <section data-reveal aria-label="Article navigation" className="mb-14">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Link
-                  to="/blog"
-                  className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] ${FOCUS}`}
-                >
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-coffee">
-                    Previous Cup
-                  </span>
-                  <p className="mt-2 font-serif text-lg text-navy-deep">
-                    Reading Slowly on Purpose: A Strategy Most Students Skip
-                  </p>
-                </Link>
-                <Link
-                  to="/blog"
-                  className={`${CARD} p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] sm:text-right ${FOCUS}`}
-                >
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-coffee">
-                    Next Cup
-                  </span>
-                  <p className="mt-2 font-serif text-lg text-navy-deep">
-                    5 Vocabulary Swaps That Instantly Sound More IELTS-Band-9
-                  </p>
-                </Link>
-              </div>
-            </section>
-
-            {/* Table Talk */}
-            <section data-reveal aria-labelledby="table-talk" className="mb-14">
-              <SectionHeading
-                id="table-talk"
-                name="Table Talk"
-                intro="Pull up a chair — conversation opens here soon."
-              />
-              <div className="rounded-2xl border border-dashed border-border bg-white p-12 text-center shadow-[var(--shadow-card)]">
-                <Coffee className="mx-auto h-10 w-10 text-coffee/60 mb-4" />
-                <p className="font-serif text-xl text-navy-deep">
-                  Comments are brewing.
-                </p>
-                <p className="text-sm text-navy-deep/60 mt-2">
-                  Placeholder only — discussion is not live yet.
-                </p>
-              </div>
-            </section>
-          </div>
         </div>
 
-        {/* More From the Menu */}
-        <section data-reveal aria-labelledby="more-from-the-menu" className="mt-16">
-          <div className="flex items-center gap-3 mb-6">
-            <Coffee className="h-5 w-5 text-coffee" />
+        {/* Related articles */}
+        <section data-reveal aria-labelledby="related-articles" className="mt-20">
+          <div className="mb-6 flex items-center gap-3">
+            <Coffee className="h-5 w-5 text-coffee" aria-hidden />
             <h2
-              id="more-from-the-menu"
+              id="related-articles"
               className="font-serif text-2xl text-navy-deep"
             >
-              More From the Menu
+              Related Articles
             </h2>
             <span className="h-px flex-1 bg-border" />
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {related.map((a) => (
-              <ArticleCard key={a.id} a={a} />
+            {relatedPlaceholders.map((r) => (
+              <RelatedPlaceholderCard key={r.id} />
             ))}
           </div>
         </section>
       </main>
 
-      {/* Stay Brewed — Newsletter */}
-      <section data-reveal className="mt-16 bg-[color:var(--beige)]">
-        <div className="mx-auto max-w-[900px] px-6 lg:px-10 py-20 text-center">
-          <Mail className="mx-auto h-10 w-10 text-coffee mb-5" strokeWidth={1.4} />
-          <h2 className="font-serif text-4xl text-navy-deep">Stay Brewed</h2>
-          <p className="mt-4 text-navy-deep/75 max-w-xl mx-auto">
-            Grammar tips, vocabulary, and IELTS strategies — delivered every
-            week.
-          </p>
-          <form
-            className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <label className="sr-only" htmlFor="newsletter-email">
-              Your email
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              placeholder="you@example.com"
-              className="flex-1 rounded-full border border-border bg-white px-5 py-3 text-sm text-navy-deep placeholder:text-navy-deep/50 outline-none focus:border-gold focus:ring-2 focus:ring-gold/30"
-            />
-            <button
-              type="submit"
-              className={`btn-gold rounded-full px-7 py-3 text-sm font-semibold whitespace-nowrap transition-transform duration-200 hover:-translate-y-0.5 ${FOCUS}`}
-            >
-              Subscribe
-            </button>
-          </form>
-          <p className="mt-4 text-xs text-navy-deep/55">
-            No spam. Just good English, brewed weekly.
-          </p>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="bg-navy-deep text-cream/80">
-        <div className="mx-auto max-w-[1300px] px-6 lg:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <footer className="mt-20 bg-navy-deep text-cream/80">
+        <div className="mx-auto flex max-w-[1300px] flex-col items-center justify-between gap-4 px-6 py-10 text-sm md:flex-row lg:px-10">
           <div className="flex items-center gap-2">
-            <Coffee className="h-4 w-4 text-gold" />
+            <Coffee className="h-4 w-4 text-gold" aria-hidden />
             <span className="font-serif text-gold">Filter &amp; Fluent</span>
             <span className="text-cream/50">
               · Brew Knowledge. Speak with Confidence.
             </span>
           </div>
           <div className="flex gap-5 text-xs">
-            <Link to="/about" className="hover:text-gold transition-colors duration-200">
+            <Link to="/about" className="transition-colors duration-200 hover:text-gold">
               About
             </Link>
-            <Link to="/resources" className="hover:text-gold transition-colors duration-200">
+            <Link to="/resources" className="transition-colors duration-200 hover:text-gold">
               Resources
             </Link>
-            <Link to="/blog" className="hover:text-gold transition-colors duration-200">
+            <Link to="/blog" className="transition-colors duration-200 hover:text-gold">
               Journal
             </Link>
           </div>
