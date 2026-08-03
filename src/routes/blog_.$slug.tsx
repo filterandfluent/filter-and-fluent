@@ -1,19 +1,55 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
+  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Bookmark,
+  BookOpen,
+  Brain,
   Clock,
   Coffee,
+  Ear,
   Facebook,
   Link2,
   Linkedin,
+  ListChecks,
+  MessagesSquare,
+  Mic,
+  PenLine,
   Share2,
   Sparkles,
+  Table,
+  Target,
   Twitter,
   User,
 } from "lucide-react";
+
+import {
+  BlockHeading,
+  BrewNotes,
+  ChallengeBoard,
+  CoffeeSip,
+  ComparisonStack,
+  DataTable,
+  DefinitionCard,
+  ExampleGrid,
+  ExerciseList,
+  GrammarCard,
+  InfoBox,
+  Infographic,
+  MistakeList,
+  OutcomeGrid,
+  TakeawayGrid,
+  VocabularyCard,
+  type Challenge,
+  type ComparisonItem,
+  type ExampleItem,
+  type Exercise,
+  type Mistake,
+  type Outcome,
+  type Takeaway,
+} from "../components/article/blocks";
 
 import featuredImage from "../assets/card-articles.jpg";
 import secondaryImage from "../assets/about-coffee.jpg";
