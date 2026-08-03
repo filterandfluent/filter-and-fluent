@@ -694,6 +694,31 @@ function ArticlePage() {
               </div>
             </section>
 
+            {/* Coffee Sip */}
+            <section data-reveal aria-labelledby="coffee-sip" className="mb-14">
+              <h2 id="coffee-sip" className="sr-only scroll-mt-28">
+                Coffee Sip
+              </h2>
+              <CoffeeSip>
+                <p>
+                  Before the lesson begins, take one slow sip. English isn't a
+                  test you pass — it's a language you live in, one small,
+                  everyday sentence at a time.
+                </p>
+              </CoffeeSip>
+            </section>
+
+            {/* What You'll Learn */}
+            <section data-reveal aria-labelledby="what-youll-learn" className="mb-14">
+              <BlockHeading
+                id="what-youll-learn"
+                name="What You'll Learn"
+                icon={Target}
+                intro="Four calm outcomes to carry with you after this cup."
+              />
+              <OutcomeGrid items={outcomes} />
+            </section>
+
             {/* Main Content */}
             <section data-reveal aria-labelledby="main-content" className="mb-14">
               <SectionHeading id="main-content" name="Main Content" />
