@@ -96,10 +96,248 @@ const article = {
 /** Section outline — drives both the page and the Table of Contents. */
 const SECTIONS = [
   { id: "introduction", label: "Introduction" },
+  { id: "coffee-sip", label: "Coffee Sip" },
+  { id: "what-youll-learn", label: "What You'll Learn" },
   { id: "main-content", label: "Main Content" },
+  { id: "brew-notes", label: "Premium Brew Notes" },
+  { id: "real-life", label: "Real-Life Examples" },
+  { id: "visual-blocks", label: "At a Glance" },
   { id: "in-practice", label: "In Practice" },
+  { id: "common-mistakes", label: "Common Mistakes" },
+  { id: "comparisons", label: "Comparisons" },
+  { id: "quick-practice", label: "Quick Practice" },
+  { id: "coffee-break", label: "Coffee Break Challenge" },
   { id: "key-points", label: "Key Points" },
   { id: "closing-notes", label: "Closing Notes" },
+  { id: "key-takeaways", label: "Key Takeaways" },
+];
+
+/* ---------- Reusable lesson content (per-article data) ---------- */
+const outcomes: Outcome[] = [
+  {
+    icon: Brain,
+    heading: "Understand the concept",
+    detail: "See the idea explained in plain, everyday English — no jargon.",
+  },
+  {
+    icon: AlertTriangle,
+    heading: "Recognise common mistakes",
+    detail: "Learn the slips most learners make, and how to avoid them.",
+  },
+  {
+    icon: Mic,
+    heading: "Improve speaking confidence",
+    detail: "Practise short lines you can use in real conversations today.",
+  },
+  {
+    icon: Target,
+    heading: "Apply the lesson naturally",
+    detail: "Carry the pattern into work, class and daily talk with ease.",
+  },
+];
+
+const examples: ExampleItem[] = [
+  {
+    context: "Conversation",
+    lines: [
+      "“Shall we grab a coffee after class?”",
+      "“I'd love to — give me ten minutes.”",
+    ],
+    note: "Friendly, everyday tone.",
+  },
+  {
+    context: "Daily Life",
+    lines: [
+      "“I usually walk to the market in the evening.”",
+      "“The milk boils over if you leave it too long.”",
+    ],
+  },
+  {
+    context: "School",
+    lines: [
+      "“Could you explain that question once more, please?”",
+      "“I've finished the first two sections already.”",
+    ],
+  },
+  {
+    context: "Office",
+    lines: [
+      "“I'll send the revised draft before six.”",
+      "“Let's align on this in tomorrow's stand-up.”",
+    ],
+  },
+  {
+    context: "Travel",
+    lines: [
+      "“Does this bus stop near the temple?”",
+      "“We're checking out at eleven.”",
+    ],
+  },
+];
+
+const mistakes: Mistake[] = [
+  {
+    incorrect: "I am agree with you.",
+    correct: "I agree with you.",
+    explanation: "“Agree” is a verb on its own — it does not need “am”.",
+  },
+  {
+    incorrect: "He is having two sisters.",
+    correct: "He has two sisters.",
+    explanation: "Possession uses the simple present, not the continuous.",
+  },
+  {
+    incorrect: "I am living here since 2019.",
+    correct: "I have been living here since 2019.",
+    explanation: "“Since” pairs with the present perfect continuous.",
+  },
+];
+
+const comparisons: ComparisonItem[] = [
+  {
+    kind: "Correct vs Incorrect",
+    leftLabel: "Incorrect",
+    rightLabel: "Correct",
+    left: ["She don't like coffee.", "Discuss about the plan."],
+    right: ["She doesn't like coffee.", "Discuss the plan."],
+  },
+  {
+    kind: "Before vs After",
+    leftLabel: "Before",
+    rightLabel: "After",
+    left: ["The thing was very good.", "I did a mistake."],
+    right: ["The session was genuinely useful.", "I made a mistake."],
+  },
+  {
+    kind: "Formal vs Informal",
+    leftLabel: "Informal",
+    rightLabel: "Formal",
+    left: ["Can you send it soon?", "Thanks a lot!"],
+    right: [
+      "Could you please share it at your earliest convenience?",
+      "Thank you for your support.",
+    ],
+  },
+  {
+    kind: "Vocabulary Upgrade",
+    leftLabel: "Everyday word",
+    rightLabel: "Stronger choice",
+    left: ["very tired", "good idea"],
+    right: ["exhausted", "compelling idea"],
+  },
+  {
+    kind: "Speaking Tip vs Writing Tip",
+    leftLabel: "Speaking",
+    rightLabel: "Writing",
+    left: ["Use short clauses and pause for breath."],
+    right: ["Join ideas with linkers and vary sentence length."],
+  },
+];
+
+const exercises: Exercise[] = [
+  {
+    type: "Multiple Choice",
+    prompt: "Choose the correct sentence.",
+    options: [
+      "She don't drink filter coffee.",
+      "She doesn't drink filter coffee.",
+      "She not drink filter coffee.",
+    ],
+    answer: "B — with “she”, the negative takes “doesn't”.",
+  },
+  {
+    type: "Fill in the Blanks",
+    prompt: "I ______ (live) in Madurai since 2018.",
+    answer: "have been living — “since” signals the present perfect continuous.",
+  },
+  {
+    type: "Sentence Correction",
+    prompt: "Correct this: “He is having a car.”",
+    answer: "He has a car.",
+  },
+  {
+    type: "Match the Following",
+    prompt: "Match each expression to its register.",
+    pairs: [
+      { left: "Thanks a lot!", right: "Informal" },
+      { left: "I appreciate your help.", right: "Formal" },
+      { left: "Catch you later.", right: "Casual" },
+    ],
+    answer: "Informal · Formal · Casual, in that order.",
+  },
+  {
+    type: "Writing Prompt",
+    prompt:
+      "Write four sentences about your morning routine using today's pattern.",
+  },
+  {
+    type: "Speaking Prompt",
+    prompt:
+      "Record yourself describing your favourite café for sixty seconds.",
+  },
+  {
+    type: "Reflection Question",
+    prompt: "Which part of this lesson felt easiest, and why?",
+  },
+];
+
+const challenges: Challenge[] = [
+  {
+    title: "Speaking Challenge",
+    task: "Say three sentences aloud using today's structure — slowly, then naturally.",
+    icon: Mic,
+  },
+  {
+    title: "Writing Challenge",
+    task: "Write a five-line message to a friend using two new expressions.",
+    icon: PenLine,
+  },
+  {
+    title: "Vocabulary Challenge",
+    task: "Upgrade three everyday words from your last conversation.",
+    icon: BookOpen,
+  },
+  {
+    title: "One Minute Fluency",
+    task: "Speak for sixty seconds without stopping. Don't edit — just flow.",
+    icon: Clock,
+  },
+  {
+    title: "Reflection Activity",
+    task: "Note one sentence you'd like to use tomorrow, and where.",
+    icon: Ear,
+  },
+];
+
+const takeaways: Takeaway[] = [
+  {
+    label: "Key Rules",
+    points: [
+      "Match the verb form to the subject, every time.",
+      "“Since” asks for a perfect tense.",
+    ],
+  },
+  {
+    label: "Quick Revision",
+    points: [
+      "Read the comparison cards once more.",
+      "Re-do the two correction exercises from memory.",
+    ],
+  },
+  {
+    label: "Remember This",
+    points: [
+      "Accuracy grows out of noticing, not memorising.",
+      "One clean sentence beats three uncertain ones.",
+    ],
+  },
+  {
+    label: "Coffee Wisdom",
+    points: [
+      "Fluency is brewed slowly — a little every day.",
+      "Speak before you feel ready; confidence follows use.",
+    ],
+  },
 ];
 
 const relatedPlaceholders = [
