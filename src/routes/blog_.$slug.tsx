@@ -775,6 +775,17 @@ function ArticlePage() {
               </div>
             </section>
 
+            {/* Key Takeaways */}
+            <section data-reveal aria-labelledby="key-takeaways" className="mb-14">
+              <BlockHeading
+                id="key-takeaways"
+                name="Key Takeaways"
+                icon={ListChecks}
+                intro="The last sip — everything worth carrying out of the café."
+              />
+              <TakeawayGrid items={takeaways} />
+            </section>
+
             {/* Previous / Next */}
             <section data-reveal aria-label="Article navigation" className="mb-4">
               <div className="grid gap-5 sm:grid-cols-2">
