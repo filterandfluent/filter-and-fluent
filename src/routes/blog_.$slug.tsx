@@ -1,19 +1,55 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
+  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Bookmark,
+  BookOpen,
+  Brain,
   Clock,
   Coffee,
+  Ear,
   Facebook,
   Link2,
   Linkedin,
+  ListChecks,
+  MessagesSquare,
+  Mic,
+  PenLine,
   Share2,
   Sparkles,
+  Table,
+  Target,
   Twitter,
   User,
 } from "lucide-react";
+
+import {
+  BlockHeading,
+  BrewNotes,
+  ChallengeBoard,
+  CoffeeSip,
+  ComparisonStack,
+  DataTable,
+  DefinitionCard,
+  ExampleGrid,
+  ExerciseList,
+  GrammarCard,
+  InfoBox,
+  Infographic,
+  MistakeList,
+  OutcomeGrid,
+  TakeawayGrid,
+  VocabularyCard,
+  type Challenge,
+  type ComparisonItem,
+  type ExampleItem,
+  type Exercise,
+  type Mistake,
+  type Outcome,
+  type Takeaway,
+} from "../components/article/blocks";
 
 import featuredImage from "../assets/card-articles.jpg";
 import secondaryImage from "../assets/about-coffee.jpg";
@@ -60,10 +96,248 @@ const article = {
 /** Section outline — drives both the page and the Table of Contents. */
 const SECTIONS = [
   { id: "introduction", label: "Introduction" },
+  { id: "coffee-sip", label: "Coffee Sip" },
+  { id: "what-youll-learn", label: "What You'll Learn" },
   { id: "main-content", label: "Main Content" },
+  { id: "brew-notes", label: "Premium Brew Notes" },
+  { id: "real-life", label: "Real-Life Examples" },
+  { id: "visual-blocks", label: "At a Glance" },
   { id: "in-practice", label: "In Practice" },
+  { id: "common-mistakes", label: "Common Mistakes" },
+  { id: "comparisons", label: "Comparisons" },
+  { id: "quick-practice", label: "Quick Practice" },
+  { id: "coffee-break", label: "Coffee Break Challenge" },
   { id: "key-points", label: "Key Points" },
   { id: "closing-notes", label: "Closing Notes" },
+  { id: "key-takeaways", label: "Key Takeaways" },
+];
+
+/* ---------- Reusable lesson content (per-article data) ---------- */
+const outcomes: Outcome[] = [
+  {
+    icon: Brain,
+    heading: "Understand the concept",
+    detail: "See the idea explained in plain, everyday English — no jargon.",
+  },
+  {
+    icon: AlertTriangle,
+    heading: "Recognise common mistakes",
+    detail: "Learn the slips most learners make, and how to avoid them.",
+  },
+  {
+    icon: Mic,
+    heading: "Improve speaking confidence",
+    detail: "Practise short lines you can use in real conversations today.",
+  },
+  {
+    icon: Target,
+    heading: "Apply the lesson naturally",
+    detail: "Carry the pattern into work, class and daily talk with ease.",
+  },
+];
+
+const examples: ExampleItem[] = [
+  {
+    context: "Conversation",
+    lines: [
+      "“Shall we grab a coffee after class?”",
+      "“I'd love to — give me ten minutes.”",
+    ],
+    note: "Friendly, everyday tone.",
+  },
+  {
+    context: "Daily Life",
+    lines: [
+      "“I usually walk to the market in the evening.”",
+      "“The milk boils over if you leave it too long.”",
+    ],
+  },
+  {
+    context: "School",
+    lines: [
+      "“Could you explain that question once more, please?”",
+      "“I've finished the first two sections already.”",
+    ],
+  },
+  {
+    context: "Office",
+    lines: [
+      "“I'll send the revised draft before six.”",
+      "“Let's align on this in tomorrow's stand-up.”",
+    ],
+  },
+  {
+    context: "Travel",
+    lines: [
+      "“Does this bus stop near the temple?”",
+      "“We're checking out at eleven.”",
+    ],
+  },
+];
+
+const mistakes: Mistake[] = [
+  {
+    incorrect: "I am agree with you.",
+    correct: "I agree with you.",
+    explanation: "“Agree” is a verb on its own — it does not need “am”.",
+  },
+  {
+    incorrect: "He is having two sisters.",
+    correct: "He has two sisters.",
+    explanation: "Possession uses the simple present, not the continuous.",
+  },
+  {
+    incorrect: "I am living here since 2019.",
+    correct: "I have been living here since 2019.",
+    explanation: "“Since” pairs with the present perfect continuous.",
+  },
+];
+
+const comparisons: ComparisonItem[] = [
+  {
+    kind: "Correct vs Incorrect",
+    leftLabel: "Incorrect",
+    rightLabel: "Correct",
+    left: ["She don't like coffee.", "Discuss about the plan."],
+    right: ["She doesn't like coffee.", "Discuss the plan."],
+  },
+  {
+    kind: "Before vs After",
+    leftLabel: "Before",
+    rightLabel: "After",
+    left: ["The thing was very good.", "I did a mistake."],
+    right: ["The session was genuinely useful.", "I made a mistake."],
+  },
+  {
+    kind: "Formal vs Informal",
+    leftLabel: "Informal",
+    rightLabel: "Formal",
+    left: ["Can you send it soon?", "Thanks a lot!"],
+    right: [
+      "Could you please share it at your earliest convenience?",
+      "Thank you for your support.",
+    ],
+  },
+  {
+    kind: "Vocabulary Upgrade",
+    leftLabel: "Everyday word",
+    rightLabel: "Stronger choice",
+    left: ["very tired", "good idea"],
+    right: ["exhausted", "compelling idea"],
+  },
+  {
+    kind: "Speaking Tip vs Writing Tip",
+    leftLabel: "Speaking",
+    rightLabel: "Writing",
+    left: ["Use short clauses and pause for breath."],
+    right: ["Join ideas with linkers and vary sentence length."],
+  },
+];
+
+const exercises: Exercise[] = [
+  {
+    type: "Multiple Choice",
+    prompt: "Choose the correct sentence.",
+    options: [
+      "She don't drink filter coffee.",
+      "She doesn't drink filter coffee.",
+      "She not drink filter coffee.",
+    ],
+    answer: "B — with “she”, the negative takes “doesn't”.",
+  },
+  {
+    type: "Fill in the Blanks",
+    prompt: "I ______ (live) in Madurai since 2018.",
+    answer: "have been living — “since” signals the present perfect continuous.",
+  },
+  {
+    type: "Sentence Correction",
+    prompt: "Correct this: “He is having a car.”",
+    answer: "He has a car.",
+  },
+  {
+    type: "Match the Following",
+    prompt: "Match each expression to its register.",
+    pairs: [
+      { left: "Thanks a lot!", right: "Informal" },
+      { left: "I appreciate your help.", right: "Formal" },
+      { left: "Catch you later.", right: "Casual" },
+    ],
+    answer: "Informal · Formal · Casual, in that order.",
+  },
+  {
+    type: "Writing Prompt",
+    prompt:
+      "Write four sentences about your morning routine using today's pattern.",
+  },
+  {
+    type: "Speaking Prompt",
+    prompt:
+      "Record yourself describing your favourite café for sixty seconds.",
+  },
+  {
+    type: "Reflection Question",
+    prompt: "Which part of this lesson felt easiest, and why?",
+  },
+];
+
+const challenges: Challenge[] = [
+  {
+    title: "Speaking Challenge",
+    task: "Say three sentences aloud using today's structure — slowly, then naturally.",
+    icon: Mic,
+  },
+  {
+    title: "Writing Challenge",
+    task: "Write a five-line message to a friend using two new expressions.",
+    icon: PenLine,
+  },
+  {
+    title: "Vocabulary Challenge",
+    task: "Upgrade three everyday words from your last conversation.",
+    icon: BookOpen,
+  },
+  {
+    title: "One Minute Fluency",
+    task: "Speak for sixty seconds without stopping. Don't edit — just flow.",
+    icon: Clock,
+  },
+  {
+    title: "Reflection Activity",
+    task: "Note one sentence you'd like to use tomorrow, and where.",
+    icon: Ear,
+  },
+];
+
+const takeaways: Takeaway[] = [
+  {
+    label: "Key Rules",
+    points: [
+      "Match the verb form to the subject, every time.",
+      "“Since” asks for a perfect tense.",
+    ],
+  },
+  {
+    label: "Quick Revision",
+    points: [
+      "Read the comparison cards once more.",
+      "Re-do the two correction exercises from memory.",
+    ],
+  },
+  {
+    label: "Remember This",
+    points: [
+      "Accuracy grows out of noticing, not memorising.",
+      "One clean sentence beats three uncertain ones.",
+    ],
+  },
+  {
+    label: "Coffee Wisdom",
+    points: [
+      "Fluency is brewed slowly — a little every day.",
+      "Speak before you feel ready; confidence follows use.",
+    ],
+  },
 ];
 
 const relatedPlaceholders = [
@@ -694,6 +968,31 @@ function ArticlePage() {
               </div>
             </section>
 
+            {/* Coffee Sip */}
+            <section data-reveal aria-labelledby="coffee-sip" className="mb-14">
+              <h2 id="coffee-sip" className="sr-only scroll-mt-28">
+                Coffee Sip
+              </h2>
+              <CoffeeSip>
+                <p>
+                  Before the lesson begins, take one slow sip. English isn't a
+                  test you pass — it's a language you live in, one small,
+                  everyday sentence at a time.
+                </p>
+              </CoffeeSip>
+            </section>
+
+            {/* What You'll Learn */}
+            <section data-reveal aria-labelledby="what-youll-learn" className="mb-14">
+              <BlockHeading
+                id="what-youll-learn"
+                name="What You'll Learn"
+                icon={Target}
+                intro="Four calm outcomes to carry with you after this cup."
+              />
+              <OutcomeGrid items={outcomes} />
+            </section>
+
             {/* Main Content */}
             <section data-reveal aria-labelledby="main-content" className="mb-14">
               <SectionHeading id="main-content" name="Main Content" />
@@ -717,6 +1016,93 @@ function ArticlePage() {
                   Copy continues after the image, holding the same measure so the
                   reader's eye never has to reset.
                 </p>
+              </div>
+            </section>
+
+            {/* Premium Brew Notes */}
+            <section data-reveal aria-labelledby="brew-notes" className="mb-14">
+              <h2 id="brew-notes" className="sr-only scroll-mt-28">
+                Premium Brew Notes
+              </h2>
+              <BrewNotes title="The one idea worth remembering">
+                <p>
+                  A short, high-value explanation of the concept sits here —
+                  the note a reader would underline and return to later.
+                </p>
+                <p>
+                  Reusable across every article: pass a title and any content.
+                </p>
+              </BrewNotes>
+            </section>
+
+            {/* Real-Life Examples */}
+            <section data-reveal aria-labelledby="real-life" className="mb-14">
+              <BlockHeading
+                id="real-life"
+                name="Real-Life Examples"
+                icon={MessagesSquare}
+                intro="How the lesson sounds in the places you actually use English."
+              />
+              <ExampleGrid items={examples} />
+            </section>
+
+            {/* Visual toolkit */}
+            <section data-reveal aria-labelledby="visual-blocks" className="mb-14">
+              <BlockHeading
+                id="visual-blocks"
+                name="At a Glance"
+                icon={Table}
+                intro="Tables, cards and boxes — the visual language of every lesson."
+              />
+              <div className="space-y-6">
+                <DataTable
+                  caption="Reference table"
+                  headers={["Form", "Structure", "Example"]}
+                  rows={[
+                    ["Affirmative", "Subject + verb", "Placeholder example line."],
+                    ["Negative", "Subject + do not + verb", "Placeholder example line."],
+                    ["Question", "Do + subject + verb", "Placeholder example line?"],
+                  ]}
+                />
+                <Infographic
+                  title="Three steps, one clear habit"
+                  steps={[
+                    { title: "Notice", detail: "Spot the pattern in real speech." },
+                    { title: "Practise", detail: "Use it in two sentences today." },
+                    { title: "Apply", detail: "Carry it into a real conversation." },
+                  ]}
+                />
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <VocabularyCard
+                    word="Placeholder"
+                    ipa="ˈpleɪshəʊldə"
+                    meaning="A short, clear meaning written in everyday English."
+                    example="Use the word naturally in a full sentence like this."
+                  />
+                  <GrammarCard
+                    rule="Rule name placeholder"
+                    structure="Subject + auxiliary + main verb"
+                    example="A model sentence showing the rule in use."
+                  />
+                </div>
+                <DefinitionCard
+                  term="Definition card"
+                  definition="A precise, one-line definition of a key term from the lesson."
+                />
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <InfoBox tone="tip">
+                    <p>A practical tip the reader can use immediately.</p>
+                  </InfoBox>
+                  <InfoBox tone="warning">
+                    <p>A common trap to avoid when using this structure.</p>
+                  </InfoBox>
+                  <InfoBox tone="example">
+                    <p>“A model sentence, quoted for clarity.”</p>
+                  </InfoBox>
+                  <InfoBox tone="note">
+                    <p>A small aside that adds useful context.</p>
+                  </InfoBox>
+                </div>
               </div>
             </section>
 
@@ -752,6 +1138,50 @@ function ArticlePage() {
               </div>
             </section>
 
+            {/* Common Mistakes */}
+            <section data-reveal aria-labelledby="common-mistakes" className="mb-14">
+              <BlockHeading
+                id="common-mistakes"
+                name="Common Mistakes"
+                icon={AlertTriangle}
+                intro="The bitter notes — spot them once, avoid them for good."
+              />
+              <MistakeList items={mistakes} />
+            </section>
+
+            {/* Comparisons */}
+            <section data-reveal aria-labelledby="comparisons" className="mb-14">
+              <BlockHeading
+                id="comparisons"
+                name="Grammar &amp; Vocabulary Comparison"
+                icon={Sparkles}
+                intro="Two cups, side by side, so the difference is easy to taste."
+              />
+              <ComparisonStack items={comparisons} />
+            </section>
+
+            {/* Quick Practice */}
+            <section data-reveal aria-labelledby="quick-practice" className="mb-14">
+              <BlockHeading
+                id="quick-practice"
+                name="Quick Practice"
+                icon={PenLine}
+                intro="Grind and practise — answers stay tucked away until you're ready."
+              />
+              <ExerciseList items={exercises} />
+            </section>
+
+            {/* Coffee Break Challenge */}
+            <section data-reveal aria-labelledby="coffee-break" className="mb-14">
+              <h2 id="coffee-break" className="sr-only scroll-mt-28">
+                Coffee Break Challenge
+              </h2>
+              <ChallengeBoard
+                intro="Five small tasks to finish before your cup goes cold."
+                items={challenges}
+              />
+            </section>
+
             {/* Key Points */}
             <section data-reveal aria-labelledby="key-points" className="mb-14">
               <SectionHeading id="key-points" name="Key Points" />
@@ -773,6 +1203,17 @@ function ArticlePage() {
                   reader with the last sip.
                 </p>
               </div>
+            </section>
+
+            {/* Key Takeaways */}
+            <section data-reveal aria-labelledby="key-takeaways" className="mb-14">
+              <BlockHeading
+                id="key-takeaways"
+                name="Key Takeaways"
+                icon={ListChecks}
+                intro="The last sip — everything worth carrying out of the café."
+              />
+              <TakeawayGrid items={takeaways} />
             </section>
 
             {/* Previous / Next */}
