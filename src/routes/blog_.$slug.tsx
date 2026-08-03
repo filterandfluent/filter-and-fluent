@@ -720,6 +720,93 @@ function ArticlePage() {
               </div>
             </section>
 
+            {/* Premium Brew Notes */}
+            <section data-reveal aria-labelledby="brew-notes" className="mb-14">
+              <h2 id="brew-notes" className="sr-only scroll-mt-28">
+                Premium Brew Notes
+              </h2>
+              <BrewNotes title="The one idea worth remembering">
+                <p>
+                  A short, high-value explanation of the concept sits here —
+                  the note a reader would underline and return to later.
+                </p>
+                <p>
+                  Reusable across every article: pass a title and any content.
+                </p>
+              </BrewNotes>
+            </section>
+
+            {/* Real-Life Examples */}
+            <section data-reveal aria-labelledby="real-life" className="mb-14">
+              <BlockHeading
+                id="real-life"
+                name="Real-Life Examples"
+                icon={MessagesSquare}
+                intro="How the lesson sounds in the places you actually use English."
+              />
+              <ExampleGrid items={examples} />
+            </section>
+
+            {/* Visual toolkit */}
+            <section data-reveal aria-labelledby="visual-blocks" className="mb-14">
+              <BlockHeading
+                id="visual-blocks"
+                name="At a Glance"
+                icon={Table}
+                intro="Tables, cards and boxes — the visual language of every lesson."
+              />
+              <div className="space-y-6">
+                <DataTable
+                  caption="Reference table"
+                  headers={["Form", "Structure", "Example"]}
+                  rows={[
+                    ["Affirmative", "Subject + verb", "Placeholder example line."],
+                    ["Negative", "Subject + do not + verb", "Placeholder example line."],
+                    ["Question", "Do + subject + verb", "Placeholder example line?"],
+                  ]}
+                />
+                <Infographic
+                  title="Three steps, one clear habit"
+                  steps={[
+                    { title: "Notice", detail: "Spot the pattern in real speech." },
+                    { title: "Practise", detail: "Use it in two sentences today." },
+                    { title: "Apply", detail: "Carry it into a real conversation." },
+                  ]}
+                />
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <VocabularyCard
+                    word="Placeholder"
+                    ipa="ˈpleɪshəʊldə"
+                    meaning="A short, clear meaning written in everyday English."
+                    example="Use the word naturally in a full sentence like this."
+                  />
+                  <GrammarCard
+                    rule="Rule name placeholder"
+                    structure="Subject + auxiliary + main verb"
+                    example="A model sentence showing the rule in use."
+                  />
+                </div>
+                <DefinitionCard
+                  term="Definition card"
+                  definition="A precise, one-line definition of a key term from the lesson."
+                />
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <InfoBox tone="tip">
+                    <p>A practical tip the reader can use immediately.</p>
+                  </InfoBox>
+                  <InfoBox tone="warning">
+                    <p>A common trap to avoid when using this structure.</p>
+                  </InfoBox>
+                  <InfoBox tone="example">
+                    <p>“A model sentence, quoted for clarity.”</p>
+                  </InfoBox>
+                  <InfoBox tone="note">
+                    <p>A small aside that adds useful context.</p>
+                  </InfoBox>
+                </div>
+              </div>
+            </section>
+
             {/* Quote block */}
             <section data-reveal aria-label="Pull quote" className="mb-14">
               <QuoteBlock
