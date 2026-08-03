@@ -752,6 +752,50 @@ function ArticlePage() {
               </div>
             </section>
 
+            {/* Common Mistakes */}
+            <section data-reveal aria-labelledby="common-mistakes" className="mb-14">
+              <BlockHeading
+                id="common-mistakes"
+                name="Common Mistakes"
+                icon={AlertTriangle}
+                intro="The bitter notes — spot them once, avoid them for good."
+              />
+              <MistakeList items={mistakes} />
+            </section>
+
+            {/* Comparisons */}
+            <section data-reveal aria-labelledby="comparisons" className="mb-14">
+              <BlockHeading
+                id="comparisons"
+                name="Grammar &amp; Vocabulary Comparison"
+                icon={Sparkles}
+                intro="Two cups, side by side, so the difference is easy to taste."
+              />
+              <ComparisonStack items={comparisons} />
+            </section>
+
+            {/* Quick Practice */}
+            <section data-reveal aria-labelledby="quick-practice" className="mb-14">
+              <BlockHeading
+                id="quick-practice"
+                name="Quick Practice"
+                icon={PenLine}
+                intro="Grind and practise — answers stay tucked away until you're ready."
+              />
+              <ExerciseList items={exercises} />
+            </section>
+
+            {/* Coffee Break Challenge */}
+            <section data-reveal aria-labelledby="coffee-break" className="mb-14">
+              <h2 id="coffee-break" className="sr-only scroll-mt-28">
+                Coffee Break Challenge
+              </h2>
+              <ChallengeBoard
+                intro="Five small tasks to finish before your cup goes cold."
+                items={challenges}
+              />
+            </section>
+
             {/* Key Points */}
             <section data-reveal aria-labelledby="key-points" className="mb-14">
               <SectionHeading id="key-points" name="Key Points" />
