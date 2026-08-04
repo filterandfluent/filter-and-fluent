@@ -1260,7 +1260,7 @@ function ArticlePage() {
             <section data-reveal aria-labelledby="resources" className="mb-14">
               <BlockHeading
                 id="resources"
-                name="📥 Learning Resources"
+                name="Learning Resources"
                 icon={Download}
                 intro="Notes, worksheets and lessons to carry this cup beyond the page."
               />
@@ -1289,7 +1289,7 @@ function ArticlePage() {
         <section data-reveal aria-labelledby="related-articles" className="mt-20">
           <FooterSectionHeading
             id="related-articles"
-            name="☕ Continue Your Learning"
+            name="Continue Your Learning"
             icon={Coffee}
             intro="Three more cups from the Coffee Journal, chosen to follow this one."
           />
