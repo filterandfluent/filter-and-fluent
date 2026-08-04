@@ -348,34 +348,30 @@ export function NewsletterCTA({
 export function ShareArticleBar({ title }: { title: string }) {
   const [copied, setCopied] = useState(false);
 
-  const [url, setUrl] = useState("");
-  useEffect(() => {
-    setUrl(window.location.href);
-  }, []);
-
-  const encodedUrl = encodeURIComponent(url);
-  const encodedTitle = encodeURIComponent(title);
-
-  const links = [
+  const shareTargets = [
     {
       name: "Facebook",
       Icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      build: (u: string) =>
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(u)}`,
     },
     {
       name: "LinkedIn",
       Icon: Linkedin,
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      build: (u: string) =>
+        `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(u)}`,
     },
     {
       name: "WhatsApp",
       Icon: MessageCircle,
-      href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
+      build: (u: string) =>
+        `https://wa.me/?text=${encodeURIComponent(`${title} ${u}`)}`,
     },
     {
       name: "Email",
       Icon: Mail,
-      href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
+      build: (u: string) =>
+        `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(u)}`,
     },
   ];
 
@@ -400,20 +396,24 @@ export function ShareArticleBar({ title }: { title: string }) {
         </p>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        {links.map(({ name, Icon, href }) => (
-          <a
+        {shareTargets.map(({ name, Icon, build }) => (
+          <button
             key={name}
-            href={href}
-            target="_blank"
-            rel="noreferrer noopener"
+            type="button"
+            onClick={() => {
+              const target = build(window.location.href);
+              if (name === "Email") window.location.href = target;
+              else window.open(target, "_blank", "noopener,noreferrer");
+            }}
             aria-label={`Share on ${name}`}
             title={`Share on ${name}`}
             className={`inline-flex items-center gap-2 rounded-full border border-border/70 bg-[color:var(--beige)]/60 px-4 py-2 text-[13px] font-medium text-coffee transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-gold ${FOCUS} focus-visible:ring-offset-white`}
           >
             <Icon className="h-4 w-4" aria-hidden />
             <span className="hidden sm:inline">{name}</span>
-          </a>
+          </button>
         ))}
+
         <button
           type="button"
           onClick={copy}
