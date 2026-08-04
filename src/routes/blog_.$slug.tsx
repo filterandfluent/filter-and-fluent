@@ -116,8 +116,14 @@ const SECTIONS = [
   { id: "key-points", label: "Key Points" },
   { id: "closing-notes", label: "Closing Notes" },
   { id: "key-takeaways", label: "Key Takeaways" },
-  { id: "resources", label: "Downloads & Extras" },
+  { id: "resources", label: "Learning Resources" },
+  { id: "related-articles", label: "Continue Your Learning" },
+  { id: "author", label: "About the Author" },
+  { id: "newsletter", label: "Newsletter" },
+  { id: "share", label: "Share This Article" },
+  { id: "comments", label: "Discussion" },
 ];
+
 
 /* ---------- Reusable lesson content (per-article data) ---------- */
 const outcomes: Outcome[] = [
