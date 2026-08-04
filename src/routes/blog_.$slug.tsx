@@ -57,8 +57,25 @@ import {
   type Takeaway,
 } from "../components/article/blocks";
 
+import {
+  AuthorProfile,
+  ClosingCTA,
+  CommentsPlaceholder,
+  FooterSectionHeading,
+  NewsletterCTA,
+  PrevNextNav,
+  RelatedArticles,
+  ShareArticleBar,
+  type AdjacentArticle,
+  type RelatedArticle,
+} from "../components/article/footer-sections";
+
 import featuredImage from "../assets/card-articles.jpg";
 import secondaryImage from "../assets/about-coffee.jpg";
+import relatedImageOne from "../assets/card-books.jpg";
+import relatedImageTwo from "../assets/card-resources.jpg";
+import relatedImageThree from "../assets/card-workshops.jpg";
+
 
 export const Route = createFileRoute("/blog_/$slug")({
   head: () => ({
