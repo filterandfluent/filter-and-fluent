@@ -168,29 +168,38 @@ export type ExampleItem = {
 export function ExampleCard({ context, lines, note }: ExampleItem) {
   return (
     <div className={`${CARD} ${HOVER_LIFT} p-6`}>
-      <span className={EYEBROW}>{context}</span>
-      <ul className="mt-4 space-y-2.5">
-        {lines.map((l) => (
+      <span className={EYEBROW}>
+        <MessageCircle className="h-3.5 w-3.5" aria-hidden />
+        {context}
+      </span>
+      <ul className="mt-4 space-y-3">
+        {lines.map((l, i) => (
           <li
             key={l}
-            className="flex items-start gap-3 text-[15px] leading-relaxed text-navy-deep/85"
+            className={`flex ${i % 2 ? "justify-end" : "justify-start"}`}
           >
-            <ArrowRight
-              className="mt-1 h-3.5 w-3.5 shrink-0 text-gold"
-              aria-hidden
-            />
-            <span>{l}</span>
+            <span
+              className={`relative max-w-[88%] rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${
+                i % 2
+                  ? "rounded-br-sm bg-coffee/10 text-navy-deep"
+                  : "rounded-bl-sm bg-[color:var(--cream)] text-navy-deep/85"
+              }`}
+            >
+              {l}
+            </span>
           </li>
         ))}
       </ul>
       {note ? (
-        <p className="mt-4 border-t border-border/60 pt-3 text-xs italic text-navy-deep/60">
+        <p className="mt-4 flex items-center gap-2 border-t border-border/60 pt-3 text-xs italic text-navy-deep/60">
+          <Coffee className="h-3.5 w-3.5 shrink-0 text-gold" aria-hidden />
           {note}
         </p>
       ) : null}
     </div>
   );
 }
+
 
 export function ExampleGrid({ items }: { items: ExampleItem[] }) {
   return (
