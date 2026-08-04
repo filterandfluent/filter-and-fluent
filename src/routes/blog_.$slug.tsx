@@ -1294,11 +1294,11 @@ function ArticlePage() {
               <TakeawayGrid items={takeaways} />
             </section>
 
-            {/* Downloads & Extras */}
+            {/* Learning Resources */}
             <section data-reveal aria-labelledby="resources" className="mb-14">
               <BlockHeading
                 id="resources"
-                name="Downloads &amp; Extras"
+                name="📥 Learning Resources"
                 icon={Download}
                 intro="Notes, worksheets and lessons to carry this cup beyond the page."
               />
@@ -1310,32 +1310,7 @@ function ArticlePage() {
 
             {/* Previous / Next */}
             <section data-reveal aria-label="Article navigation" className="mb-4">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Link
-                  to="/blog"
-                  className={`${CARD} group p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] ${FOCUS}`}
-                >
-                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
-                    <ArrowLeft className="h-3.5 w-3.5" aria-hidden /> Previous
-                    article
-                  </span>
-                  <p className="mt-2 font-serif text-lg text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-                    Previous article title placeholder
-                  </p>
-                </Link>
-                <Link
-                  to="/blog"
-                  className={`${CARD} group p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] sm:text-right ${FOCUS}`}
-                >
-                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee sm:justify-end">
-                    Next article{" "}
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
-                  <p className="mt-2 font-serif text-lg text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-                    Next article title placeholder
-                  </p>
-                </Link>
-              </div>
+              <PrevNextNav previous={previousArticle} next={nextArticle} />
             </section>
           </article>
 
@@ -1350,23 +1325,66 @@ function ArticlePage() {
 
         {/* Related articles */}
         <section data-reveal aria-labelledby="related-articles" className="mt-20">
-          <div className="mb-6 flex items-center gap-3">
-            <Coffee className="h-5 w-5 text-coffee" aria-hidden />
-            <h2
-              id="related-articles"
-              className="font-serif text-2xl text-navy-deep"
-            >
-              Related Articles
-            </h2>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {relatedPlaceholders.map((r) => (
-              <RelatedPlaceholderCard key={r.id} />
-            ))}
-          </div>
+          <FooterSectionHeading
+            id="related-articles"
+            name="☕ Continue Your Learning"
+            icon={Coffee}
+            intro="Three more cups from the Coffee Journal, chosen to follow this one."
+          />
+          <RelatedArticles items={relatedArticles} />
+        </section>
+
+        {/* Author */}
+        <section data-reveal aria-labelledby="author" className="mt-20">
+          <FooterSectionHeading
+            id="author"
+            name="About the Author"
+            icon={User}
+            intro="The hands behind every brew on this journal."
+          />
+          <AuthorProfile
+            name="Gnana Soundari Devaraj"
+            title="Founder &amp; Chief Brewer of Confidence"
+            initials="GS"
+            bio="English educator and TEFL-certified trainer with nine years in the classroom. She founded Filter & Fluent to teach English the way filter coffee is made — slowly, warmly, and with South Indian soul. Her lessons blend clear grammar, everyday vocabulary and gentle speaking practice."
+          />
+        </section>
+
+        {/* Newsletter */}
+        <section data-reveal aria-labelledby="newsletter" className="mt-20">
+          <h2 id="newsletter" className="sr-only scroll-mt-28">
+            Newsletter
+          </h2>
+          <NewsletterCTA
+            heading="☕ Brew Better English Every Week"
+            subtitle="Join the Coffee Beans Community and receive weekly English lessons, vocabulary tips, worksheets, and exclusive learning resources."
+          />
+        </section>
+
+        {/* Share */}
+        <section data-reveal aria-labelledby="share" className="mt-20">
+          <h2 id="share" className="sr-only scroll-mt-28">
+            Share This Article
+          </h2>
+          <ShareArticleBar title={article.title} />
+        </section>
+
+        {/* Comments */}
+        <section data-reveal aria-labelledby="comments" className="mt-20">
+          <FooterSectionHeading
+            id="comments"
+            name="Discussion"
+            icon={MessagesSquare}
+          />
+          <CommentsPlaceholder />
+        </section>
+
+        {/* Closing CTA */}
+        <section data-reveal aria-label="Keep learning" className="mt-20">
+          <ClosingCTA />
         </section>
       </main>
+
 
       {/* Footer */}
       <footer className="mt-20 bg-navy-deep text-cream/80">
