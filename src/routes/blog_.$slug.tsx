@@ -354,18 +354,58 @@ const takeaways: Takeaway[] = [
 ];
 
 const resources: ResourceItem[] = [
-  { label: "Download Premium Notes", hint: "PDF lesson notes — coming soon", icon: FileText },
-  { label: "Download Worksheet", hint: "Printable practice sheet — coming soon", icon: Download },
+  { label: "Download Premium Notes (PDF)", hint: "Full lesson notes — coming soon", icon: FileText },
+  { label: "Download Practice Worksheet", hint: "Printable practice sheet — coming soon", icon: Download },
+  { label: "Download Answer Key", hint: "Model answers & explanations — coming soon", icon: ListChecks },
   { label: "Watch YouTube Lesson", hint: "Video walkthrough — coming soon", icon: Youtube },
   { label: "Listen to Audio Lesson", hint: "Audio version — coming soon", icon: Headphones },
-  { label: "Practice Quiz", hint: "Interactive quiz — coming soon", icon: ListChecks },
+  { label: "Interactive Quiz", hint: "Coming soon", icon: Brain },
 ];
 
-const relatedPlaceholders = [
-  { id: "r1", category: "Category" },
-  { id: "r2", category: "Category" },
-  { id: "r3", category: "Category" },
+const relatedArticles: RelatedArticle[] = [
+  {
+    slug: "grammar-that-sounds-natural",
+    title: "Grammar That Sounds Natural, Not Textbook",
+    excerpt:
+      "Small shifts in word order and rhythm that make correct English also sound warm and human.",
+    category: "Grammar Tips",
+    readingTime: 7,
+    image: relatedImageOne,
+  },
+  {
+    slug: "vocabulary-worth-keeping",
+    title: "Vocabulary Worth Keeping: Words You'll Actually Use",
+    excerpt:
+      "How to choose fewer words, learn them deeply, and carry them into real conversations.",
+    category: "Vocabulary",
+    readingTime: 6,
+    image: relatedImageTwo,
+  },
+  {
+    slug: "speaking-with-quiet-confidence",
+    title: "Speaking With Quiet Confidence",
+    excerpt:
+      "A gentle daily routine for learners who understand English but hesitate to speak it.",
+    category: "Speaking",
+    readingTime: 9,
+    image: relatedImageThree,
+  },
 ];
+
+const previousArticle: AdjacentArticle = {
+  slug: "grammar-that-sounds-natural",
+  title: "Grammar That Sounds Natural, Not Textbook",
+  preview:
+    "The quiet rules that turn correct sentences into comfortable ones.",
+};
+
+const nextArticle: AdjacentArticle = {
+  slug: "speaking-with-quiet-confidence",
+  title: "Speaking With Quiet Confidence",
+  preview:
+    "Ten minutes a day, one honest sentence at a time — the slow brew method.",
+};
+
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-IN", {
