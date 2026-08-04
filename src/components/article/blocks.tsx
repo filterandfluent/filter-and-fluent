@@ -9,6 +9,8 @@ import {
   Coffee,
   Info,
   Lightbulb,
+  MessageCircle,
+
   Quote,
   Sparkles,
   X,
