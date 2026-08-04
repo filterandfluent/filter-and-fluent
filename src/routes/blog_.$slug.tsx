@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
-  ArrowLeft,
   ArrowRight,
   Bookmark,
   BookOpen,
@@ -57,8 +56,25 @@ import {
   type Takeaway,
 } from "../components/article/blocks";
 
+import {
+  AuthorProfile,
+  ClosingCTA,
+  CommentsPlaceholder,
+  FooterSectionHeading,
+  NewsletterCTA,
+  PrevNextNav,
+  RelatedArticles,
+  ShareArticleBar,
+  type AdjacentArticle,
+  type RelatedArticle,
+} from "../components/article/footer-sections";
+
 import featuredImage from "../assets/card-articles.jpg";
 import secondaryImage from "../assets/about-coffee.jpg";
+import relatedImageOne from "../assets/card-books.jpg";
+import relatedImageTwo from "../assets/card-resources.jpg";
+import relatedImageThree from "../assets/card-workshops.jpg";
+
 
 export const Route = createFileRoute("/blog_/$slug")({
   head: () => ({
@@ -116,8 +132,14 @@ const SECTIONS = [
   { id: "key-points", label: "Key Points" },
   { id: "closing-notes", label: "Closing Notes" },
   { id: "key-takeaways", label: "Key Takeaways" },
-  { id: "resources", label: "Downloads & Extras" },
+  { id: "resources", label: "Learning Resources" },
+  { id: "related-articles", label: "Continue Your Learning" },
+  { id: "author", label: "About the Author" },
+  { id: "newsletter", label: "Newsletter" },
+  { id: "share", label: "Share This Article" },
+  { id: "comments", label: "Discussion" },
 ];
+
 
 /* ---------- Reusable lesson content (per-article data) ---------- */
 const outcomes: Outcome[] = [
@@ -348,18 +370,58 @@ const takeaways: Takeaway[] = [
 ];
 
 const resources: ResourceItem[] = [
-  { label: "Download Premium Notes", hint: "PDF lesson notes — coming soon", icon: FileText },
-  { label: "Download Worksheet", hint: "Printable practice sheet — coming soon", icon: Download },
+  { label: "Download Premium Notes (PDF)", hint: "Full lesson notes — coming soon", icon: FileText },
+  { label: "Download Practice Worksheet", hint: "Printable practice sheet — coming soon", icon: Download },
+  { label: "Download Answer Key", hint: "Model answers & explanations — coming soon", icon: ListChecks },
   { label: "Watch YouTube Lesson", hint: "Video walkthrough — coming soon", icon: Youtube },
   { label: "Listen to Audio Lesson", hint: "Audio version — coming soon", icon: Headphones },
-  { label: "Practice Quiz", hint: "Interactive quiz — coming soon", icon: ListChecks },
+  { label: "Interactive Quiz", hint: "Coming soon", icon: Brain },
 ];
 
-const relatedPlaceholders = [
-  { id: "r1", category: "Category" },
-  { id: "r2", category: "Category" },
-  { id: "r3", category: "Category" },
+const relatedArticles: RelatedArticle[] = [
+  {
+    slug: "grammar-that-sounds-natural",
+    title: "Grammar That Sounds Natural, Not Textbook",
+    excerpt:
+      "Small shifts in word order and rhythm that make correct English also sound warm and human.",
+    category: "Grammar Tips",
+    readingTime: 7,
+    image: relatedImageOne,
+  },
+  {
+    slug: "vocabulary-worth-keeping",
+    title: "Vocabulary Worth Keeping: Words You'll Actually Use",
+    excerpt:
+      "How to choose fewer words, learn them deeply, and carry them into real conversations.",
+    category: "Vocabulary",
+    readingTime: 6,
+    image: relatedImageTwo,
+  },
+  {
+    slug: "speaking-with-quiet-confidence",
+    title: "Speaking With Quiet Confidence",
+    excerpt:
+      "A gentle daily routine for learners who understand English but hesitate to speak it.",
+    category: "Speaking",
+    readingTime: 9,
+    image: relatedImageThree,
+  },
 ];
+
+const previousArticle: AdjacentArticle = {
+  slug: "grammar-that-sounds-natural",
+  title: "Grammar That Sounds Natural, Not Textbook",
+  preview:
+    "The quiet rules that turn correct sentences into comfortable ones.",
+};
+
+const nextArticle: AdjacentArticle = {
+  slug: "speaking-with-quiet-confidence",
+  title: "Speaking With Quiet Confidence",
+  preview:
+    "Ten minutes a day, one honest sentence at a time — the slow brew method.",
+};
+
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-IN", {
@@ -760,43 +822,6 @@ function Sidebar({ active, progress }: { active: string; progress: number }) {
   );
 }
 
-function RelatedPlaceholderCard() {
-  return (
-    <article
-      className={`group flex flex-col ${CARD} overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
-    >
-      <div
-        className="relative aspect-[16/10] bg-gradient-to-br from-coffee/80 via-navy/70 to-navy-deep overflow-hidden"
-        aria-hidden
-      >
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,rgba(212,175,55,0.6),transparent_60%)]" />
-        <Coffee
-          className="absolute right-4 bottom-4 h-16 w-16 text-gold/40 transition-transform duration-300 group-hover:scale-105"
-          strokeWidth={1}
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-6">
-        <span className="self-start rounded-full bg-gold/20 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
-          Category
-        </span>
-        <h3 className="mt-3 font-serif text-xl leading-snug text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-          Related article title placeholder
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-navy-deep/70">
-          A short excerpt will appear here once this article slot is filled.
-        </p>
-        <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-4 text-xs text-navy-deep/60">
-          <span className="flex items-center gap-1.5">
-            <User className="h-3.5 w-3.5" aria-hidden /> Author
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" aria-hidden /> — min read
-          </span>
-        </div>
-      </div>
-    </article>
-  );
-}
 
 /* ---------- Page ---------- */
 function ArticlePage() {
@@ -1231,11 +1256,11 @@ function ArticlePage() {
               <TakeawayGrid items={takeaways} />
             </section>
 
-            {/* Downloads & Extras */}
+            {/* Learning Resources */}
             <section data-reveal aria-labelledby="resources" className="mb-14">
               <BlockHeading
                 id="resources"
-                name="Downloads &amp; Extras"
+                name="Learning Resources"
                 icon={Download}
                 intro="Notes, worksheets and lessons to carry this cup beyond the page."
               />
@@ -1247,32 +1272,7 @@ function ArticlePage() {
 
             {/* Previous / Next */}
             <section data-reveal aria-label="Article navigation" className="mb-4">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Link
-                  to="/blog"
-                  className={`${CARD} group p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] ${FOCUS}`}
-                >
-                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
-                    <ArrowLeft className="h-3.5 w-3.5" aria-hidden /> Previous
-                    article
-                  </span>
-                  <p className="mt-2 font-serif text-lg text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-                    Previous article title placeholder
-                  </p>
-                </Link>
-                <Link
-                  to="/blog"
-                  className={`${CARD} group p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] sm:text-right ${FOCUS}`}
-                >
-                  <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee sm:justify-end">
-                    Next article{" "}
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
-                  <p className="mt-2 font-serif text-lg text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-                    Next article title placeholder
-                  </p>
-                </Link>
-              </div>
+              <PrevNextNav previous={previousArticle} next={nextArticle} />
             </section>
           </article>
 
@@ -1287,23 +1287,66 @@ function ArticlePage() {
 
         {/* Related articles */}
         <section data-reveal aria-labelledby="related-articles" className="mt-20">
-          <div className="mb-6 flex items-center gap-3">
-            <Coffee className="h-5 w-5 text-coffee" aria-hidden />
-            <h2
-              id="related-articles"
-              className="font-serif text-2xl text-navy-deep"
-            >
-              Related Articles
-            </h2>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {relatedPlaceholders.map((r) => (
-              <RelatedPlaceholderCard key={r.id} />
-            ))}
-          </div>
+          <FooterSectionHeading
+            id="related-articles"
+            name="Continue Your Learning"
+            icon={Coffee}
+            intro="Three more cups from the Coffee Journal, chosen to follow this one."
+          />
+          <RelatedArticles items={relatedArticles} />
+        </section>
+
+        {/* Author */}
+        <section data-reveal aria-labelledby="author" className="mt-20">
+          <FooterSectionHeading
+            id="author"
+            name="About the Author"
+            icon={User}
+            intro="The hands behind every brew on this journal."
+          />
+          <AuthorProfile
+            name="Gnana Soundari Devaraj"
+            title="Founder & Chief Brewer of Confidence"
+            initials="GS"
+            bio="English educator and TEFL-certified trainer with nine years in the classroom. She founded Filter & Fluent to teach English the way filter coffee is made — slowly, warmly, and with South Indian soul. Her lessons blend clear grammar, everyday vocabulary and gentle speaking practice."
+          />
+        </section>
+
+        {/* Newsletter */}
+        <section data-reveal aria-labelledby="newsletter" className="mt-20">
+          <h2 id="newsletter" className="sr-only scroll-mt-28">
+            Newsletter
+          </h2>
+          <NewsletterCTA
+            heading="☕ Brew Better English Every Week"
+            subtitle="Join the Coffee Beans Community and receive weekly English lessons, vocabulary tips, worksheets, and exclusive learning resources."
+          />
+        </section>
+
+        {/* Share */}
+        <section data-reveal aria-labelledby="share" className="mt-20">
+          <h2 id="share" className="sr-only scroll-mt-28">
+            Share This Article
+          </h2>
+          <ShareArticleBar title={article.title} />
+        </section>
+
+        {/* Comments */}
+        <section data-reveal aria-labelledby="comments" className="mt-20">
+          <FooterSectionHeading
+            id="comments"
+            name="Discussion"
+            icon={MessagesSquare}
+          />
+          <CommentsPlaceholder />
+        </section>
+
+        {/* Closing CTA */}
+        <section data-reveal aria-label="Keep learning" className="mt-20">
+          <ClosingCTA />
         </section>
       </main>
+
 
       {/* Footer */}
       <footer className="mt-20 bg-navy-deep text-cream/80">
