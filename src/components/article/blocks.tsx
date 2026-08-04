@@ -9,6 +9,8 @@ import {
   Coffee,
   Info,
   Lightbulb,
+  MessageCircle,
+
   Quote,
   Sparkles,
   X,
@@ -168,29 +170,38 @@ export type ExampleItem = {
 export function ExampleCard({ context, lines, note }: ExampleItem) {
   return (
     <div className={`${CARD} ${HOVER_LIFT} p-6`}>
-      <span className={EYEBROW}>{context}</span>
-      <ul className="mt-4 space-y-2.5">
-        {lines.map((l) => (
+      <span className={EYEBROW}>
+        <MessageCircle className="h-3.5 w-3.5" aria-hidden />
+        {context}
+      </span>
+      <ul className="mt-4 space-y-3">
+        {lines.map((l, i) => (
           <li
             key={l}
-            className="flex items-start gap-3 text-[15px] leading-relaxed text-navy-deep/85"
+            className={`flex ${i % 2 ? "justify-end" : "justify-start"}`}
           >
-            <ArrowRight
-              className="mt-1 h-3.5 w-3.5 shrink-0 text-gold"
-              aria-hidden
-            />
-            <span>{l}</span>
+            <span
+              className={`relative max-w-[88%] rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${
+                i % 2
+                  ? "rounded-br-sm bg-coffee/10 text-navy-deep"
+                  : "rounded-bl-sm bg-[color:var(--cream)] text-navy-deep/85"
+              }`}
+            >
+              {l}
+            </span>
           </li>
         ))}
       </ul>
       {note ? (
-        <p className="mt-4 border-t border-border/60 pt-3 text-xs italic text-navy-deep/60">
+        <p className="mt-4 flex items-center gap-2 border-t border-border/60 pt-3 text-xs italic text-navy-deep/60">
+          <Coffee className="h-3.5 w-3.5 shrink-0 text-gold" aria-hidden />
           {note}
         </p>
       ) : null}
     </div>
   );
 }
+
 
 export function ExampleGrid({ items }: { items: ExampleItem[] }) {
   return (
@@ -727,5 +738,67 @@ export function InfoBox({
         {children}
       </div>
     </aside>
+  );
+}
+
+/* ============================================================
+   11. Resource Shelf — premium download placeholders
+   ============================================================ */
+export type ResourceItem = {
+  label: string;
+  hint?: string;
+  icon?: typeof Coffee;
+};
+
+export function ResourceShelf({
+  label = "From the Shelf",
+  title = "Take This Cup With You",
+  intro,
+  items,
+}: {
+  label?: string;
+  title?: string;
+  intro?: string;
+  items: ResourceItem[];
+}) {
+  return (
+    <div className="rounded-2xl border border-border/60 bg-[color:var(--beige)] p-6 shadow-[var(--shadow-card)] md:p-8">
+      <span className={EYEBROW}>
+        <Coffee className="h-3.5 w-3.5" aria-hidden />
+        {label}
+      </span>
+      <h3 className="mt-4 font-serif text-2xl leading-snug text-navy-deep">
+        {title}
+      </h3>
+      {intro ? (
+        <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-navy-deep/70">
+          {intro}
+        </p>
+      ) : null}
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        {items.map(({ label: l, hint, icon: Icon = Coffee }) => (
+          <button
+            key={l}
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="Coming soon"
+            className={`${CARD} group flex items-start gap-4 p-5 text-left transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] disabled:cursor-not-allowed ${FOCUS} focus-visible:ring-offset-white`}
+          >
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/20 text-coffee transition-colors duration-200 group-hover:bg-gold/30">
+              <Icon className="h-4.5 w-4.5" aria-hidden />
+            </span>
+            <span>
+              <span className="block font-serif text-lg leading-snug text-navy-deep">
+                {l}
+              </span>
+              <span className="mt-1 block text-[13px] leading-relaxed text-navy-deep/60">
+                {hint ?? "Coming soon"}
+              </span>
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }

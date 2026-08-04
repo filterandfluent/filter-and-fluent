@@ -13,6 +13,9 @@ import {
   Facebook,
   Link2,
   Linkedin,
+  Download,
+  FileText,
+  Headphones,
   ListChecks,
   MessagesSquare,
   Mic,
@@ -23,6 +26,7 @@ import {
   Target,
   Twitter,
   User,
+  Youtube,
 } from "lucide-react";
 
 import {
@@ -40,6 +44,7 @@ import {
   Infographic,
   MistakeList,
   OutcomeGrid,
+  ResourceShelf,
   TakeawayGrid,
   VocabularyCard,
   type Challenge,
@@ -48,6 +53,7 @@ import {
   type Exercise,
   type Mistake,
   type Outcome,
+  type ResourceItem,
   type Takeaway,
 } from "../components/article/blocks";
 
@@ -110,6 +116,7 @@ const SECTIONS = [
   { id: "key-points", label: "Key Points" },
   { id: "closing-notes", label: "Closing Notes" },
   { id: "key-takeaways", label: "Key Takeaways" },
+  { id: "resources", label: "Downloads & Extras" },
 ];
 
 /* ---------- Reusable lesson content (per-article data) ---------- */
@@ -138,7 +145,7 @@ const outcomes: Outcome[] = [
 
 const examples: ExampleItem[] = [
   {
-    context: "Conversation",
+    context: "Everyday Conversations",
     lines: [
       "“Shall we grab a coffee after class?”",
       "“I'd love to — give me ten minutes.”",
@@ -146,28 +153,28 @@ const examples: ExampleItem[] = [
     note: "Friendly, everyday tone.",
   },
   {
-    context: "Daily Life",
+    context: "Social Interactions",
     lines: [
       "“I usually walk to the market in the evening.”",
       "“The milk boils over if you leave it too long.”",
     ],
   },
   {
-    context: "School",
+    context: "School Situations",
     lines: [
       "“Could you explain that question once more, please?”",
       "“I've finished the first two sections already.”",
     ],
   },
   {
-    context: "Office",
+    context: "Workplace Communication",
     lines: [
       "“I'll send the revised draft before six.”",
       "“Let's align on this in tomorrow's stand-up.”",
     ],
   },
   {
-    context: "Travel",
+    context: "Travel English",
     lines: [
       "“Does this bus stop near the temple?”",
       "“We're checking out at eleven.”",
@@ -311,7 +318,7 @@ const challenges: Challenge[] = [
 
 const takeaways: Takeaway[] = [
   {
-    label: "Key Rules",
+    label: "Main Rule",
     points: [
       "Match the verb form to the subject, every time.",
       "“Since” asks for a perfect tense.",
@@ -325,7 +332,7 @@ const takeaways: Takeaway[] = [
     ],
   },
   {
-    label: "Remember This",
+    label: "Important Reminder",
     points: [
       "Accuracy grows out of noticing, not memorising.",
       "One clean sentence beats three uncertain ones.",
@@ -338,6 +345,14 @@ const takeaways: Takeaway[] = [
       "Speak before you feel ready; confidence follows use.",
     ],
   },
+];
+
+const resources: ResourceItem[] = [
+  { label: "Download Premium Notes", hint: "PDF lesson notes — coming soon", icon: FileText },
+  { label: "Download Worksheet", hint: "Printable practice sheet — coming soon", icon: Download },
+  { label: "Watch YouTube Lesson", hint: "Video walkthrough — coming soon", icon: Youtube },
+  { label: "Listen to Audio Lesson", hint: "Audio version — coming soon", icon: Headphones },
+  { label: "Practice Quiz", hint: "Interactive quiz — coming soon", icon: ListChecks },
 ];
 
 const relatedPlaceholders = [
@@ -1214,6 +1229,20 @@ function ArticlePage() {
                 intro="The last sip — everything worth carrying out of the café."
               />
               <TakeawayGrid items={takeaways} />
+            </section>
+
+            {/* Downloads & Extras */}
+            <section data-reveal aria-labelledby="resources" className="mb-14">
+              <BlockHeading
+                id="resources"
+                name="Downloads &amp; Extras"
+                icon={Download}
+                intro="Notes, worksheets and lessons to carry this cup beyond the page."
+              />
+              <ResourceShelf
+                intro="These premium extras are being brewed — they'll unlock here as soon as they're ready."
+                items={resources}
+              />
             </section>
 
             {/* Previous / Next */}
