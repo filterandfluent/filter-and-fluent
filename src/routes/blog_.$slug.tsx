@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
-  ArrowLeft,
   ArrowRight,
   Bookmark,
   BookOpen,
@@ -823,43 +822,6 @@ function Sidebar({ active, progress }: { active: string; progress: number }) {
   );
 }
 
-function RelatedPlaceholderCard() {
-  return (
-    <article
-      className={`group flex flex-col ${CARD} overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
-    >
-      <div
-        className="relative aspect-[16/10] bg-gradient-to-br from-coffee/80 via-navy/70 to-navy-deep overflow-hidden"
-        aria-hidden
-      >
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_30%,rgba(212,175,55,0.6),transparent_60%)]" />
-        <Coffee
-          className="absolute right-4 bottom-4 h-16 w-16 text-gold/40 transition-transform duration-300 group-hover:scale-105"
-          strokeWidth={1}
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-6">
-        <span className="self-start rounded-full bg-gold/20 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
-          Category
-        </span>
-        <h3 className="mt-3 font-serif text-xl leading-snug text-navy-deep transition-colors duration-200 group-hover:text-coffee">
-          Related article title placeholder
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-navy-deep/70">
-          A short excerpt will appear here once this article slot is filled.
-        </p>
-        <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-4 text-xs text-navy-deep/60">
-          <span className="flex items-center gap-1.5">
-            <User className="h-3.5 w-3.5" aria-hidden /> Author
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" aria-hidden /> — min read
-          </span>
-        </div>
-      </div>
-    </article>
-  );
-}
 
 /* ---------- Page ---------- */
 function ArticlePage() {
@@ -1344,7 +1306,7 @@ function ArticlePage() {
           />
           <AuthorProfile
             name="Gnana Soundari Devaraj"
-            title="Founder &amp; Chief Brewer of Confidence"
+            title="Founder & Chief Brewer of Confidence"
             initials="GS"
             bio="English educator and TEFL-certified trainer with nine years in the classroom. She founded Filter & Fluent to teach English the way filter coffee is made — slowly, warmly, and with South Indian soul. Her lessons blend clear grammar, everyday vocabulary and gentle speaking practice."
           />
