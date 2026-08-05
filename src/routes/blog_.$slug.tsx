@@ -69,6 +69,23 @@ import {
   type RelatedArticle,
 } from "../components/article/footer-sections";
 
+import {
+  ArticleInfoBar,
+  Checklist,
+  ComparisonTable,
+  ExampleDialogue,
+  HighlightCards,
+  KeepBrewingCTA,
+  LearningProgressChips,
+  LearningToolkit,
+  PremiumCallout,
+  ProcessSteps,
+  QuickNav,
+  Timeline,
+  type ArticleInfo,
+  type QuickNavItem,
+} from "../components/article/learning-blocks";
+
 import featuredImage from "../assets/card-articles.jpg";
 import secondaryImage from "../assets/about-coffee.jpg";
 import relatedImageOne from "../assets/card-books.jpg";
@@ -132,7 +149,10 @@ const SECTIONS = [
   { id: "key-points", label: "Key Points" },
   { id: "closing-notes", label: "Closing Notes" },
   { id: "key-takeaways", label: "Key Takeaways" },
+  { id: "callout-library", label: "Notes & Callouts" },
+  { id: "visual-library", label: "Visual Learning" },
   { id: "resources", label: "Learning Resources" },
+  { id: "learning-toolkit", label: "Your Learning Toolkit" },
   { id: "related-articles", label: "Continue Your Learning" },
   { id: "author", label: "About the Author" },
   { id: "newsletter", label: "Newsletter" },
@@ -422,6 +442,22 @@ const nextArticle: AdjacentArticle = {
     "Ten minutes a day, one honest sentence at a time — the slow brew method.",
 };
 
+
+const articleInfo: ArticleInfo = {
+  category: "Grammar Tips",
+  topic: "Everyday Tenses",
+  readingTime: 8,
+  skillLevel: "Intermediate",
+  activities: 7,
+  downloads: 6,
+};
+
+const QUICK_NAV: QuickNavItem[] = [
+  { id: "main-content", label: "Jump to Lesson" },
+  { id: "quick-practice", label: "Jump to Practice" },
+  { id: "coffee-break", label: "Coffee Break Challenge" },
+  { id: "key-takeaways", label: "Key Takeaways" },
+];
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-IN", {
@@ -833,6 +869,7 @@ function ArticlePage() {
   return (
     <div className="min-h-screen scroll-smooth bg-[oklch(0.98_0.015_80)] text-navy-deep">
       <ProgressBar progress={progress} />
+      <QuickNav items={QUICK_NAV} />
 
       {/* Header + Hero */}
       <header className="bg-navy-deep text-cream">
@@ -964,6 +1001,24 @@ function ArticlePage() {
             className="aspect-[16/9] w-full object-cover"
           />
         </figure>
+      </div>
+
+      {/* Learning progress chips */}
+      <div className="mx-auto max-w-[1100px] px-6 pt-8 lg:px-10">
+        <LearningProgressChips
+          meta={{
+            progress,
+            readingTime: article.readingTime,
+            lastUpdated: formatDate(article.publishedDate),
+            difficulty: article.difficulty,
+            level: "Intermediate",
+          }}
+        />
+      </div>
+
+      {/* Article information bar */}
+      <div data-reveal className="mx-auto max-w-[1300px] px-6 pt-8 lg:px-10">
+        <ArticleInfoBar info={articleInfo} />
       </div>
 
       {/* Breadcrumb */}
@@ -1256,6 +1311,134 @@ function ArticlePage() {
               <TakeawayGrid items={takeaways} />
             </section>
 
+            {/* Notes & Callouts */}
+            <section data-reveal aria-labelledby="callout-library" className="mb-14">
+              <BlockHeading
+                id="callout-library"
+                name="Notes &amp; Callouts"
+                icon={Sparkles}
+                intro="The margin notes of this lesson — tips, warnings and wisdom."
+              />
+              <div className="space-y-5">
+                <PremiumCallout tone="pro-tip" title="Say it slowly first">
+                  <p>
+                    Practise each new pattern at half speed before you use it in
+                    conversation — accuracy first, pace later.
+                  </p>
+                </PremiumCallout>
+                <PremiumCallout tone="mistake">
+                  <p>
+                    Avoid adding “am/is/are” to verbs that already carry meaning
+                    on their own: “I agree”, not “I am agree”.
+                  </p>
+                </PremiumCallout>
+                <PremiumCallout tone="remember">
+                  <p>
+                    “Since” points to a starting moment, so it prefers a perfect
+                    tense beside it.
+                  </p>
+                </PremiumCallout>
+                <PremiumCallout tone="wisdom">
+                  <p>
+                    Fluency is brewed, not poured. Ten quiet minutes a day beats
+                    one long, anxious hour.
+                  </p>
+                </PremiumCallout>
+                <PremiumCallout tone="exam">
+                  <p>
+                    In exams, read the subject before you choose the verb form —
+                    most lost marks hide there.
+                  </p>
+                </PremiumCallout>
+                <PremiumCallout tone="vocabulary">
+                  <p>
+                    Upgrade “very tired” to “exhausted”, and “good idea” to
+                    “compelling idea”. One stronger word replaces two weak ones.
+                  </p>
+                </PremiumCallout>
+              </div>
+            </section>
+
+            {/* Visual Learning */}
+            <section data-reveal aria-labelledby="visual-library" className="mb-14">
+              <BlockHeading
+                id="visual-library"
+                name="Visual Learning"
+                icon={Table}
+                intro="Tables, timelines, steps and dialogues — the lesson seen at a glance."
+              />
+              <div className="space-y-6">
+                <ComparisonTable
+                  caption="Comparison table"
+                  columns={["Situation", "Weaker choice", "Stronger choice"]}
+                  rows={[
+                    ["Email opener", "Hi, hope you are fine.", "I hope this note finds you well."],
+                    ["Asking politely", "Send it fast.", "Could you share it by this evening?"],
+                    ["Describing work", "It was very good.", "It was genuinely useful."],
+                  ]}
+                />
+                <Timeline
+                  items={[
+                    {
+                      time: "Day 1",
+                      title: "Notice the pattern",
+                      detail: "Read the lesson once and mark two sentences you like.",
+                    },
+                    {
+                      time: "Day 3",
+                      title: "Use it out loud",
+                      detail: "Say four sentences with the structure, slowly.",
+                    },
+                    {
+                      time: "Day 7",
+                      title: "Make it yours",
+                      detail: "Use it in a real conversation without rehearsing.",
+                    },
+                  ]}
+                />
+                <ProcessSteps
+                  steps={[
+                    { title: "Read", detail: "Understand the rule in plain English." },
+                    { title: "Rehearse", detail: "Repeat three model sentences aloud." },
+                    { title: "Reuse", detail: "Carry one sentence into today's talk." },
+                  ]}
+                />
+                <Checklist
+                  title="Before you close this page"
+                  items={[
+                    "I can explain the rule in one sentence.",
+                    "I wrote two examples of my own.",
+                    "I said one sentence aloud, twice.",
+                    "I noted one word to upgrade this week.",
+                  ]}
+                />
+                <HighlightCards
+                  items={[
+                    {
+                      icon: Target,
+                      heading: "Accuracy grows from noticing",
+                      detail: "Spotting the pattern matters more than memorising it.",
+                    },
+                    {
+                      icon: Mic,
+                      heading: "Speak before you feel ready",
+                      detail: "Confidence follows use — never the other way around.",
+                    },
+                  ]}
+                />
+                <ExampleDialogue
+                  title="Example dialogue — at the coffee counter"
+                  lines={[
+                    { speaker: "You", line: "Could I have a filter coffee, please?" },
+                    { speaker: "Server", line: "Of course. Strong or light?" },
+                    { speaker: "You", line: "Strong, and a little less sugar." },
+                    { speaker: "Server", line: "Certainly — it'll be two minutes." },
+                  ]}
+                  note="Notice how “could” keeps the request warm and polite."
+                />
+              </div>
+            </section>
+
             {/* Learning Resources */}
             <section data-reveal aria-labelledby="resources" className="mb-14">
               <BlockHeading
@@ -1341,9 +1524,28 @@ function ArticlePage() {
           <CommentsPlaceholder />
         </section>
 
+        {/* Learning Toolkit */}
+        <section data-reveal aria-labelledby="learning-toolkit" className="mt-20">
+          <h2 id="learning-toolkit" className="sr-only scroll-mt-28">
+            Your Learning Toolkit
+          </h2>
+          <LearningToolkit />
+        </section>
+
         {/* Closing CTA */}
         <section data-reveal aria-label="Keep learning" className="mt-20">
           <ClosingCTA />
+        </section>
+
+        {/* Keep brewing */}
+        <section data-reveal aria-label="Keep brewing your English" className="mt-20">
+          <KeepBrewingCTA
+            links={[
+              { to: "/blog", label: "Continue Learning", primary: true },
+              { to: "/grammar", label: "Explore Grammar Library" },
+              { to: "/vocabulary", label: "Explore Vocabulary Library" },
+            ]}
+          />
         </section>
       </main>
 
