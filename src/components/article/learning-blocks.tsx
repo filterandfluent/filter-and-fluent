@@ -17,7 +17,6 @@ import {
   Layers,
   Lightbulb,
   ListChecks,
-  Mic,
   Sparkles,
   Tag,
   Target,
@@ -652,5 +651,3 @@ export function KeepBrewingCTA({
     </div>
   );
 }
-
-export { Mic };
