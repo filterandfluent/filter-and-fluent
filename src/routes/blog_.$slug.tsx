@@ -473,7 +473,8 @@ const CARD =
 const FOCUS =
   "outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--beige)]";
 const PROSE =
-  "space-y-6 text-[17px] leading-[1.85] text-navy-deep/80 [text-wrap:pretty]";
+  "space-y-5 text-[17px] leading-[1.8] text-navy-deep/85 md:text-[18px] [text-wrap:pretty]";
+const PAD = "p-6 md:p-8";
 
 /* ---------- Behaviour hooks ---------- */
 function useSectionReveal() {
@@ -574,6 +575,20 @@ function useReadingProgress() {
 }
 
 /* ---------- Reusable content blocks ---------- */
+/** Subtle coffee-inspired divider between major sections. */
+function SectionDivider({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`flex items-center justify-center gap-3 py-2 ${className}`}
+      aria-hidden
+    >
+      <span className="h-px w-16 bg-gradient-to-r from-transparent to-border sm:w-24" />
+      <Coffee className="h-3.5 w-3.5 text-gold/70" strokeWidth={1.6} />
+      <span className="h-px w-16 bg-gradient-to-l from-transparent to-border sm:w-24" />
+    </div>
+  );
+}
+
 function SectionHeading({
   id,
   name,
@@ -584,15 +599,19 @@ function SectionHeading({
   intro?: string;
 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-7">
+      <span
+        className="mb-3 block h-px w-10 bg-gold/60"
+        aria-hidden
+      />
       <h2
         id={id}
-        className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-navy-deep scroll-mt-28"
+        className="font-serif text-[28px] leading-[1.15] tracking-tight text-navy-deep scroll-mt-28 sm:text-3xl md:text-[2.5rem]"
       >
         {name}
       </h2>
       {intro ? (
-        <p className="mt-2 text-sm leading-relaxed text-navy-deep/60 italic">
+        <p className="mt-2.5 max-w-[58ch] text-[15px] leading-relaxed text-navy-deep/65">
           {intro}
         </p>
       ) : null}
@@ -602,7 +621,7 @@ function SectionHeading({
 
 function Subheading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-2">
+    <h3 className="pt-4 font-serif text-[22px] leading-snug tracking-tight text-navy-deep md:text-2xl">
       {children}
     </h3>
   );
@@ -618,7 +637,7 @@ function Figure({
   caption: string;
 }) {
   return (
-    <figure className="my-2">
+    <figure className="my-8">
       <div className={`${CARD} overflow-hidden`}>
         <img
           src={src}
@@ -628,7 +647,7 @@ function Figure({
           className="aspect-[16/9] w-full object-cover"
         />
       </div>
-      <figcaption className="mt-3 text-xs text-navy-deep/60 italic">
+      <figcaption className="mt-3 text-[13px] leading-relaxed text-navy-deep/60">
         {caption}
       </figcaption>
     </figure>
@@ -643,12 +662,12 @@ function QuoteBlock({
   attribution?: string;
 }) {
   return (
-    <blockquote className={`${CARD} border-l-4 border-l-gold p-7`}>
-      <p className="font-serif text-2xl leading-snug text-navy-deep italic">
+    <blockquote className={`${CARD} ${PAD} border-l-4 border-l-gold`}>
+      <p className="font-serif text-[22px] leading-relaxed text-navy-deep md:text-2xl">
         “{quote}”
       </p>
       {attribution ? (
-        <footer className="mt-3 text-sm text-navy-deep/60">
+        <footer className="mt-4 text-[13px] font-medium uppercase tracking-wider text-navy-deep/60">
           {attribution}
         </footer>
       ) : null}
@@ -664,11 +683,14 @@ function Callout({
   children: ReactNode;
 }) {
   return (
-    <aside className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7">
-      <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
+    <aside
+      className={`rounded-2xl border border-border/60 bg-[color:var(--beige)] shadow-[var(--shadow-card)] ${PAD}`}
+    >
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-coffee">
+        <Sparkles className="h-3 w-3" strokeWidth={1.6} aria-hidden />
         {label}
       </span>
-      <div className="mt-4 space-y-3 text-[15px] leading-relaxed text-navy-deep/80">
+      <div className="mt-4 space-y-3 text-[16px] leading-[1.75] text-navy-deep/85">
         {children}
       </div>
     </aside>
@@ -677,11 +699,13 @@ function Callout({
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className={`${CARD} p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80`}>
+    <ul
+      className={`${CARD} ${PAD} space-y-3.5 text-[16px] leading-[1.75] text-navy-deep/85`}
+    >
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
           <span
-            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
+            className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
             aria-hidden
           />
           <span>{item}</span>
@@ -693,13 +717,15 @@ function BulletList({ items }: { items: string[] }) {
 
 function NumberedList({ items }: { items: string[] }) {
   return (
-    <ol className={`${CARD} p-7 space-y-4 text-[15px] leading-relaxed text-navy-deep/80`}>
+    <ol
+      className={`${CARD} ${PAD} space-y-4 text-[16px] leading-[1.75] text-navy-deep/85`}
+    >
       {items.map((item, i) => (
         <li key={item} className="flex items-start gap-4">
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold/20 text-[13px] font-semibold text-coffee">
             {i + 1}
           </span>
-          <span className="pt-0.5">{item}</span>
+          <span>{item}</span>
         </li>
       ))}
     </ol>
@@ -747,8 +773,11 @@ function ShareButtons({
     { Icon: Linkedin, name: "Share on LinkedIn" },
     { Icon: Link2, name: "Copy link" },
   ];
-  const dim = size === "sm" ? "h-9 w-9" : "h-10 w-10";
-  const icon = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
+  const dim =
+    size === "sm"
+      ? "h-11 w-11 sm:h-9 sm:w-9"
+      : "h-11 w-11 sm:h-10 sm:w-10";
+  const icon = size === "sm" ? "h-4 w-4 sm:h-3.5 sm:w-3.5" : "h-4 w-4";
   return (
     <div className="flex items-center gap-2" role="group" aria-label={label}>
       {items.map(({ Icon, name }) => (
@@ -757,9 +786,9 @@ function ShareButtons({
           type="button"
           aria-label={name}
           title={name}
-          className={`${dim} inline-flex items-center justify-center rounded-full border border-border/70 bg-white text-coffee shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-gold ${FOCUS} focus-visible:ring-offset-white`}
+          className={`${dim} inline-flex items-center justify-center rounded-full border border-border/70 bg-white text-coffee shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-coffee ${FOCUS} focus-visible:ring-offset-white`}
         >
-          <Icon className={icon} aria-hidden />
+          <Icon className={icon} strokeWidth={1.6} aria-hidden />
         </button>
       ))}
     </div>
@@ -803,7 +832,7 @@ function TableOfContents({ active }: { active: string }) {
                   href={`#${s.id}`}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white ${
+                  className={`flex items-center gap-2.5 rounded-md px-2.5 py-2 transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white ${
                     isActive
                       ? "bg-gold/15 text-coffee font-semibold"
                       : "text-navy-deep/75 hover:bg-beige/60 hover:text-coffee"
@@ -867,7 +896,7 @@ function ArticlePage() {
   useSectionReveal();
 
   return (
-    <div className="min-h-screen scroll-smooth bg-[oklch(0.98_0.015_80)] text-navy-deep">
+    <div className="min-h-dvh scroll-smooth bg-[oklch(0.98_0.015_80)] text-navy-deep [&_svg]:[stroke-width:1.6]">
       <ProgressBar progress={progress} />
       <QuickNav items={QUICK_NAV} />
 
@@ -1048,7 +1077,7 @@ function ArticlePage() {
           {/* Article body */}
           <article className="order-2 min-w-0 max-w-[72ch] lg:order-1">
             {/* Introduction */}
-            <section data-reveal aria-labelledby="introduction" className="mb-14">
+            <section data-reveal aria-labelledby="introduction" className="mb-12 md:mb-16">
               <SectionHeading id="introduction" name="Introduction" />
               <div className={PROSE}>
                 <p className="text-[19px] leading-[1.8] text-navy-deep/85">
@@ -1064,7 +1093,7 @@ function ArticlePage() {
             </section>
 
             {/* Coffee Sip */}
-            <section data-reveal aria-labelledby="coffee-sip" className="mb-14">
+            <section data-reveal aria-labelledby="coffee-sip" className="mb-12 md:mb-16">
               <h2 id="coffee-sip" className="sr-only scroll-mt-28">
                 Coffee Sip
               </h2>
@@ -1078,7 +1107,7 @@ function ArticlePage() {
             </section>
 
             {/* What You'll Learn */}
-            <section data-reveal aria-labelledby="what-youll-learn" className="mb-14">
+            <section data-reveal aria-labelledby="what-youll-learn" className="mb-12 md:mb-16">
               <BlockHeading
                 id="what-youll-learn"
                 name="What You'll Learn"
@@ -1089,7 +1118,7 @@ function ArticlePage() {
             </section>
 
             {/* Main Content */}
-            <section data-reveal aria-labelledby="main-content" className="mb-14">
+            <section data-reveal aria-labelledby="main-content" className="mb-12 md:mb-16">
               <SectionHeading id="main-content" name="Main Content" />
               <div className={PROSE}>
                 <p>
@@ -1115,7 +1144,7 @@ function ArticlePage() {
             </section>
 
             {/* Premium Brew Notes */}
-            <section data-reveal aria-labelledby="brew-notes" className="mb-14">
+            <section data-reveal aria-labelledby="brew-notes" className="mb-12 md:mb-16">
               <h2 id="brew-notes" className="sr-only scroll-mt-28">
                 Premium Brew Notes
               </h2>
@@ -1131,7 +1160,7 @@ function ArticlePage() {
             </section>
 
             {/* Real-Life Examples */}
-            <section data-reveal aria-labelledby="real-life" className="mb-14">
+            <section data-reveal aria-labelledby="real-life" className="mb-12 md:mb-16">
               <BlockHeading
                 id="real-life"
                 name="Real-Life Examples"
@@ -1142,7 +1171,7 @@ function ArticlePage() {
             </section>
 
             {/* Visual toolkit */}
-            <section data-reveal aria-labelledby="visual-blocks" className="mb-14">
+            <section data-reveal aria-labelledby="visual-blocks" className="mb-12 md:mb-16">
               <BlockHeading
                 id="visual-blocks"
                 name="At a Glance"
@@ -1202,7 +1231,7 @@ function ArticlePage() {
             </section>
 
             {/* Quote block */}
-            <section data-reveal aria-label="Pull quote" className="mb-14">
+            <section data-reveal aria-label="Pull quote" className="mb-12 md:mb-16">
               <QuoteBlock
                 quote="A pull-quote goes here — one memorable line, poured slowly."
                 attribution="Attribution or source line"
@@ -1210,7 +1239,7 @@ function ArticlePage() {
             </section>
 
             {/* In Practice */}
-            <section data-reveal aria-labelledby="in-practice" className="mb-14">
+            <section data-reveal aria-labelledby="in-practice" className="mb-12 md:mb-16">
               <SectionHeading
                 id="in-practice"
                 name="In Practice"
@@ -1233,8 +1262,9 @@ function ArticlePage() {
               </div>
             </section>
 
+            <SectionDivider className="mb-12 md:mb-16" />
             {/* Common Mistakes */}
-            <section data-reveal aria-labelledby="common-mistakes" className="mb-14">
+            <section data-reveal aria-labelledby="common-mistakes" className="mb-12 md:mb-16">
               <BlockHeading
                 id="common-mistakes"
                 name="Common Mistakes"
@@ -1245,7 +1275,7 @@ function ArticlePage() {
             </section>
 
             {/* Comparisons */}
-            <section data-reveal aria-labelledby="comparisons" className="mb-14">
+            <section data-reveal aria-labelledby="comparisons" className="mb-12 md:mb-16">
               <BlockHeading
                 id="comparisons"
                 name="Grammar &amp; Vocabulary Comparison"
@@ -1255,8 +1285,9 @@ function ArticlePage() {
               <ComparisonStack items={comparisons} />
             </section>
 
+            <SectionDivider className="mb-12 md:mb-16" />
             {/* Quick Practice */}
-            <section data-reveal aria-labelledby="quick-practice" className="mb-14">
+            <section data-reveal aria-labelledby="quick-practice" className="mb-12 md:mb-16">
               <BlockHeading
                 id="quick-practice"
                 name="Quick Practice"
@@ -1267,7 +1298,7 @@ function ArticlePage() {
             </section>
 
             {/* Coffee Break Challenge */}
-            <section data-reveal aria-labelledby="coffee-break" className="mb-14">
+            <section data-reveal aria-labelledby="coffee-break" className="mb-12 md:mb-16">
               <h2 id="coffee-break" className="sr-only scroll-mt-28">
                 Coffee Break Challenge
               </h2>
@@ -1278,7 +1309,7 @@ function ArticlePage() {
             </section>
 
             {/* Key Points */}
-            <section data-reveal aria-labelledby="key-points" className="mb-14">
+            <section data-reveal aria-labelledby="key-points" className="mb-12 md:mb-16">
               <SectionHeading id="key-points" name="Key Points" />
               <BulletList
                 items={[
@@ -1290,7 +1321,7 @@ function ArticlePage() {
             </section>
 
             {/* Closing Notes */}
-            <section data-reveal aria-labelledby="closing-notes" className="mb-14">
+            <section data-reveal aria-labelledby="closing-notes" className="mb-12 md:mb-16">
               <SectionHeading id="closing-notes" name="Closing Notes" />
               <div className={PROSE}>
                 <p>
@@ -1301,7 +1332,7 @@ function ArticlePage() {
             </section>
 
             {/* Key Takeaways */}
-            <section data-reveal aria-labelledby="key-takeaways" className="mb-14">
+            <section data-reveal aria-labelledby="key-takeaways" className="mb-12 md:mb-16">
               <BlockHeading
                 id="key-takeaways"
                 name="Key Takeaways"
@@ -1312,7 +1343,7 @@ function ArticlePage() {
             </section>
 
             {/* Notes & Callouts */}
-            <section data-reveal aria-labelledby="callout-library" className="mb-14">
+            <section data-reveal aria-labelledby="callout-library" className="mb-12 md:mb-16">
               <BlockHeading
                 id="callout-library"
                 name="Notes &amp; Callouts"
@@ -1360,7 +1391,7 @@ function ArticlePage() {
             </section>
 
             {/* Visual Learning */}
-            <section data-reveal aria-labelledby="visual-library" className="mb-14">
+            <section data-reveal aria-labelledby="visual-library" className="mb-12 md:mb-16">
               <BlockHeading
                 id="visual-library"
                 name="Visual Learning"
@@ -1439,8 +1470,9 @@ function ArticlePage() {
               </div>
             </section>
 
+            <SectionDivider className="mb-12 md:mb-16" />
             {/* Learning Resources */}
-            <section data-reveal aria-labelledby="resources" className="mb-14">
+            <section data-reveal aria-labelledby="resources" className="mb-12 md:mb-16">
               <BlockHeading
                 id="resources"
                 name="Learning Resources"
@@ -1469,7 +1501,7 @@ function ArticlePage() {
         </div>
 
         {/* Related articles */}
-        <section data-reveal aria-labelledby="related-articles" className="mt-20">
+        <section data-reveal aria-labelledby="related-articles" className="mt-20 md:mt-24">
           <FooterSectionHeading
             id="related-articles"
             name="Continue Your Learning"
@@ -1479,8 +1511,9 @@ function ArticlePage() {
           <RelatedArticles items={relatedArticles} />
         </section>
 
+        <SectionDivider className="mt-20 md:mt-24" />
         {/* Author */}
-        <section data-reveal aria-labelledby="author" className="mt-20">
+        <section data-reveal aria-labelledby="author" className="mt-20 md:mt-24">
           <FooterSectionHeading
             id="author"
             name="About the Author"
@@ -1495,8 +1528,9 @@ function ArticlePage() {
           />
         </section>
 
+        <SectionDivider className="mt-20 md:mt-24" />
         {/* Newsletter */}
-        <section data-reveal aria-labelledby="newsletter" className="mt-20">
+        <section data-reveal aria-labelledby="newsletter" className="mt-20 md:mt-24">
           <h2 id="newsletter" className="sr-only scroll-mt-28">
             Newsletter
           </h2>
@@ -1507,15 +1541,16 @@ function ArticlePage() {
         </section>
 
         {/* Share */}
-        <section data-reveal aria-labelledby="share" className="mt-20">
+        <section data-reveal aria-labelledby="share" className="mt-20 md:mt-24">
           <h2 id="share" className="sr-only scroll-mt-28">
             Share This Article
           </h2>
           <ShareArticleBar title={article.title} />
         </section>
 
+        <SectionDivider className="mt-20 md:mt-24" />
         {/* Comments */}
-        <section data-reveal aria-labelledby="comments" className="mt-20">
+        <section data-reveal aria-labelledby="comments" className="mt-20 md:mt-24">
           <FooterSectionHeading
             id="comments"
             name="Discussion"
@@ -1525,7 +1560,7 @@ function ArticlePage() {
         </section>
 
         {/* Learning Toolkit */}
-        <section data-reveal aria-labelledby="learning-toolkit" className="mt-20">
+        <section data-reveal aria-labelledby="learning-toolkit" className="mt-20 md:mt-24">
           <h2 id="learning-toolkit" className="sr-only scroll-mt-28">
             Your Learning Toolkit
           </h2>
@@ -1533,12 +1568,12 @@ function ArticlePage() {
         </section>
 
         {/* Closing CTA */}
-        <section data-reveal aria-label="Keep learning" className="mt-20">
+        <section data-reveal aria-label="Keep learning" className="mt-20 md:mt-24">
           <ClosingCTA />
         </section>
 
         {/* Keep brewing */}
-        <section data-reveal aria-label="Keep brewing your English" className="mt-20">
+        <section data-reveal aria-label="Keep brewing your English" className="mt-20 md:mt-24">
           <KeepBrewingCTA
             links={[
               { to: "/blog", label: "Continue Learning", primary: true },

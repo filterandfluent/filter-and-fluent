@@ -29,7 +29,7 @@ const CARD =
 const FOCUS =
   "outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--beige)]";
 const LIFT =
-  "transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:shadow-[var(--shadow-gold)]";
+  "transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]";
 
 /* =======================================================================
    SECTION 1 — Learning progress chips
@@ -297,7 +297,7 @@ export function PremiumCallout({
   const Icon = cfg.icon;
   return (
     <aside
-      className={`rounded-2xl border border-border/60 border-l-4 ${cfg.frame} p-6 shadow-[var(--shadow-card)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[var(--shadow-gold)]`}
+      className={`rounded-2xl border border-border/60 border-l-4 ${cfg.frame} p-6 shadow-[var(--shadow-card)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
     >
       <div className="flex items-center gap-2.5">
         <span
@@ -381,7 +381,7 @@ export type TimelineItem = { time: string; title: string; detail: string };
 
 export function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <ol className={`${CARD} relative p-7`}>
+    <ol className={`${CARD} relative p-6 md:p-8`}>
       <span
         className="absolute left-[2.35rem] top-10 bottom-10 w-px bg-gold/30"
         aria-hidden
@@ -435,7 +435,7 @@ export function Checklist({
   items: string[];
 }) {
   return (
-    <div className={`${CARD} p-7`}>
+    <div className={`${CARD} p-6 md:p-8`}>
       {title ? (
         <h4 className="mb-4 font-serif text-xl leading-snug text-navy-deep">
           {title}
@@ -502,7 +502,7 @@ export function ExampleDialogue({
   note?: string;
 }) {
   return (
-    <div className={`${CARD} p-7`}>
+    <div className={`${CARD} p-6 md:p-8`}>
       <p className="text-[11px] font-semibold uppercase tracking-wider text-coffee">
         {title}
       </p>
@@ -566,7 +566,7 @@ export function LearningToolkit({
   intro?: string;
 }) {
   return (
-    <div className="rounded-3xl border border-border/60 bg-[color:var(--beige)]/50 p-7 shadow-[var(--shadow-card)] md:p-9">
+    <div className="rounded-3xl border border-border/60 bg-[color:var(--beige)]/50 p-6 shadow-[var(--shadow-card)] md:p-8">
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-coffee">
         Your Learning Toolkit
       </p>
@@ -583,7 +583,7 @@ export function LearningToolkit({
             type="button"
             disabled
             aria-disabled="true"
-            className={`${CARD} ${FOCUS} group flex w-full items-center gap-4 p-5 text-left opacity-90 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:opacity-100 hover:shadow-[var(--shadow-gold)] disabled:cursor-not-allowed focus-visible:ring-offset-white`}
+            className={`${CARD} ${FOCUS} group flex w-full items-center gap-4 p-5 text-left opacity-90 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:opacity-100 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] disabled:cursor-not-allowed focus-visible:ring-offset-white`}
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold/15 text-coffee transition-transform duration-300 group-hover:scale-105">
               <item.icon className="h-5 w-5" />
