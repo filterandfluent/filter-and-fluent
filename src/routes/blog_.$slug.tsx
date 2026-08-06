@@ -896,7 +896,7 @@ function ArticlePage() {
   useSectionReveal();
 
   return (
-    <div className="min-h-screen scroll-smooth bg-[oklch(0.98_0.015_80)] text-navy-deep">
+    <div className="min-h-dvh scroll-smooth bg-[oklch(0.98_0.015_80)] text-navy-deep [&_svg]:[stroke-width:1.6]">
       <ProgressBar progress={progress} />
       <QuickNav items={QUICK_NAV} />
 
