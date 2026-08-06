@@ -1048,7 +1048,7 @@ function ArticlePage() {
           {/* Article body */}
           <article className="order-2 min-w-0 max-w-[72ch] lg:order-1">
             {/* Introduction */}
-            <section data-reveal aria-labelledby="introduction" className="mb-14">
+            <section data-reveal aria-labelledby="introduction" className="mb-12 md:mb-16">
               <SectionHeading id="introduction" name="Introduction" />
               <div className={PROSE}>
                 <p className="text-[19px] leading-[1.8] text-navy-deep/85">
@@ -1064,7 +1064,7 @@ function ArticlePage() {
             </section>
 
             {/* Coffee Sip */}
-            <section data-reveal aria-labelledby="coffee-sip" className="mb-14">
+            <section data-reveal aria-labelledby="coffee-sip" className="mb-12 md:mb-16">
               <h2 id="coffee-sip" className="sr-only scroll-mt-28">
                 Coffee Sip
               </h2>
@@ -1078,7 +1078,7 @@ function ArticlePage() {
             </section>
 
             {/* What You'll Learn */}
-            <section data-reveal aria-labelledby="what-youll-learn" className="mb-14">
+            <section data-reveal aria-labelledby="what-youll-learn" className="mb-12 md:mb-16">
               <BlockHeading
                 id="what-youll-learn"
                 name="What You'll Learn"
@@ -1089,7 +1089,7 @@ function ArticlePage() {
             </section>
 
             {/* Main Content */}
-            <section data-reveal aria-labelledby="main-content" className="mb-14">
+            <section data-reveal aria-labelledby="main-content" className="mb-12 md:mb-16">
               <SectionHeading id="main-content" name="Main Content" />
               <div className={PROSE}>
                 <p>
@@ -1115,7 +1115,7 @@ function ArticlePage() {
             </section>
 
             {/* Premium Brew Notes */}
-            <section data-reveal aria-labelledby="brew-notes" className="mb-14">
+            <section data-reveal aria-labelledby="brew-notes" className="mb-12 md:mb-16">
               <h2 id="brew-notes" className="sr-only scroll-mt-28">
                 Premium Brew Notes
               </h2>
@@ -1131,7 +1131,7 @@ function ArticlePage() {
             </section>
 
             {/* Real-Life Examples */}
-            <section data-reveal aria-labelledby="real-life" className="mb-14">
+            <section data-reveal aria-labelledby="real-life" className="mb-12 md:mb-16">
               <BlockHeading
                 id="real-life"
                 name="Real-Life Examples"
@@ -1142,7 +1142,7 @@ function ArticlePage() {
             </section>
 
             {/* Visual toolkit */}
-            <section data-reveal aria-labelledby="visual-blocks" className="mb-14">
+            <section data-reveal aria-labelledby="visual-blocks" className="mb-12 md:mb-16">
               <BlockHeading
                 id="visual-blocks"
                 name="At a Glance"
@@ -1202,7 +1202,7 @@ function ArticlePage() {
             </section>
 
             {/* Quote block */}
-            <section data-reveal aria-label="Pull quote" className="mb-14">
+            <section data-reveal aria-label="Pull quote" className="mb-12 md:mb-16">
               <QuoteBlock
                 quote="A pull-quote goes here — one memorable line, poured slowly."
                 attribution="Attribution or source line"
@@ -1210,7 +1210,7 @@ function ArticlePage() {
             </section>
 
             {/* In Practice */}
-            <section data-reveal aria-labelledby="in-practice" className="mb-14">
+            <section data-reveal aria-labelledby="in-practice" className="mb-12 md:mb-16">
               <SectionHeading
                 id="in-practice"
                 name="In Practice"
@@ -1234,7 +1234,7 @@ function ArticlePage() {
             </section>
 
             {/* Common Mistakes */}
-            <section data-reveal aria-labelledby="common-mistakes" className="mb-14">
+            <section data-reveal aria-labelledby="common-mistakes" className="mb-12 md:mb-16">
               <BlockHeading
                 id="common-mistakes"
                 name="Common Mistakes"
@@ -1245,7 +1245,7 @@ function ArticlePage() {
             </section>
 
             {/* Comparisons */}
-            <section data-reveal aria-labelledby="comparisons" className="mb-14">
+            <section data-reveal aria-labelledby="comparisons" className="mb-12 md:mb-16">
               <BlockHeading
                 id="comparisons"
                 name="Grammar &amp; Vocabulary Comparison"
@@ -1256,7 +1256,7 @@ function ArticlePage() {
             </section>
 
             {/* Quick Practice */}
-            <section data-reveal aria-labelledby="quick-practice" className="mb-14">
+            <section data-reveal aria-labelledby="quick-practice" className="mb-12 md:mb-16">
               <BlockHeading
                 id="quick-practice"
                 name="Quick Practice"
@@ -1267,7 +1267,7 @@ function ArticlePage() {
             </section>
 
             {/* Coffee Break Challenge */}
-            <section data-reveal aria-labelledby="coffee-break" className="mb-14">
+            <section data-reveal aria-labelledby="coffee-break" className="mb-12 md:mb-16">
               <h2 id="coffee-break" className="sr-only scroll-mt-28">
                 Coffee Break Challenge
               </h2>
@@ -1278,7 +1278,7 @@ function ArticlePage() {
             </section>
 
             {/* Key Points */}
-            <section data-reveal aria-labelledby="key-points" className="mb-14">
+            <section data-reveal aria-labelledby="key-points" className="mb-12 md:mb-16">
               <SectionHeading id="key-points" name="Key Points" />
               <BulletList
                 items={[
@@ -1290,7 +1290,7 @@ function ArticlePage() {
             </section>
 
             {/* Closing Notes */}
-            <section data-reveal aria-labelledby="closing-notes" className="mb-14">
+            <section data-reveal aria-labelledby="closing-notes" className="mb-12 md:mb-16">
               <SectionHeading id="closing-notes" name="Closing Notes" />
               <div className={PROSE}>
                 <p>
@@ -1301,7 +1301,7 @@ function ArticlePage() {
             </section>
 
             {/* Key Takeaways */}
-            <section data-reveal aria-labelledby="key-takeaways" className="mb-14">
+            <section data-reveal aria-labelledby="key-takeaways" className="mb-12 md:mb-16">
               <BlockHeading
                 id="key-takeaways"
                 name="Key Takeaways"
@@ -1312,7 +1312,7 @@ function ArticlePage() {
             </section>
 
             {/* Notes & Callouts */}
-            <section data-reveal aria-labelledby="callout-library" className="mb-14">
+            <section data-reveal aria-labelledby="callout-library" className="mb-12 md:mb-16">
               <BlockHeading
                 id="callout-library"
                 name="Notes &amp; Callouts"
@@ -1360,7 +1360,7 @@ function ArticlePage() {
             </section>
 
             {/* Visual Learning */}
-            <section data-reveal aria-labelledby="visual-library" className="mb-14">
+            <section data-reveal aria-labelledby="visual-library" className="mb-12 md:mb-16">
               <BlockHeading
                 id="visual-library"
                 name="Visual Learning"
@@ -1440,7 +1440,7 @@ function ArticlePage() {
             </section>
 
             {/* Learning Resources */}
-            <section data-reveal aria-labelledby="resources" className="mb-14">
+            <section data-reveal aria-labelledby="resources" className="mb-12 md:mb-16">
               <BlockHeading
                 id="resources"
                 name="Learning Resources"
@@ -1469,7 +1469,7 @@ function ArticlePage() {
         </div>
 
         {/* Related articles */}
-        <section data-reveal aria-labelledby="related-articles" className="mt-20">
+        <section data-reveal aria-labelledby="related-articles" className="mt-20 md:mt-24">
           <FooterSectionHeading
             id="related-articles"
             name="Continue Your Learning"
@@ -1480,7 +1480,7 @@ function ArticlePage() {
         </section>
 
         {/* Author */}
-        <section data-reveal aria-labelledby="author" className="mt-20">
+        <section data-reveal aria-labelledby="author" className="mt-20 md:mt-24">
           <FooterSectionHeading
             id="author"
             name="About the Author"
@@ -1496,7 +1496,7 @@ function ArticlePage() {
         </section>
 
         {/* Newsletter */}
-        <section data-reveal aria-labelledby="newsletter" className="mt-20">
+        <section data-reveal aria-labelledby="newsletter" className="mt-20 md:mt-24">
           <h2 id="newsletter" className="sr-only scroll-mt-28">
             Newsletter
           </h2>
@@ -1507,7 +1507,7 @@ function ArticlePage() {
         </section>
 
         {/* Share */}
-        <section data-reveal aria-labelledby="share" className="mt-20">
+        <section data-reveal aria-labelledby="share" className="mt-20 md:mt-24">
           <h2 id="share" className="sr-only scroll-mt-28">
             Share This Article
           </h2>
@@ -1515,7 +1515,7 @@ function ArticlePage() {
         </section>
 
         {/* Comments */}
-        <section data-reveal aria-labelledby="comments" className="mt-20">
+        <section data-reveal aria-labelledby="comments" className="mt-20 md:mt-24">
           <FooterSectionHeading
             id="comments"
             name="Discussion"
@@ -1525,7 +1525,7 @@ function ArticlePage() {
         </section>
 
         {/* Learning Toolkit */}
-        <section data-reveal aria-labelledby="learning-toolkit" className="mt-20">
+        <section data-reveal aria-labelledby="learning-toolkit" className="mt-20 md:mt-24">
           <h2 id="learning-toolkit" className="sr-only scroll-mt-28">
             Your Learning Toolkit
           </h2>
@@ -1533,12 +1533,12 @@ function ArticlePage() {
         </section>
 
         {/* Closing CTA */}
-        <section data-reveal aria-label="Keep learning" className="mt-20">
+        <section data-reveal aria-label="Keep learning" className="mt-20 md:mt-24">
           <ClosingCTA />
         </section>
 
         {/* Keep brewing */}
-        <section data-reveal aria-label="Keep brewing your English" className="mt-20">
+        <section data-reveal aria-label="Keep brewing your English" className="mt-20 md:mt-24">
           <KeepBrewingCTA
             links={[
               { to: "/blog", label: "Continue Learning", primary: true },

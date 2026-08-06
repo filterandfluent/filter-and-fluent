@@ -29,7 +29,7 @@ const CARD =
 const FOCUS =
   "outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--beige)]";
 const LIFT =
-  "transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:shadow-[var(--shadow-gold)]";
+  "transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]";
 
 /* =======================================================================
    SECTION 1 — Learning progress chips
@@ -297,7 +297,7 @@ export function PremiumCallout({
   const Icon = cfg.icon;
   return (
     <aside
-      className={`rounded-2xl border border-border/60 border-l-4 ${cfg.frame} p-6 shadow-[var(--shadow-card)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[var(--shadow-gold)]`}
+      className={`rounded-2xl border border-border/60 border-l-4 ${cfg.frame} p-6 shadow-[var(--shadow-card)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)]`}
     >
       <div className="flex items-center gap-2.5">
         <span
@@ -583,7 +583,7 @@ export function LearningToolkit({
             type="button"
             disabled
             aria-disabled="true"
-            className={`${CARD} ${FOCUS} group flex w-full items-center gap-4 p-5 text-left opacity-90 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:opacity-100 hover:shadow-[var(--shadow-gold)] disabled:cursor-not-allowed focus-visible:ring-offset-white`}
+            className={`${CARD} ${FOCUS} group flex w-full items-center gap-4 p-5 text-left opacity-90 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold/60 hover:opacity-100 hover:shadow-[0_20px_50px_-15px_rgba(91,58,41,0.25)] disabled:cursor-not-allowed focus-visible:ring-offset-white`}
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold/15 text-coffee transition-transform duration-300 group-hover:scale-105">
               <item.icon className="h-5 w-5" />
