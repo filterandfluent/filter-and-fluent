@@ -1262,6 +1262,7 @@ function ArticlePage() {
               </div>
             </section>
 
+            <SectionDivider className="mb-12 md:mb-16" />
             {/* Common Mistakes */}
             <section data-reveal aria-labelledby="common-mistakes" className="mb-12 md:mb-16">
               <BlockHeading
@@ -1284,6 +1285,7 @@ function ArticlePage() {
               <ComparisonStack items={comparisons} />
             </section>
 
+            <SectionDivider className="mb-12 md:mb-16" />
             {/* Quick Practice */}
             <section data-reveal aria-labelledby="quick-practice" className="mb-12 md:mb-16">
               <BlockHeading
@@ -1468,6 +1470,7 @@ function ArticlePage() {
               </div>
             </section>
 
+            <SectionDivider className="mb-12 md:mb-16" />
             {/* Learning Resources */}
             <section data-reveal aria-labelledby="resources" className="mb-12 md:mb-16">
               <BlockHeading
@@ -1508,6 +1511,7 @@ function ArticlePage() {
           <RelatedArticles items={relatedArticles} />
         </section>
 
+        <SectionDivider className="mt-20 md:mt-24" />
         {/* Author */}
         <section data-reveal aria-labelledby="author" className="mt-20 md:mt-24">
           <FooterSectionHeading
@@ -1524,6 +1528,7 @@ function ArticlePage() {
           />
         </section>
 
+        <SectionDivider className="mt-20 md:mt-24" />
         {/* Newsletter */}
         <section data-reveal aria-labelledby="newsletter" className="mt-20 md:mt-24">
           <h2 id="newsletter" className="sr-only scroll-mt-28">
@@ -1543,6 +1548,7 @@ function ArticlePage() {
           <ShareArticleBar title={article.title} />
         </section>
 
+        <SectionDivider className="mt-20 md:mt-24" />
         {/* Comments */}
         <section data-reveal aria-labelledby="comments" className="mt-20 md:mt-24">
           <FooterSectionHeading
