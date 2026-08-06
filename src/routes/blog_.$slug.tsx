@@ -473,7 +473,8 @@ const CARD =
 const FOCUS =
   "outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--beige)]";
 const PROSE =
-  "space-y-6 text-[17px] leading-[1.85] text-navy-deep/80 [text-wrap:pretty]";
+  "space-y-5 text-[17px] leading-[1.8] text-navy-deep/85 md:text-[18px] [text-wrap:pretty]";
+const PAD = "p-6 md:p-8";
 
 /* ---------- Behaviour hooks ---------- */
 function useSectionReveal() {
