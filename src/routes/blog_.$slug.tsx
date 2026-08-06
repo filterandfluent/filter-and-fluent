@@ -832,7 +832,7 @@ function TableOfContents({ active }: { active: string }) {
                   href={`#${s.id}`}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white ${
+                  className={`flex items-center gap-2.5 rounded-md px-2.5 py-2 transition-colors duration-200 ${FOCUS} focus-visible:ring-offset-white ${
                     isActive
                       ? "bg-gold/15 text-coffee font-semibold"
                       : "text-navy-deep/75 hover:bg-beige/60 hover:text-coffee"
