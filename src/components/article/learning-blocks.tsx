@@ -381,7 +381,7 @@ export type TimelineItem = { time: string; title: string; detail: string };
 
 export function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <ol className={`${CARD} relative p-7`}>
+    <ol className={`${CARD} relative p-6 md:p-8`}>
       <span
         className="absolute left-[2.35rem] top-10 bottom-10 w-px bg-gold/30"
         aria-hidden
@@ -435,7 +435,7 @@ export function Checklist({
   items: string[];
 }) {
   return (
-    <div className={`${CARD} p-7`}>
+    <div className={`${CARD} p-6 md:p-8`}>
       {title ? (
         <h4 className="mb-4 font-serif text-xl leading-snug text-navy-deep">
           {title}
@@ -502,7 +502,7 @@ export function ExampleDialogue({
   note?: string;
 }) {
   return (
-    <div className={`${CARD} p-7`}>
+    <div className={`${CARD} p-6 md:p-8`}>
       <p className="text-[11px] font-semibold uppercase tracking-wider text-coffee">
         {title}
       </p>
@@ -566,7 +566,7 @@ export function LearningToolkit({
   intro?: string;
 }) {
   return (
-    <div className="rounded-3xl border border-border/60 bg-[color:var(--beige)]/50 p-7 shadow-[var(--shadow-card)] md:p-9">
+    <div className="rounded-3xl border border-border/60 bg-[color:var(--beige)]/50 p-6 shadow-[var(--shadow-card)] md:p-8">
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-coffee">
         Your Learning Toolkit
       </p>

@@ -149,7 +149,7 @@ export function PrevNextNav({
         <Link
           to="/blog/$slug"
           params={{ slug: previous.slug }}
-          className={`${CARD} group p-7 ${LIFT} ${FOCUS} focus-visible:ring-offset-white`}
+          className={`${CARD} group p-6 md:p-8 ${LIFT} ${FOCUS} focus-visible:ring-offset-white`}
         >
           <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee">
             <ArrowLeft
@@ -172,7 +172,7 @@ export function PrevNextNav({
         <Link
           to="/blog/$slug"
           params={{ slug: next.slug }}
-          className={`${CARD} group p-7 sm:text-right ${LIFT} ${FOCUS} focus-visible:ring-offset-white`}
+          className={`${CARD} group p-6 md:p-8 sm:text-right ${LIFT} ${FOCUS} focus-visible:ring-offset-white`}
         >
           <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-coffee sm:justify-end">
             Next Article
@@ -386,7 +386,7 @@ export function ShareArticleBar({ title }: { title: string }) {
   };
 
   return (
-    <div className={`${CARD} flex flex-col gap-5 p-7 sm:flex-row sm:items-center sm:justify-between`}>
+    <div className={`${CARD} flex flex-col gap-5 p-6 md:p-8 sm:flex-row sm:items-center sm:justify-between`}>
       <div>
         <p className="font-serif text-xl leading-snug text-navy-deep">
           Share this article

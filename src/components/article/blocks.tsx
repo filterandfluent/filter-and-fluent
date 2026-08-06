@@ -72,7 +72,7 @@ export function CoffeeSip({
   children: ReactNode;
 }) {
   return (
-    <aside className="rounded-2xl border border-border/60 border-l-4 border-l-coffee bg-[color:var(--cream)] p-6 shadow-[var(--shadow-card)] md:p-7">
+    <aside className="rounded-2xl border border-border/60 border-l-4 border-l-coffee bg-[color:var(--cream)] p-6 shadow-[var(--shadow-card)] md:p-8">
       <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-coffee">
         <Coffee className="h-4 w-4" aria-hidden />
         {label}
@@ -440,7 +440,7 @@ export function ChallengeBoard({
   items: Challenge[];
 }) {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-coffee p-7 text-cream shadow-[var(--shadow-card)] md:p-9">
+    <div className="relative overflow-hidden rounded-2xl bg-coffee p-6 text-cream shadow-[var(--shadow-card)] md:p-8">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.14] bg-[radial-gradient(circle_at_15%_20%,var(--gold),transparent_45%),radial-gradient(circle_at_85%_80%,var(--cream),transparent_50%)]"
         aria-hidden
