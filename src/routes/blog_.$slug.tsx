@@ -773,8 +773,11 @@ function ShareButtons({
     { Icon: Linkedin, name: "Share on LinkedIn" },
     { Icon: Link2, name: "Copy link" },
   ];
-  const dim = size === "sm" ? "h-9 w-9" : "h-10 w-10";
-  const icon = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
+  const dim =
+    size === "sm"
+      ? "h-11 w-11 sm:h-9 sm:w-9"
+      : "h-11 w-11 sm:h-10 sm:w-10";
+  const icon = size === "sm" ? "h-4 w-4 sm:h-3.5 sm:w-3.5" : "h-4 w-4";
   return (
     <div className="flex items-center gap-2" role="group" aria-label={label}>
       {items.map(({ Icon, name }) => (
@@ -783,9 +786,9 @@ function ShareButtons({
           type="button"
           aria-label={name}
           title={name}
-          className={`${dim} inline-flex items-center justify-center rounded-full border border-border/70 bg-white text-coffee shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-gold ${FOCUS} focus-visible:ring-offset-white`}
+          className={`${dim} inline-flex items-center justify-center rounded-full border border-border/70 bg-white text-coffee shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-gold/60 hover:text-coffee ${FOCUS} focus-visible:ring-offset-white`}
         >
-          <Icon className={icon} aria-hidden />
+          <Icon className={icon} strokeWidth={1.6} aria-hidden />
         </button>
       ))}
     </div>
