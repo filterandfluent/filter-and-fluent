@@ -637,7 +637,7 @@ function Figure({
   caption: string;
 }) {
   return (
-    <figure className="my-2">
+    <figure className="my-8">
       <div className={`${CARD} overflow-hidden`}>
         <img
           src={src}
@@ -647,7 +647,7 @@ function Figure({
           className="aspect-[16/9] w-full object-cover"
         />
       </div>
-      <figcaption className="mt-3 text-xs text-navy-deep/60 italic">
+      <figcaption className="mt-3 text-[13px] leading-relaxed text-navy-deep/60">
         {caption}
       </figcaption>
     </figure>
@@ -662,12 +662,12 @@ function QuoteBlock({
   attribution?: string;
 }) {
   return (
-    <blockquote className={`${CARD} border-l-4 border-l-gold p-7`}>
-      <p className="font-serif text-2xl leading-snug text-navy-deep italic">
+    <blockquote className={`${CARD} ${PAD} border-l-4 border-l-gold`}>
+      <p className="font-serif text-[22px] leading-relaxed text-navy-deep md:text-2xl">
         “{quote}”
       </p>
       {attribution ? (
-        <footer className="mt-3 text-sm text-navy-deep/60">
+        <footer className="mt-4 text-[13px] font-medium uppercase tracking-wider text-navy-deep/60">
           {attribution}
         </footer>
       ) : null}
@@ -683,11 +683,14 @@ function Callout({
   children: ReactNode;
 }) {
   return (
-    <aside className="rounded-2xl bg-[color:var(--beige)] border border-border/60 shadow-[var(--shadow-card)] p-7">
-      <span className="rounded-full bg-gold/20 text-coffee px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider">
+    <aside
+      className={`rounded-2xl border border-border/60 bg-[color:var(--beige)] shadow-[var(--shadow-card)] ${PAD}`}
+    >
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-coffee">
+        <Sparkles className="h-3 w-3" strokeWidth={1.6} aria-hidden />
         {label}
       </span>
-      <div className="mt-4 space-y-3 text-[15px] leading-relaxed text-navy-deep/80">
+      <div className="mt-4 space-y-3 text-[16px] leading-[1.75] text-navy-deep/85">
         {children}
       </div>
     </aside>
@@ -696,11 +699,13 @@ function Callout({
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className={`${CARD} p-7 space-y-3 text-[15px] leading-relaxed text-navy-deep/80`}>
+    <ul
+      className={`${CARD} ${PAD} space-y-3.5 text-[16px] leading-[1.75] text-navy-deep/85`}
+    >
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
           <span
-            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
+            className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
             aria-hidden
           />
           <span>{item}</span>
@@ -712,13 +717,15 @@ function BulletList({ items }: { items: string[] }) {
 
 function NumberedList({ items }: { items: string[] }) {
   return (
-    <ol className={`${CARD} p-7 space-y-4 text-[15px] leading-relaxed text-navy-deep/80`}>
+    <ol
+      className={`${CARD} ${PAD} space-y-4 text-[16px] leading-[1.75] text-navy-deep/85`}
+    >
       {items.map((item, i) => (
         <li key={item} className="flex items-start gap-4">
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold/20 text-[13px] font-semibold text-coffee">
             {i + 1}
           </span>
-          <span className="pt-0.5">{item}</span>
+          <span>{item}</span>
         </li>
       ))}
     </ol>
