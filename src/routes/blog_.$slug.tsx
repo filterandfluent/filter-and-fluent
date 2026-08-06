@@ -575,6 +575,20 @@ function useReadingProgress() {
 }
 
 /* ---------- Reusable content blocks ---------- */
+/** Subtle coffee-inspired divider between major sections. */
+function SectionDivider({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`flex items-center justify-center gap-3 py-2 ${className}`}
+      aria-hidden
+    >
+      <span className="h-px w-16 bg-gradient-to-r from-transparent to-border sm:w-24" />
+      <Coffee className="h-3.5 w-3.5 text-gold/70" strokeWidth={1.6} />
+      <span className="h-px w-16 bg-gradient-to-l from-transparent to-border sm:w-24" />
+    </div>
+  );
+}
+
 function SectionHeading({
   id,
   name,
@@ -585,15 +599,19 @@ function SectionHeading({
   intro?: string;
 }) {
   return (
-    <div className="mb-6">
+    <div className="mb-7">
+      <span
+        className="mb-3 block h-px w-10 bg-gold/60"
+        aria-hidden
+      />
       <h2
         id={id}
-        className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-navy-deep scroll-mt-28"
+        className="font-serif text-[28px] leading-[1.15] tracking-tight text-navy-deep scroll-mt-28 sm:text-3xl md:text-[2.5rem]"
       >
         {name}
       </h2>
       {intro ? (
-        <p className="mt-2 text-sm leading-relaxed text-navy-deep/60 italic">
+        <p className="mt-2.5 max-w-[58ch] text-[15px] leading-relaxed text-navy-deep/65">
           {intro}
         </p>
       ) : null}
@@ -603,7 +621,7 @@ function SectionHeading({
 
 function Subheading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="font-serif text-2xl leading-snug text-navy-deep pt-2">
+    <h3 className="pt-4 font-serif text-[22px] leading-snug tracking-tight text-navy-deep md:text-2xl">
       {children}
     </h3>
   );
