@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/brand-logo";
 import {
   ArrowDown, ArrowRight, Brain, Coffee, Eye, FlaskConical, GraduationCap, HelpCircle, Lightbulb,
   RefreshCw, School, Search, Sparkles, Target, UserCheck, Users, Wrench, Zap,
@@ -94,9 +95,7 @@ function WorkshopsPage() {
         <img src={coffeeBranch} alt="" className="pointer-events-none absolute -bottom-24 -right-24 w-[420px] opacity-[0.07]" />
         <nav className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
-              <Coffee className="h-5 w-5 text-gold" />
-            </span>
+            <BrandLogo />
             <span className="font-serif text-xl tracking-wide text-cream">Filter &amp; Fluent</span>
           </Link>
           <ul className="hidden xl:flex items-center gap-7 text-[13px] font-medium">

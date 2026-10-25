@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/brand-logo";
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -433,9 +434,7 @@ function VocabularyPage() {
 
         <nav className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
-              <Coffee className="h-5 w-5 text-gold" aria-hidden />
-            </span>
+            <BrandLogo />
             <span className="font-serif text-xl tracking-wide text-cream">Filter &amp; Fluent</span>
           </Link>
           <ul className="hidden xl:flex items-center gap-7 text-[13px] font-medium">

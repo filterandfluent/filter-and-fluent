@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/brand-logo";
 import {
   ArrowRight,
   BookOpen,
@@ -98,15 +99,13 @@ function Index() {
 
         {/* Nav */}
         <nav className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 flex items-center justify-between gap-6">
-          <a href="#" className="flex items-center gap-3 group">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
-              <Coffee className="h-6 w-6 text-gold" />
-            </span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <BrandLogo />
             <span className="leading-tight">
               <span className="block font-serif text-2xl text-gold-gradient tracking-wide">Filter &amp; Fluent</span>
               <span className="block text-[10px] tracking-[0.22em] text-cream/60 font-medium uppercase">English Learning, South Indian Soul</span>
             </span>
-          </a>
+          </Link>
 
           <ul className="hidden xl:flex items-center gap-7 text-[13px] font-medium">
             {navLinks.map((l, i) => (
@@ -560,12 +559,10 @@ function Index() {
         <div className="relative mx-auto max-w-[1300px] px-6 lg:px-10 py-20 grid lg:grid-cols-12 gap-12">
           {/* Newsletter */}
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40">
-                <Coffee className="h-5 w-5 text-gold" />
-              </span>
+            <Link to="/" className="flex items-center gap-3 mb-5">
+              <BrandLogo size="h-11 w-11" />
               <span className="font-serif text-2xl text-gold-gradient">Filter &amp; Fluent</span>
-            </div>
+            </Link>
             <p className="text-cream/70 text-sm leading-relaxed max-w-sm mb-6">
               Brewed lessons, delivered weekly. Join our newsletter for grammar tips,
               vocabulary, and stories from the world of English.

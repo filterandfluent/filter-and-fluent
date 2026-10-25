@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/brand-logo";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
@@ -904,9 +905,7 @@ function ArticlePage() {
       <header className="bg-navy-deep text-cream">
         <nav className="mx-auto flex max-w-[1300px] items-center justify-between gap-6 px-6 py-5 lg:px-10">
           <Link to="/" className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
-              <Coffee className="h-5 w-5 text-gold" />
-            </span>
+            <BrandLogo size="h-11 w-11" />
             <span className="leading-tight">
               <span className="block font-serif text-xl tracking-wide text-gold-gradient">
                 Filter &amp; Fluent
