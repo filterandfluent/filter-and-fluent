@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
-  Coffee,
   Download,
   FileText,
   Film,

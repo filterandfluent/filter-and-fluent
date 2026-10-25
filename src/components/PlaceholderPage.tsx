@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, Coffee } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import kolam from "@/assets/kolam-mandala.png";
 import coffeeBranch from "@/assets/coffee-branch.png";

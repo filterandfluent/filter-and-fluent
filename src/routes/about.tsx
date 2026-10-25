@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BrandLogo } from "@/components/brand-logo";
-import { Coffee, BookOpen, Sparkles, GraduationCap, ArrowRight } from "lucide-react";
+import { BookOpen, Sparkles, GraduationCap, ArrowRight } from "lucide-react";
 import kolam from "@/assets/kolam-mandala.png";
 import coffeeBranch from "@/assets/coffee-branch.png";
 
