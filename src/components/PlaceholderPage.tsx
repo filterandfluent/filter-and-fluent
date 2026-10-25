@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Coffee } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import kolam from "@/assets/kolam-mandala.png";
 import coffeeBranch from "@/assets/coffee-branch.png";
 
@@ -33,9 +34,7 @@ export function PlaceholderPage({ title, tagline, description }: Props) {
 
         <nav className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-navy/60">
-              <Coffee className="h-5 w-5 text-gold" />
-            </span>
+            <BrandLogo />
             <span className="font-serif text-xl tracking-wide text-cream">Filter &amp; Fluent</span>
           </Link>
 
